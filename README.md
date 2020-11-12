@@ -3,14 +3,38 @@
 Learning Management System
 
 When you work on new task do the below steps
-1. git checkout master
-2. git pull origin master
-3. git checkout -b '<branch_name>'  // Create a new branch while working on some new task.
-4. git status // once u completed working and want to push the code to develop branch.
-5. git add . // add all the files
-6. git commit -m '<add_comment>' // commit you files
-7. git push origin <branch_name> // push your files to your branch
-	
+
+```
+git checkout master 
+
+git pull origin master
+```
+The above command help in getting the latest code.
+
+```
+git checkout -b '<branch_name>'
+```
+Create a new branch when you start working on new task
+
+```
+git status
+```
+Helps in checking the file that are modified.
+
+```
+git add .
+```
+Will add all the modified files to you branch.
+
+```
+git commit -m '<add_comment>' 
+```
+Commit your file so that you can push them.
+
+```
+git push origin <branch_name>
+```
+Push your changes to your branch.
 	
 
 
