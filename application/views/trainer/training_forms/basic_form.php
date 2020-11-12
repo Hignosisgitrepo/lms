@@ -85,9 +85,11 @@
 						<select class="form-control" name="currencies" id="currencies" required>
 							 <option value=""><?php echo $text_select; ?></option>
 							 <?php foreach($currencies as $currency): ?>
-                                <?php if($currency->currency_name == "USD") { ?>
+								<?php if($currency->currency_name == "USD") { ?>
+								<inpu type="hidden" id="ccy_code" value="<?php echo $currency->currency_code; ?>">
                                 <option value="<?php echo $currency->currency_id; ?>" selected="selected"><?php echo $currency->currency_name; ?> - <?php echo $currency->currency_code; ?></option>
-                                <?php } else { ?>
+								<?php } else { ?>
+									<inpu type="hidden" id="ccy_code" value="<?php echo $currency->currency_code; ?>">
                                 <option value="<?php echo $currency->currency_id; ?>"><?php echo $currency->currency_name; ?> - <?php echo $currency->currency_code; ?></option>
                                 <?php } ?>
                                <?php endforeach; ?>
@@ -178,6 +180,8 @@
 
 					
 					
+				</div>
+
 				<div class="hide" id="online_section">
 					<hr>
 					<div class="row">
@@ -284,6 +288,9 @@
 							<?php } ?>
 						<?php endforeach; ?>
 						</select>
+						</div>
+						</div>
+					</div>
 					<div class="row">
 						
 					</div>
