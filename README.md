@@ -21,7 +21,7 @@ git checkout -b '<branch_name>'
 git status
 ```
 
-4.add all the modified files to your branch.
+4. Add all the modified files to your branch.
 
 ```
 git add .
