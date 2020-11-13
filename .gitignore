@@ -16,15 +16,12 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
-admin/application/config/config.php
 admin/application/config/database.php
 admin/application/config/myconfig.php
 admin/application/config/constants.php
-admin/application/config.php
 application/config/database.php
 application/config/myconfig.php
 application/config/constants.php
-corporate/application/config/config.php
 corporate/application/config/database.php
 corporate/application/config/myconfig.php
 corporate/application/config/constants.php
