@@ -63,6 +63,7 @@ class Training_add_basic extends UserController {
                 'no_of_sessions' => $no_of_sessions,
                 'training_start_date' => $start_date,
                 'training_start_time' => date("H:i", strtotime($start_hour.':'.$start_time.':00')), 
+                'time_zone'=>$time_zone,
                 'training_started' => 0,
                 'created_by' => $this->global['trainerId'],
                 'created_date' => date('Y-m-d H:i:s'),
@@ -73,7 +74,8 @@ class Training_add_basic extends UserController {
             $add_basic_details = $this->trainer_model->insert_into_training_master($training_master);
             
             if($add_basic_details['result'] == 1){
-                if($training_master['training_type'] == 'Online'){
+
+                if($training_type == 'Online'){
                     foreach ($days_selected as $day) {
                         $training_days = array(
                             'training_master_id' => $add_basic_details['insert_id'],

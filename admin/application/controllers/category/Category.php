@@ -105,7 +105,7 @@ class Category extends AdminController {
 	                $fileType = $_FILES["category_image"]["type"];
 	                $new_file_name= $file_name;
 	                $sourcePath = $_FILES['category_image']['tmp_name'];
-	                $admin_targetPath = "./assets/image/".$_FILES['category_image']['name'];
+	                $admin_targetPath = "assets/image/".$_FILES['category_image']['name'];
 	                $config = array(
 	                    'allowed_types' => "gif|jpg|png|jpeg",
 	                    'overwrite' => False,

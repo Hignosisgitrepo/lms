@@ -217,7 +217,7 @@
 
                     <!-- Navbar Menu -->
 
-                    <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
+                     <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
 
                         <!-- Notifications dropdown -->
                         <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
@@ -247,7 +247,7 @@
                                             </span>
                                             <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/people/110/woman-5.jpg"
+                                                    <img src="<?php echo base_url('assets/common/images/people/110/woman-5.jpg'); ?>"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -266,7 +266,7 @@
                                             </span>
                                             <span class="d-flex">
                                                 <span class="avatar avatar-xs mr-2">
-                                                    <img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/people/110/woman-5.jpg"
+                                                    <img src="<?php echo base_url('assets/common/images/people/110/woman-5.jpg'); ?>"
                                                          alt="people"
                                                          class="avatar-img rounded-circle">
                                                 </span>
@@ -391,11 +391,12 @@
                                 <a class="dropdown-item"
                                    href="<?php echo base_url(); ?>logout">Logout</a>
                             </div>
+                            
                         </div>
                     </div>
 
                     <!-- // END Navbar Menu -->
 
                 </div>
-
+             
                 <!-- // END Navbar -->

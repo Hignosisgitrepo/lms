@@ -257,7 +257,7 @@
 					
 					<p align="center">Provide the OTP to your registred mail ID.</p>
 					<div class="form-group form-focus">
-						<input type="text" class="form-control floating" name="tr_email_otp" id="tr_email_otp">
+						<input type="text" class="form-control floating" name="tr_email_otp" id="tr_email_otp" required>
 						<label class="focus-label" style="color:#fff">Email OTP <span class="text-danger">*</span></label>
 						<input type="hidden" name="tr_otp2" id="tr_otp2">
 					</div>

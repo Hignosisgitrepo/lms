@@ -50,7 +50,7 @@
 					<i class="material-icons text-muted icon--left">assessment</i>
 					<?php echo $program_level_name->maintainance_value		; ?>
 				</li>
-				<li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
+				<!-- <li class="nav-item ml-sm-auto text-sm-center flex-column navbar-list__item">
 					<div class="rating rating-24">
 						<div class="rating__item"><i class="material-icons">star</i></div>
 						<div class="rating__item"><i class="material-icons">star</i></div>
@@ -59,7 +59,7 @@
 						<div class="rating__item"><i class="material-icons">star_border</i></div>
 					</div>
 					<p class="lh-1 mb-0"><small class="text-muted">20 ratings</small></p>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 	</div>
@@ -123,9 +123,9 @@
 							</span>
 							<h4 class="card-title"><strong>Unlock Library</strong></h4>
 							<p class="card-subtitle text-70 mb-24pt">Get access to all videos in the library</p>
-							<a href="pricing.html"
-							   class="btn btn-accent mb-8pt">Sign Up - Only $19.00/mo</a>
-							<p class="mb-0">Have an account? <a href="login.html">Login</a></p>
+							<!-- <a href="pricing.html"
+							   class="btn btn-accent mb-8pt">Sign Up - Only $19.00/mo</a> -->
+							<!-- <p class="mb-0">Have an account? <a href="login.html">Login</a></p> -->
 						</div>
 					</div>
 
@@ -292,12 +292,12 @@
 						<p class="lh-1">
 							<small class="text-muted">Angular, Web Development</small>
 						</p>
-						<div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
+						<!-- <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
 							<a href="teacher-profile.html"
 							   class="btn btn-outline-primary mb-16pt mb-sm-0 mr-sm-16pt">Follow</a>
 							<a href="teacher-profile.html"
 							   class="btn btn-outline-secondary">View Profile</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

@@ -154,7 +154,11 @@
                         </li>
                      </ul>
                      <ul class="nav navbar-nav ml-auto mr-0">
-                        <a href="<?php echo base_url(); ?>corporate" class="btn btn-outline-secondary">Login</a>
+                     <li class="nav-item">
+                
+           
+                     <a href="<?php echo base_url(); ?>corporate" class="btn btn-outline-white">Login</a>
+                     </li>        
                      </ul>
       </div>
 <!-- Page Content -->
@@ -182,24 +186,24 @@
 					   <div class="form-row">
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_firstname; ?> <span class="text-danger">*</span></label>
-							 <input type="text" class="form-control" name="co_first_name" id="co_first_name" value="" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" autocomplete="off">
+							 <input type="text" class="form-control" name="co_first_name" id="co_first_name" value="" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" autocomplete="off" required>
 							 <div id="co_first_name_err"></div>
 						  </div>
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_lastname; ?> <span class="text-danger">*</span></label>
-							 <input type="text" class="form-control" name="co_last_name" id="co_last_name" value="" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" autocomplete="off">
+							 <input type="text" class="form-control" name="co_last_name" id="co_last_name" value="" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" autocomplete="off" required>
 							 <div id="co_last_name_err"></div>
 						  </div>
 					   </div>
 					   <div class="form-row">
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff">Domain Name <span class="text-danger">*</span></label>
-							 <input type="text" class="form-control" name="co_domain" id="co_domain" value="" autocomplete="off">
+							 <input type="text" class="form-control" name="co_domain" id="co_domain" value="" autocomplete="off" required>
 							 <div id="co_domain_err"></div>
 						  </div>
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_workmail; ?> <span class="text-danger">*</span></label>
-							 <input type="email" class="form-control floating" name="co_work_mail" id="co_work_mail" value="" autocomplete="off">
+							 <input type="email" class="form-control floating" name="co_work_mail" id="co_work_mail" value="" autocomplete="off" required>
 							 <div id="co_work_mail_err"></div>
 						  </div>
 					   </div>
@@ -207,7 +211,7 @@
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_phone; ?> <span class="text-danger">*</span></label>
 							 <div class="input-group">
-								<div class="col-xs-4">
+								
 								   <select class="form-control" name="co_phonecode" id="co_phonecode">
 									  <?php foreach($countries as $country) { ?>
 										<?php if($country_id == $country->id) { ?>
@@ -217,24 +221,24 @@
 										<?php } ?>
 									  <?php } ?>
 								   </select>
-								</div>
-								<div class="col-xs-8">
+								
 								   <input type="text" class="form-control floating" name="co_phone_number" id="co_phone_number" value=""onkeypress="return
-									  isNumberKey(event)" maxlength="10" autocomplete="off">
-								</div>
+									  isNumberKey(event)" maxlength="10" autocomplete="off" required>
+								
 							 </div>
 							 <div id="co_phone_number_err"></div>
-						  </div>
+                    </div>
+                    
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_company; ?> <span class="text-danger">*</span></label>
-							 <input type="email" class="form-control floating" name="co_company_name" id="co_company_name" value="" autocomplete="off">
+							 <input type="email" class="form-control floating" name="co_company_name" id="co_company_name" value="" autocomplete="off" required>
 							 <div id="co_company_name_err"></div>
 						  </div>
 					   </div>
 					   <div class="form-row">
 						  <div class="col-12 col-md-6 mb-3">
 							 <label class="form-label" for="validationSample01" style="color:#fff">Company Size <span class="text-danger">*</span></label>
-							 <select class="form-control" name="co_company_size" id="co_company_size">
+							 <select class="form-control" name="co_company_size" id="co_company_size" required>
 								<option value=""><?php echo $text_select; ?> company size <span class="text-danger">*</span></option>
 								<?php foreach($company_sizes as $value) { ?>
 								<option value="<?php echo $value->maintainance_detail_id; ?>"><?php echo $value->maintainance_value; ?></option>
@@ -242,12 +246,19 @@
 							 </select>
 							 <div id="co_company_size_err"></div>
 						  </div>
-						  <div class="col-12 col-md-6 mb-3">
-							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_trainingneed; ?> <span class="text-danger">*</span></label>
-							 <textarea type="text" class="form-control" name="co_training_need" id="co_training_need" autocomplete="off"></textarea>
+						  
+                  </div>
+                  
+                  <div class="form-row">
+						  <div class="col-12 col-md-12 mb-12">
+                    <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_trainingneed; ?> <span class="text-danger">*</span></label>
+							 <textarea type="text" class="form-control" name="co_training_need" id="co_training_need" autocomplete="off" required></textarea>
 							 <div id="co_training_need_err"></div>
+							
 						  </div>
-					   </div>
+						 
+                  </div>
+                  <br>
 					   <button class="btn btn-primary btn-block btn-lg login-btn" name="submit" type="submit" onclick="addCorporate();"><?php echo $text_getintouch; ?></button>
 					</div>
 					<div class="flex" style="max-width: 100%;display:none;" id="co_step2">
@@ -1650,26 +1661,28 @@
 			
 			var err = 0;
 			if (first_name == '') {
-				$("#co_first_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>First name should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_first_name").focus();
+				$("#co_first_name").attr('placeholder','Enter your first name');
+				$(".form-row").addClass('was-validated');
 				err++;
 				return false;
 			}
 			if (last_name == '') {
-				$("#co_last_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Last name should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_last_name").focus();
+            $("#co_last_name").attr('placeholder','Enter your last name');
+            $(".form-row").addClass('was-validated');
 				err++;
 				return false;
 			}
 			if (domain == '') {
-				$("#co_domain_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Domain name should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_domain").focus();
+            $("#co_domain_err").attr('placeholder','Enter your domain name');
+            $(".form-row").addClass('was-validated');
+				
 				err++;
 				return false;
 			}
 			if (work_mail == '') {
-				$("#co_work_mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Work email should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_work_mail").focus();
+            $("#work_mail").attr('placeholder','Enter your work mail');
+            $(".form-row").addClass('was-validated');
+				
 				err++;
 				return false;
 			} else {
@@ -1685,8 +1698,8 @@
 					var ind=work_mail.indexOf("@");
 					var my_slice=work_mail.slice((ind+1),work_mail.length);
 					if(domain != my_slice) {
-						$("#co_work_mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>The provided domain and emailID domain is not same!</div>').show('fast').delay(5000).hide('fast');
-						document.getElementById("co_work_mail").focus();
+                  $("#work_mail").val(''); 
+                  $("#work_mail").attr('placeholder','Invalid Email ID');
 						
 						err++;
 						return false;
@@ -1694,26 +1707,33 @@
 				}
 			}
 			if (phone_number == '') {
-				$("#co_phone_number_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Phone number should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_phone_number").focus();
+				$("#co_phone_number").attr('placeholder','Enter your phone number');
+				$(".form-row").addClass('was-validated');
+
+          
 				err++;
 				return false;
 			}
 			if (company_name == '') {
-				$("#co_company_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Company name should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_company_name").focus();
+            $("#co_company_name").attr('placeholder','Enter your company name');
+				$(".form-row").addClass('was-validated');
+
+				
 				err++;
 				return false;
 			}
 			if (company_size == '') {
-				$("#co_company_size_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Please choose the comapny size!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_company_size").focus();
+            $("#co_company_size").attr('placeholder','Please select your company size');
+				$(".form-row").addClass('was-validated');
+
+				
 				err++;
 				return false;
 			}
 			if (training_need == '') {
-				$("#co_training_need_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Training needs should not empty!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("co_training_need").focus();
+            $("#co_training_need").attr('placeholder','Enter your training needs');
+				$(".form-row").addClass('was-validated');
+
 				err++;
 				return false;
 			}
@@ -1742,43 +1762,43 @@
 							document.getElementById("co_training_need").value = '';
 						} else {
 							if(json['err_first_name']) {
-								$("#co_first_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_first_name'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_first_name").focus();
+                        $("#co_first_name").attr('placeholder',json['err_first_name']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_last_name']) {
-								$("#co_last_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_last_name'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_last_name").focus();
+                        $("#co_last_name").attr('placeholder',json['err_last_name']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_domain']) {
-								$("#co_domain_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_domain'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_domain").focus();
+                        $("#co_domain").attr('placeholder',json['err_domain']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_email']) {
-								$("#co_work_mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_email'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_work_mail").focus();
+                        $("#co_work_mail").attr('placeholder',json['err_email']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_telephone']) {
-								$("#co_phone_number_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_telephone'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_phone_number").focus();
+                        $("#co_phone_number").attr('placeholder',json['err_telephone']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_comapny']) {
-								$("#co_company_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_comapny'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_company_name").focus();
+                        $("#co_company_name").attr('placeholder',json['err_comapny']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_size']) {
-								$("#co_company_size_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_size'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_company_size").focus();
+                        $("#co_company_size").attr('placeholder',json['err_size']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 							if(json['err_need']) {
-								$("#co_training_need_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_need'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("co_training_need").focus();
+                        $("#co_training_need").attr('placeholder',json['err_need']);
+				            $(".form-row").addClass('was-validated');
 								return false;
 							}
 						}
