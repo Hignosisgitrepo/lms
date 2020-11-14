@@ -38,112 +38,124 @@
 					<div class="page-separator">
 						<div class="page-separator__text">Popular Courses</div>
 					</div>
+					<?php if($trainings) { ?>
+					  <?php foreach($trainings as $training) { ?>
+						<div class="card" title="What u'll learn?" data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="
+							<?php $ctr = 1; ?>
+							<?php foreach($training['concepts'] as $concept) { ?>
+								<?php echo $ctr . '. ' . $concept->concept_name; ?><br>
+								<?php $ctr++; ?>
+							<?php } ?>
+							" onclick="viewTraining('<?php echo $training['b64_tmid']; ?>');">
+						  <div class="list-group list-group-flush" style="cursor: -webkit-grab; cursor: grab;">
 
-					<div class="row card-group-row">
-					  <?php if($trainings) { ?>
-						<?php foreach($trainings as $training) { ?>
-						  <div class="col-sm-12 card-group-row__col" onclick="viewTraining('<?php echo $training['b64_tmid']; ?>');">
+							<div class="list-group-item p-3">
+								
+																		 
+								<div class="row align-items-start">
 
-                            <div class="card overlay--show card-lg overlay--primary-dodger-blue stack stack--1 card-group-row__card">
+									<div class="col-md-9 mb-8pt mb-md-0">
 
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex">
-                                            <div class="d-flex align-items-center">
-                                                <div class="rounded mr-12pt z-0 o-hidden">
-                                                    <div class="overlay">
-                                                        <img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/paths/angular_40x40@2x.png"
-                                                             width="40"
-                                                             height="40"
-                                                             alt="Angular"
-                                                             class="rounded">
-                                                    </div>
-                                                </div>
-                                                <div class="flex">
-                                                    <div class="card-title"><?php echo $training['training_name']; ?></div>
-                                                    <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['price']; ?></small></p>
-													<p class="flex text-50 lh-1 mb-0"><small>By <?php echo $training['trainer_name']; ?></small></p>
-                                                </div>
-                                            </div>
-                                        </div>
+																		  
+										<div class="media align-items-center">
+											<div class="media-left mr-12pt">
+												<a onclick="viewTraining('<?php echo $training['b64_tmid']; ?>');">
+																						  
+																		 
+												   <img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/paths/angular_40x40@2x.png" width="150" height="100" alt="<?php echo $training['training_name']; ?>" class="rounded">
+												</a>
+																		
+																		  
+																			 
+														  
+													  
+																  
+											</div>
+											<div class="d-flex flex-column media-body media-middle">
+												<a onclick="viewTraining('<?php echo $training['b64_tmid']; ?>');" class="card-title"><?php echo $training['training_name']; ?></a>
+													  
+												  
+											  
 
-                                        <a href="student-path.html"
-                                           data-toggle="tooltip"
-                                           data-title="Remove Favorite"
-                                           data-placement="top"
-                                           data-boundary="window"
-                                           class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
+																													  
+																
+																															 
+															   
+																 
+																																																																																	  
 
-                                    </div>
+										  
 
-                                    <div class="d-flex align-items-center mt-8pt">
-                                        <small class="text-50 mr-8pt">Your rating</small>
-                                        <div class="rating mr-8pt">
-                                            <span class="rating__item"><span class="material-icons text-primary">star</span></span>
-                                            <span class="rating__item"><span class="material-icons text-primary">star</span></span>
-                                            <span class="rating__item"><span class="material-icons text-primary">star</span></span>
-                                            <span class="rating__item"><span class="material-icons text-primary">star</span></span>
-                                            <span class="rating__item"><span class="material-icons text-primary">star_border</span></span>
-                                        </div>
-                                        <small class="text-50">4/5</small>
-                                    </div>
+																																				 
+																																																			   
+																   
+																																																																																																														  
+																																																																																																														  
+																																																																																																														  
+																																																																																																														  
+																																																																																																							 
+											  
+																																  
+										  
 
-                                    <p class="mt-16pt text-70 flex"><?php echo $training['training_description']; ?></p>
+												<small class="text-muted"><?php echo $training['training_description']; ?></small>
 
-                                    <div class="mb-16pt d-none">
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Fundamentals of working with Angular</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Create complete Angular applications</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Working with the Angular CLI</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-icons icon-16pt text-50 mr-8pt">check</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small>Testing with Angular</small></p>
-                                        </div>
-                                    </div>
+																
+																																													  
+																																																																																		 
+												<p class="flex text-50 lh-1 mb-0"><small>By <a><?php echo $training['trainer_name']; ?></a></small></p>
+											  
+												<div class="d-flex align-items-center mb-8pt justify-content-center" style="justify-content: left!important;">
+																																																																																		 
+																																																																																																																												 
+											  
+																																													  
+																																																																																		 
+																																																																																																									
+											  
+																																													  
+																																																																																		 
+																																																																																																														  
+											  
+													<div class="d-flex align-items-center mr-8pt">
+																																																																																		 
+																																																																																													  
+											  
+										  
 
-                                    <div class="d-flex">
-                                        <div class="d-flex">
-                                            <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['course_duration']; ?>Hrs</small></p>
-                                        </div>
-                                        <div class="d-flex ">
-                                            <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['no_of_sessions']; ?> sessions</small></p>
-                                        </div>
-                                        <div class="d-flex ">
-                                            <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
-                                            <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['program_level_name']; ?></small></p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex ">
-                                        <a href="student-take-lesson.html"
-                                           class="btn btn-primary">Add To Cart</a> &nbsp;&nbsp;
-                                        <a href="student-take-lesson.html"
-                                           class="btn btn-info">Buy Now</a>
-                                    </div>
+														
+															
+														<span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
+														<p class="flex text-50 lh-1 mb-0"><small><?php echo $training['course_duration']; ?>Hrs</small></p>
+													</div>
+													<div class="d-flex align-items-center">
+														<span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
+														<p class="flex text-50 lh-1 mb-0"><small><?php echo $training['no_of_sessions']; ?> sessions</small></p>
+													</div>
+													<div class="d-flex align-items-center">
+														<span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
+														<p class="flex text-50 lh-1 mb-0"><small><?php echo $training['program_level_name']; ?></small></p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-auto d-flex flex-column align-items-center justify-content-center">
+										<h5 class="m-0"><?php echo $training['price']; ?></h5>
+										<p class="lh-1 mb-0"><small class="text-70"><strike><?php echo $training['price']; ?></strike></small></p>
+																																  
+									</div>
+								</div>
 
-                                </div>
-                            </div>
+							</div>
+						  </div>
 
-                          </div>
-						<?php } ?>
-					  <?php }  else { ?>
+						</div>
+						
+				      <?php } ?>
+					<?php }  else { ?>
 						No course available!
-					  <?php } ?>
-					</div>
-
+					<?php } ?>
 					<div class="mb-32pt">
 
 						<ul class="pagination justify-content-start pagination-xsm m-0">

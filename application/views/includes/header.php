@@ -102,7 +102,7 @@
                </span>-->
             <span class="d-none d-lg-block"><?php echo $company_name; ?></span>
          </a>
-         <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" action="" style="max-width: 230px">
+         <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" action="" style="max-width: 400px">
             <button class="btn" type="submit"><i class="material-icons">search</i></button>
             <input type="text" class="form-control typeahead" placeholder="Search ..." name="search_box" id="search_box">
 			<ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
@@ -209,7 +209,7 @@
 						Not A Trainer
 					  </a>
 				  <?php } ?>
-                  <a class="dropdown-item" href="<?php echo base_url(); ?>coming-soon">My Courses</a>
+                  <a class="dropdown-item" href="<?php echo base_url(); ?>mycourses">My Courses</a>
                   <a class="dropdown-item" href="<?php echo base_url(); ?>logout">Logout</a>
                </div>
             </li>

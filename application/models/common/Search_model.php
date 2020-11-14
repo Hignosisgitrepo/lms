@@ -14,6 +14,8 @@ class Search_model extends CI_Model {
 	}
 	
 	function getTrainings($training_name) {
+	    $this->db->distinct();
+	    $this->db->select('*');
 	    $this->db->like("training_name", $training_name);
 	    $this->db->where("owner", 'T');
 	    return $this->db->get('training_master')->result_array();
@@ -73,5 +75,12 @@ class Search_model extends CI_Model {
 	    $result = $this->db->query($query, array($id));
 	    
 	    return $result->result();
+	
+	function getItemInCart($data = array()) {
+	    $query = $this->db->query("SELECT count(*) as total FROM shopping_cart WHERE customer_id = '" . $data['customer_id'] . "' AND session_id = '" . $data['session_id'] . "' AND product_id = '" . $data['product_id'] . "'");
+	    
+	    $result = $query->row();
+	    
+	    return $result;
 	}
 }

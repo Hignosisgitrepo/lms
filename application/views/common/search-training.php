@@ -13,10 +13,12 @@
 					<h1 class="text-white"><?php echo $training_name; ?></h1>
 					<p class="lead text-white-50 measure-hero-lead"><?php echo $category_data[0]->description; ?></p>
 					<div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
-						<a onclick="addToCart('<?php echo $training_master_id; ?>');"
-						   class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Add to Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i></a>
-						<a href="pricing.html"
-						   class="btn btn-white">Buy Now</a>
+						<?php if($item_status == 0) { ?>
+						   <a onclick="addToCart('<?php echo $training_master_id; ?>');" class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Add to Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i></a>
+						<?php } else { ?>
+							
+						   <a class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Already Added&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i></a>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -142,34 +144,25 @@
 					<div class="page-separator">
 						<div class="page-separator__text">About this course</div>
 					</div>
-					<p class="text-70">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>
-					<p class="text-70 mb-0">This course will teach you the fundamentals o*f working with Angular 2. You *will learn everything you need to know to create complete applications including: components, services, directives, pipes, routing, HTTP, and even testing.</p>
+					<p class="text-70"><?php echo $training_description; ?></p>
 				</div>
 				<div class="col-md-5">
 					<div class="page-separator">
 						<div class="page-separator__text bg-alt">What you’ll learn</div>
 					</div>
 					<ul class="list-unstyled">
-						<li class="d-flex align-items-center">
+					  <?php if($concepts) { ?>
+						<?php foreach($concepts as $concept) { ?>
+						  <li class="d-flex align-items-center">
 							<span class="material-icons text-50 mr-8pt">check</span>
-							<span class="text-70">Fundamentals of working with Angular</span>
-						</li>
+							<span class="text-70"><?php echo $concept->concept_name; ?></span>
+						  </li>
+						<?php } ?>
+					  <?php } else { ?>
 						<li class="d-flex align-items-center">
-							<span class="material-icons text-50 mr-8pt">check</span>
-							<span class="text-70">Create complete Angular applications</span>
+							<span class="text-70">No concepts available.</span>
 						</li>
-						<li class="d-flex align-items-center">
-							<span class="material-icons text-50 mr-8pt">check</span>
-							<span class="text-70">Working with the Angular CLI</span>
-						</li>
-						<li class="d-flex align-items-center">
-							<span class="material-icons text-50 mr-8pt">check</span>
-							<span class="text-70">Understanding Dependency Injection</span>
-						</li>
-						<li class="d-flex align-items-center">
-							<span class="material-icons text-50 mr-8pt">check</span>
-							<span class="text-70">Testing with Angular</span>
-						</li>
+					  <?php } ?>
 					</ul>
 				</div>
 			</div>
