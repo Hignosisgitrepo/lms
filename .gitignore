@@ -17,6 +17,8 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
+.htaccess
+system/.htaccess
 admin/application/config/database.php
 admin/application/config/myconfig.php
 admin/application/config/constants.php
