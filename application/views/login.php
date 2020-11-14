@@ -15,31 +15,38 @@
                      <div class="login-header">
                         <h3>Log In to your E-Learing Account</h3>
                      </div>
-                     
-                   
-                     <div class="form-group  row">
-                           <div class="col-lg-12">    
-                                <label class="form-label" for="email">Email:</label>
-                                <input  type="text" class="form-control" placeholder="Enter your email Id" name="cu_email" id="cu_email" value="" required>
-                            </div>
+                     <hr>
+                     <!-- login Form -->
+					 
+                     <div id="invalidLogin"></div>
+                     <div class="form-group row">
+                        <div class="col-lg-12">
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text" id="sizing-addon2"><i class="fa fa-envelope"></i></span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="Email ID" aria-describedby="sizing-addon2" name="cu_email" id="cu_email" value="">
+                           </div>
+                        </div>
                      </div>
                      <div id="cuemail_err"></div>
                      <div class="form-group row">
                         <div class="col-lg-12">
-                                <label class="form-label" for="password">Password:</label>
-                                <input  type="password" class="form-control" placeholder="Enter your password" id="cu_password" name="cu_password" value="" required>
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text" id="sizing-addon2"><i class="fa fa-lock"></i></span>
+                              </div>
+                              <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2" name="cu_password" id="cu_password" value="">
+                           </div>
                         </div>
                      </div>
                      <div id="cupwd_err"></div>
                      <br>
-                     <div class="text-center">
-                                <button class="btn btn-primary" type="submit" onclick="customerLogin();">Login</button>
-                            </div>
-                     <!-- <div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div> -->
+                     <button class="btn btn-primary btn-block btn-lg login-btn" type="submit" onclick="customerLogin();">Signin</button><br><br>
+                     <div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div>
                      <br><br>
                      <div class="text-center dont-have">Don’t have an account? <a href="<?php echo base_url(); ?>register">Register</a></div>
                      <br><br>
-                  
                      <!-- /login Form -->
                   </div>
                </div>
