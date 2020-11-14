@@ -46,7 +46,7 @@
 			<div class="posts-cards mb-24pt">
 				<?php foreach($trainings as $item) {?>
 				  <div class="card posts-card">
-					<div class="posts-card__content d-flex align-items-center flex-wrap">
+					<div class="posts-card__content d-flex  flex-wrap">
 						<div class="avatar avatar-lg mr-3">
 							<a href=""><img src="<?php echo $item['training_image']; ?>"
 									 alt="avatar"
@@ -58,14 +58,22 @@
 							<small class="text-50">By <?php echo $item['trainer_name']; ?></small>
 						</div>
 						<div class="d-flex align-items-center flex-column flex-sm-row posts-card__meta">
-							<a onclick="deleteCart('<?php echo $item['cart_id']; ?>');"><div class="mr-3 text-50 text-uppercase posts-card__tag d-flex align-items-center">
-								<i class="material-icons text-muted-light mr-1">delete</i> Remove
-							</div></a>
+							
 							<div class="media mr-2 ml-sm-auto align-items-center">
 								<div class="media-left mr-2 avatar-group">
 									<h4><?php echo $item['price']; ?></h4>
 								</div>
 							</div>
+
+							
+						</div>
+						
+						<div class="mr-3 text-right text-50 text-uppercase posts-card__tag d-flex align-items-center">
+						<small><a onclick="deleteCart('<?php echo $item['cart_id']; ?>');">
+								
+									<i class="material-icons text-muted-light mr-1">delete</i> Remove
+								
+						</a></small>
 						</div>
 					</div>
 				  </div>

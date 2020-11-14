@@ -82,7 +82,9 @@
                      </div>
                      <div id="c_password_err"></div>
                      <br>
-                     <button class="btn btn-primary btn-block btn-lg login-btn" type="submit" onclick="addCustomer();">Signin</button><br><br>
+                     <div class="text-center">
+                     <button class="btn btn-primary" type="submit" onclick="addCustomer();">Signin</button><br><br>
+                             </div>
                      <div class="text-center dont-have">Already have account! <a href="<?php echo base_url(); ?>login">Login</a></div>
                      <br><br>
                      <!-- /login Form -->

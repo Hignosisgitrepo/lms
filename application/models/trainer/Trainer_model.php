@@ -67,7 +67,7 @@ class Trainer_model extends CI_Model {
 		$query = $this->db->query("SELECT *  FROM `trainer`  WHERE trainer_id = '".$trainer_id."' ");
 
         $result = $query->row();
-        return $result->result();
+        return $result;
     }
 
    function getTrainerName($customer_id) {
@@ -77,11 +77,11 @@ class Trainer_model extends CI_Model {
         return $result;
     }
 
-    function get_trainer_data($id, $owner, $type) {
+    function get_trainer_data($id, $owner) {
 
-        $query = "SELECT * FROM training_master WHERE created_by = ? AND owner = ? AND training_type = ? ORDER BY training_master_id DESC";
+        $query = "SELECT * FROM training_master WHERE created_by = ? AND owner = ?  ORDER BY training_master_id DESC";
 
-        $result = $this->db->query($query, array($id, $owner, $type));
+        $result = $this->db->query($query, array($id, $owner));
 
         return $result->result();
     }

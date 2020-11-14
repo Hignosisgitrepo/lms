@@ -433,6 +433,19 @@
                                                                 tabs += '</div>';
                                                             tabs += '</div>';
 
+															$tabs+= '<div class="form-group row">';
+																$tabs+= '<label class="col-lg-3 col-form-label"><?php echo $text_video_time; ?></label>';
+																$tabs+= '<div class="col-lg-9">';
+																	$tabs+= '<input type="text"  name="section_details_video_time" data-value = '+ $data_value +'_'+ sort_counter +' id="section_details_video_time_'+ $data_value +'_'+ sort_counter +'" class="form-control section_details_video_time" required >';
+																	$tabs+='<div id="" class="hide '+ $data_value +'_'+ sort_counter +'">';
+																		
+																	$tabs+='</div>';
+																	$tabs+= '<div class="invalid-feedback">';
+																		$tabs+= 'Please provide valid <?php echo $text_video_time; ?>.';
+																	$tabs+= '</div>';
+																$tabs+= '</div>';
+															$tabs+= '</div>';
+
                                                             tabs += '<div class="form-group row">';
                                                                 tabs += '<label class="col-lg-3 col-form-label">Upload</label>';
                                                                 tabs += '<div class="col-lg-9">';

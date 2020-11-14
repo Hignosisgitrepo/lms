@@ -1,4 +1,4 @@
-<form action="#" class="basic_form" novalidate>
+<form action="#"  class="basic_form" enctype="multipart/form-data" novalidate>
 		<div class="row p_t_10">
 			<div id="basic_alert" class="alert alert-success hide" data-dismiss="alert" role="alert">
 			  Basic details has been added successfully.
@@ -19,7 +19,7 @@
 					<div class="col-lg-9">
 						
 						
-<textarea  id="training_description" class="form-control" ></textarea>
+<textarea  id="training_description" class="form-control" required></textarea>
 						<div class="invalid-feedback">
 							Please provide valid <?php echo $text_Training_Description; ?>.
 						</div>
@@ -298,7 +298,7 @@
 			</div>
 		</div>          
 	<div class="text-right">
-		<button type="submit" data-value="1" id="submit_basic_details" class="btn btn-primary">Submit</button>
+		<button type="submit" data-value="1" id="submit_basic_details" class="btn btn-primary ">Submit</button>
 		<button type="button" data-value="1" id="next_button_1" class="next_button btn btn-primary disabled">Next</button>
 	</div>
 </form>

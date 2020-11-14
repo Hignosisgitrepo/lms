@@ -86,18 +86,101 @@ class Training_section extends UserController {
 
     public function getSection(){
         $json = array();
+       
+   
         $tid=$this->input->post('training_master_id');
+       
         $results= $this->trainer_model->get_training_section($tid);
         //print_r($results);exit;
+        
+        
+
         foreach($results as $res) {
             
             $json[] = array(
                 'training_section_id'=>$res->training_section_id,
                 'section_name' => $res->section_name,
                 'sort_order' => $res->sort_order
+
             );
+
+         
         }
+
+       
+       
+     //   getSectionDetails($tid);
+     //   echo json_encode($response);
         echo json_encode($json);
+
+    }
+
+
+    public function getSectionDetails() {
+
+        $insert_array = array();
+        $add_section_id = array();
+        $add_training_section_data[] = array();
+
+        
+       $tid=$this->input->post('training_master_id');
+        $results= $this->trainer_model->get_training_section($tid);
+        //print_r($results);exit;
+        
+        
+        foreach($results as $res) {
+            
+            $json[] = array(
+                'training_section_id'=>$res->training_section_id,
+                'section_name' => $res->section_name,
+                'sort_order' => $res->sort_order
+
+            );
+
+            array_push($add_section_id,$res->training_section_id);
+         
+        }
+
+            
+                
+        $count = 0;
+        $in_query = '';
+        foreach ($add_section_id as $section_key => $section_value) {
+            $count++;
+
+            if($count != count($add_section_id)){
+                $in_query .= $section_value.','; 
+            } else {
+                $in_query .= $section_value; 
+            }
+            
+        }
+       
+
+        $get_section_details = $this->trainer_model->get_training_section_data($in_query);
+
+        
+        if(count($get_section_details) > 0){
+            foreach ($get_section_details as $key => $value) {
+                $training_section_id = $value->training_section_id;
+                $section_name = $value->section_name;
+                $sort_order = $value->sort_order;
+
+                $training_section_data[$sort_order] = array('section_name' => $section_name,
+                                                                 'training_section_id' => $training_section_id);
+            }
+            
+            
+        }
+
+        $response = array('training_section_data' => $training_section_data,
+        'success' => 1,
+        'message' => 'Successfully added section basic details');
+
+
+        echo json_encode($response);
+   
+    
     }
 
     public function saveSection() {
@@ -130,7 +213,7 @@ class Training_section extends UserController {
 	    
 	    if($err == 0) {
             if($data['training_section_id'] == 0) {
-                $this->trainer_model->insert_into_training_section($data);
+                $add_section =  $this->trainer_model->insert_into_training_section($data);
             }else {
                 $this->trainer_model->edit_into_training_section($s_name,$s_id,$s_order);
 
@@ -138,8 +221,8 @@ class Training_section extends UserController {
             
             
 	        $json['success'] = $this->lang->line('text_addsuccess');
-	    }
-	    
+        }
+
 	    echo json_encode($json);
     }
     
