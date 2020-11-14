@@ -282,4 +282,11 @@ class Common_ajax extends CI_Controller {
 	    echo json_encode($json);
 	}
 	
+	public function searchFormData() {
+	    $keyword = $this->input->post('search_box');
+		print_R($keyword);exit;
+	    
+	    echo json_encode($json);
+	}
+	
 }
