@@ -75,6 +75,24 @@ class Search extends CI_Controller {
         $data['trainer_data'] = $this->search_model->getTrainerData($result[0]->created_by);
         $data['program_level_name'] = $this->common_model->getMaintainanceDetail($result[0]->program_level);
         
+        if(empty($this->session->userdata ('customer_id'))) {
+            $customer_id = 0;
+        } else {
+            $customer_id = $this->session->userdata ('customer_id');
+        }
+        $data['cart_session'] = array(
+            'customer_id' => $customer_id,
+            'session_id'  => session_id(),
+            'product_id'  => $training_master_id
+        );
+        $cart_item = $this->search_model->getItemInCart($data['cart_session']);
+        if($cart_item->total == 0) {
+            $data['item_status'] = 0;
+        } else {
+            $data['item_status'] = 1;
+        }
+        //print_r($cart_item);exit;
+        
         $trainer_sections = $this->search_model->getTrainingSections($result[0]->training_master_id);
         $data['section_data'] = array();
         
