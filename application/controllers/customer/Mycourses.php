@@ -114,11 +114,11 @@ class Mycourses extends UserController {
 	        $ctr++;
 	    }
 	    
+		$data['schedule_data'] = array();
 	    if($course_data[0]->training_type == 'Online') {
 	        
 	        
 	        $trainer_schedules = $this->search_model->getTrainingSchedules($course_data[0]->training_master_id);
-	        $data['schedule_data'] = array();
 	        
 	        $count = 1;
 	        foreach($trainer_schedules as $trainer_schedule) {
