@@ -42,7 +42,7 @@
 					<div class="row card-group-row">
 					  <?php if($trainings) { ?>
 						<?php foreach($trainings as $training) { ?>
-						  <div class="col-sm-4 card-group-row__col" onclick="viewTraining('<?php echo $training['b64_tmid']; ?>');">
+						  <div class="col-sm-12 card-group-row__col" onclick="viewTraining('<?php echo $training['b64_tmid']; ?>');">
 
                             <div class="card overlay--show card-lg overlay--primary-dodger-blue stack stack--1 card-group-row__card">
 
@@ -113,23 +113,23 @@
                                         </div>
                                     </div>
 
-                                    <div class="d-flex align-items-center mb-8pt justify-content-center">
-                                        <div class="d-flex align-items-center mr-8pt">
+                                    <div class="d-flex">
+                                        <div class="d-flex">
                                             <span class="material-icons icon-16pt text-50 mr-4pt">access_time</span>
                                             <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['course_duration']; ?>Hrs</small></p>
                                         </div>
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-flex ">
                                             <span class="material-icons icon-16pt text-50 mr-4pt">play_circle_outline</span>
                                             <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['no_of_sessions']; ?> sessions</small></p>
                                         </div>
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-flex ">
                                             <span class="material-icons icon-16pt text-50 mr-4pt">assessment</span>
                                             <p class="flex text-50 lh-1 mb-0"><small><?php echo $training['program_level_name']; ?></small></p>
                                         </div>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex ">
                                         <a href="student-take-lesson.html"
-                                           class="btn btn-primary">Add To Cart</a>
+                                           class="btn btn-primary">Add To Cart</a> &nbsp;&nbsp;
                                         <a href="student-take-lesson.html"
                                            class="btn btn-info">Buy Now</a>
                                     </div>

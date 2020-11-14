@@ -47,9 +47,9 @@
                   <div class="card-body">
       					<ul class="nav nav-tabs  nav-tabs-bottom nav-justified">
       						<li class="nav-item"><a class="tab_menu  nav-link disabled active" id="tab_1" data-target="#tab_1_content" data-toggle="tab" data-value="1"><?php echo $text_Basic_Details; ?></a></li>
-							<li class="nav-item"><a class="tab_menu nav-link disabled " id="tab_2" data-target="#tab_2_content" data-toggle="tab" data-value="2">Training Concepts</a></li>
-      						<li class="nav-item"><a class="tab_menu nav-link disabled " id="tab_3" data-target="#tab_3_content" data-toggle="tab" data-value="3"><?php echo $text_Section; ?></a></li>
-      						<li class="nav-item"><a class="tab_menu nav-link disabled " id="tab_4" data-target="#tab_4_content" data-toggle="tab" data-value="4"><?php echo $text_Section_Details; ?></a></li>
+							<li class="nav-item"><a class="tab_menu nav-link  " id="tab_2" data-target="#tab_2_content" data-toggle="tab" data-value="2">Training Concepts</a></li>
+      						<li class="nav-item"><a class="tab_menu nav-link  " id="tab_3" data-target="#tab_3_content" data-toggle="tab" data-value="3"><?php echo $text_Section; ?></a></li>
+      						<li class="nav-item"><a class="tab_menu nav-link  " id="tab_4" data-target="#tab_4_content" data-toggle="tab" data-value="4"><?php echo $text_Section_Details; ?></a></li>
       					</ul>
       					<div class="tab-content">
       						<div class="tab_content tab-pane show active" id="tab_1_content">

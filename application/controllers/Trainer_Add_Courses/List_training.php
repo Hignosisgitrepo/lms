@@ -32,16 +32,23 @@ class List_training extends UserController {
         $data['text_Training_Type'] = $this->lang->line('text_Training_Type');
         $data['text_price'] = $this->lang->line('text_price');
         $data['text_currencies'] = $this->lang->line('text_currencies');
-
+        $data['text_Final_Price'] = $this->lang->line('text_Final_Price');     
+        $data['text_concept_Name'] = $this->lang->line('text_concept_Name');  
         
         $data['text_Section_Name'] = $this->lang->line('text_Section_Name');
         $data['text_sort_order'] = $this->lang->line('text_sort_order');
-
+        $data['text_image'] = $this->lang->line('text_image');
         $data['text_no_data'] = $this->lang->line('text_no_data');
         $data['btn_edit'] = $this->lang->line('btn_edit');
 
         $data['list_of_training'] = array();
         $results = $this->trainer_model->get_trainer_data($this->global['trainerId'], 'T', 'Offline');
+      
+        $results1 = $this->trainer_model->getTrainer($this->global['trainerId']);
+
+        $c_id=$this->trainer_model->getTrainerName($results1->customer_id);
+
+        $data['trainer_name']=$c_id->first_name.' '. $c_id->last_name;
 
         foreach($results as $res) {
             $get_course_category = $this->category_model->getCategoryData($res->category_id);
@@ -60,7 +67,7 @@ class List_training extends UserController {
                 'category_id' =>$res->category_id,
 				'training_description' =>$res->training_description,								
                 'category_name' => $get_course_category->category_name,
-				'image'=> base_url() .'/admin'.$get_course_category->image,                
+				'image'=> base_url() .$get_course_category->image,				   
                 'training_type' => $res->training_type,
                 'created_by' => $res->created_by,
                 'created_date' => $res->created_date,

@@ -47,6 +47,7 @@
 
         <!-- MDK -->
         <script src="<?php echo base_url('assets/common/vendor/material-design-kit.js'); ?>"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <!-- App JS -->
         <script src="<?php echo base_url('assets/common/js/app.js'); ?>"></script>
@@ -76,6 +77,9 @@
 		</noscript>
 
 	<script>
+
+	
+
 		function addUser() {
 			var first_name = document.getElementById("first_name").value;
 			var last_name = document.getElementById("last_name").value;
@@ -84,28 +88,33 @@
 			var telephone = document.getElementById("telephone").value;
 			var password = document.getElementById("password").value;
 			var err = 0;
+			
 			if (first_name == '') {
-				$("#firstname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("first_name").focus();
+				$('#first_name').attr('placeholder','Enter your first name');
+				$(".input-group").addClass('was-validated');
 				err++;
 				return false;
 			}
 			if (last_name == '') {
-				$("#lastname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("last_name").focus();
+				
+				$('#last_name').attr('placeholder','Enter your last name');
+				$(".input-group").addClass('was-validated');
 				err++;
 				return false;
 			}
 			if (email == '') {
-				$("#mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("email").focus();
+				
+				$('#email').attr('placeholder','Enter your email ID');
+				$(".input-group").addClass('was-validated');
 				err++;
 				return false;
 			} else {
 				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 				if (reg.test(email) == false) {
-					$("#mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Invalid Email ID!</div>').show('fast').delay(5000).hide('fast');
+					$('#email').val('');
+					$('#email').attr('placeholder','Invalid email ID');
+					$(".input-group").addClass('was-validated');
 					document.getElementById("email").focus();
 					
 					err++;
@@ -113,13 +122,15 @@
 				}
 			}
 			if (telephone == '') {
-				$("#phone_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#telephone').attr('placeholder','Enter your phone number');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("telephone").focus();
 				err++;
 				return false;
 			}
 			if (password == '') {
-				$("#password_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#password').attr('placeholder','Enter your password');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("password").focus();
 				err++;
 				return false;
@@ -143,29 +154,34 @@
 							document.getElementById("password").value = '';
 						} else {
 							if(json['err_firstname']) {
-								$("#firstname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_firstname'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#first_name').attr('placeholder',json['err_firstname']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("first_name").focus();
 								return false;
 							}
 							if(json['err_lastname']) {
-								$("#lastname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_lastname'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#last_name').attr('placeholder',json['err_lastname']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("last_name").focus();
 								return false;
 							}						
 							if(json['err_email']) {
-								$("#mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_email'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#email').attr('placeholder',json['err_email']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("email").focus();
 								return false;
 							}
 							
 							if(json['err_telephone']) {
-								$("#phone_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_telephone'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#telephone').attr('placeholder',json['err_telephone']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("telephone").focus();
 								return false;
 							}
 							
 							if(json['err_password']) {
-								$("#password_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#password').attr('placeholder',json['err_password']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("password").focus();
 								return false;
 							}
@@ -190,19 +206,22 @@
 			var password = document.getElementById("c_password").value;
 			var err = 0;
 			if (first_name == '') {
-				$("#c_firstname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#c_first_name').attr('placeholder','Enter your first name');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("c_first_name").focus();
 				err++;
 				return false;
 			}
 			if (last_name == '') {
-				$("#c_lastname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#c_last_name').attr('placeholder','Enter your last name');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("c_last_name").focus();
 				err++;
 				return false;
 			}
 			if (email == '') {
-				$("#c_mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#c_email').attr('placeholder','Enter your Email ID');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("c_email").focus();
 				err++;
 				return false;
@@ -210,7 +229,9 @@
 				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 				if (reg.test(email) == false) {
-					$("#c_mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Invalid Email ID!</div>').show('fast').delay(5000).hide('fast');
+					$('#c_email').val('');
+					$('#c_email').attr('placeholder','Invalid Email ID');
+					$(".input-group").addClass('was-validated');
 					document.getElementById("c_email").focus();
 					
 					err++;
@@ -218,13 +239,15 @@
 				}
 			}
 			if (telephone == '') {
-				$("#c_phone_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#c_telephone').attr('placeholder','Enter your phone number');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("c_telephone").focus();
 				err++;
 				return false;
 			}
 			if (password == '') {
-				$("#c_password_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$('#c_password').attr('placeholder','Enter your password');
+				$(".input-group").addClass('was-validated');
 				document.getElementById("c_password").focus();
 				err++;
 				return false;
@@ -247,30 +270,35 @@
 							window.location = url_path;
 						} else {
 							if(json['err_firstname']) {
-								$("#c_firstname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_firstname'] + '</div>').show('fast').delay(5000).hide('fast');
-								
+								$('#c_first_name').attr('placeholder',json['err_firstname']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("c_first_name").focus();
 								return false;
 							}
 							if(json['err_lastname']) {
-								$("#c_lastname_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_lastname'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#c_last_name').attr('placeholder',json['err_lastname']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("c_last_name").focus();
 								return false;
 							}						
 							if(json['err_email']) {
+								$('#c_mail').attr('placeholder',json['err_email']);
+								$(".input-group").addClass('was-validated');
 								$("#c_mail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_email'] + '</div>').show('fast').delay(5000).hide('fast');
 								document.getElementById("c_email").focus();
 								return false;
 							}
 							
 							if(json['err_telephone']) {
-								$("#c_phone_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_telephone'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#c_phone').attr('placeholder',json['err_telephone']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("c_telephone").focus();
 								return false;
 							}
 							
 							if(json['err_password']) {
-								$("#c_password_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
+								$('#c_password').attr('placeholder',json['err_password']);
+								$(".input-group").addClass('was-validated');
 								document.getElementById("c_password").focus();
 								return false;
 							}
@@ -330,6 +358,32 @@
 			var email = document.getElementById("tr_email").value;
 			var password = document.getElementById("tr_password").value;
 			var url_path = '<?php echo base_url(); ?>trainer-dashboard';
+			var err=0;
+			
+			if (email == '') {
+				$("#tr_email").attr('placeholder','Enter your Email ID');
+				$(".form-group").addClass('was-validated');
+				err++;
+				return false;
+			} else {
+				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+				if (reg.test(email) == false) {
+					$("#tr_email").val('');
+					$("#tr_email").attr("placeholder","Invalid your Email ID");
+					$(".form-group").addClass('was-validated');
+				
+					err++;
+					return false;
+				}
+			}
+			if (password == '') {
+				$("#tr_password").attr('placeholder','Enter your password');
+				$(".form-group").addClass('was-validated');
+				err++;
+				return false;
+			}
+			
 			$.ajax({
 				type:'POST',
 				url:'<?php echo base_url(); ?>common_ajax/login',
@@ -338,13 +392,15 @@
 				success:function(json){
 					if(json['success'] == 1) {
 						window.location = url_path;
-					} else {				
+					} else {	
+
+						toastr.warning('please give valid inputs');			
 						if(json['err_email']) {
-							$("#tremail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_email'] + '</div>').show('fast').delay(5000).hide('fast');
+							$("#tr_email").attr('placeholder',json['err_email']);
 						}
 						
 						if(json['err_password']) {
-							$("#trpwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
+							$("#tr_password").attr('placeholder',json['err_password']);
 						}
 					}
 				},
@@ -355,6 +411,7 @@
 		}
 	</script>
 	<script>
+		
 		function customerLogin() {
 			//alert("123");
 			var email = document.getElementById("cu_email").value;
@@ -364,26 +421,29 @@
 			var err =0;
 			
 			if (email == '') {
-				$("#cuemail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("cu_email").focus();
+				
+				$("#cu_email").attr("placeholder","Plese enter your email ID");
+				$(".form-group").addClass('was-validated');
+				
 				err++;
-				return false;
+			
 			} else {
 				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 				if (reg.test(email) == false) {
-					$("#cuemail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Invalid Email ID!</div>').show('fast').delay(5000).hide('fast');
-					document.getElementById("cu_email").focus();
+					$("#cu_email").val('');	
+					$("#cu_email").attr("placeholder","Invalid Email ID");
+					$(".form-group").addClass('was-validated');
 					
 					err++;
-					return false;
+				
 				}
 			}
 			if (password == '') {
-				$("#cupwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
-				document.getElementById("cu_password").focus();
+				$("#cu_password").attr("placeholder","Plese enter your password");
+				$(".form-group").addClass('was-validated');
 				err++;
-				return false;
+			
 			}
 			
 			if(err == 0) {
@@ -397,21 +457,16 @@
 							window.location = url_path;
 						} else {
 							if(json['err_login']) {
-								$("#invalidLogin").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_login'] + '</div>').show('fast').delay(5000).hide('fast');
+								toastr.warning('Please enter valid credentials');
 								return false;
 							}
 							
 							if(json['err_password']) {
-								$("#cupwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("cu_password").focus();
+								toastr.warning('Please enter valid credentials');
 								return false;
 							}
 							
-							if(json['err_password']) {
-								$("#cupwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
-								document.getElementById("cu_password").focus();
-								return false;
-							}
+							
 						}
 					},
 					error: function (xhr, ajaxOptions, thrownError) {
@@ -474,20 +529,43 @@
 	<script>
 		function deleteCart(cart_id) {
 			var url_path = '<?php echo base_url(); ?>shopping-cart';
-			$.ajax({
-				type:'POST',
-				url:'<?php echo base_url(); ?>common/cart/delete',
-				data:{cart_id: cart_id},
-				dataType: 'json',
-				success:function(json){
-					if(json['success'] == 1) {
-						window.location = url_path;
-					}
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						type:'POST',
+						url:'<?php echo base_url(); ?>common/cart/delete',
+						data:{cart_id: cart_id},
+						dataType: 'json',
+						success:function(json){
+							if(json['success'] == 1) {
+								window.location = url_path;
+							}
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+						}
+					});
+
+					Swal.fire(
+					'Deleted!',
+					'Your cart has been deleted.',
+					'success'
+					)
+				
 				}
-			});
+				});
+	
+
+				
 		}
 	</script>
 	<script>
@@ -606,7 +684,9 @@
 			var err =0;
 			
 			if (email == '') {
-				$("#checkemail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$("#checkout_email").attr("placeholder","Enter your Email ID");
+				$(".form-group").addClass('was-validated');
+
 				document.getElementById("checkout_email").focus();
 				err++;
 				return false;
@@ -614,7 +694,9 @@
 				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 				if (reg.test(email) == false) {
-					$("#checkemail_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Invalid Email ID!</div>').show('fast').delay(5000).hide('fast');
+					$("#checkout_email").val('');
+					$("#checkout_email").attr("placeholder","Invalid Email ID");
+					$(".form-group").addClass('was-validated');
 					document.getElementById("checkout_email").focus();
 					
 					err++;
@@ -622,7 +704,8 @@
 				}
 			}
 			if (password == '') {
-				$("#checkpwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>This field is mandatory!</div>').show('fast').delay(5000).hide('fast');
+				$("#checkout_pwd").attr("placeholder","Enter your password");
+				$(".form-group").addClass('was-validated');
 				document.getElementById("checkout_pwd").focus();
 				err++;
 				return false;
@@ -638,19 +721,24 @@
 						if(json['success'] == 1) {
 							window.location = url_path;
 						} else {
+							toastr.warning('Please give valid credentials');
+							return false;
 							if(json['err_login']) {
-								$("#checkinvalidLogin").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_login'] + '</div>').show('fast').delay(5000).hide('fast');
+								$("#checkout_email").attr("placeholder",json['err_login']);
+								$(".form-group").addClass('was-validated');
 								return false;
 							}
 							
 							if(json['err_password']) {
-								$("#checkpwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
+								$("#checkout_pwd").attr("placeholder",json['err_password']);
+								$(".form-group").addClass('was-validated');
 								document.getElementById("cu_password").focus();
 								return false;
 							}
 							
 							if(json['err_password']) {
-								$("#checkpwd_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
+								$("#checkout_pwd").attr("placeholder",json['err_password']);
+								$(".form-group").addClass('was-validated');
 								document.getElementById("cu_password").focus();
 								return false;
 							}
@@ -682,6 +770,31 @@
                 } 
             }
         } 
+
+		$(document).ready(function () {	
+
+
+		
+		toastr.options = {
+								  "closeButton": false,
+								  "debug": false,
+								  "newestOnTop": false,
+								  "progressBar": false,
+								  "positionClass": "toast-top-right",
+								  "preventDuplicates": false,
+								  "onclick": null,
+								  "showDuration": "300",
+								  "hideDuration": "500",
+								  "timeOut": "2000",
+								  "extendedTimeOut": "1000",
+								  "showEasing": "swing",
+								  "hideEasing": "linear",
+								  "showMethod": "fadeIn",
+								  "hideMethod": "fadeOut"
+								}
+		});	
+
+	
     </script>
     </body>
 

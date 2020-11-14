@@ -151,6 +151,8 @@
 
         <script type="text/javascript">
 			$(document).ready(function() {
+			
+			
 				var ccy=$('#currencies').val();
 				var dd;
 				if(ccy==1){
@@ -589,11 +591,12 @@ $('.add_concept').bind('click', function(e){
 					    	    start_date : start_date,
 								start_hour: start_hour,  
 					    	    start_time : start_time,  
-								time_zone:time_zone,
+								time_zone:time_zone
 					     	},
 					        success: function(data, response){
 					            response = JSON.parse(data);
-
+								
+								
 					            toastr.options = {
 								  "closeButton": false,
 								  "debug": false,
@@ -1143,7 +1146,7 @@ $('.add_concept').bind('click', function(e){
 					        };
 					        return xhr;
 					    },
-
+ 
 					    success: function (data) {
 					    	toastr.options = {
 							  "closeButton": false,
@@ -1192,25 +1195,25 @@ $('.add_concept').bind('click', function(e){
 				var training_concept_id=0;
 				document.getElementById("newBtn").disabled = true;
 
-				html = '<div class="form-group" id="concept-row' + training_concept_id + '">';
-				html +='<label>Concept Name</label>';
+				html = '<div class="form-group row" id="concept-row' + training_concept_id + '">';
+				html +='<div class="col"><label>Concept Name</label>';
 
 				html += '<input type="hidden"  class="form-control" id="training_concept_id';
 				html +=training_concept_id;
-				html +='" value="0"/>';
+				html +='" value="0"/></div>';
 
-				html += '<input type="text"  placeholder="Concept Name" class="form-control" id="concept_name';
+				html += '<div class="col"><input type="text"  placeholder="Concept Name" class="form-control" id="concept_name';
 				html +=training_concept_id;
-				html +='"/>';
+				html +='"/></div>';
 
-			    html += '<button type="button" id="deleteBtn';
+			    html += '<div class="col"><button type="button" id="deleteBtn';
 				html +=training_concept_id;
 				html +='" onclick="deleteNew(\''+ training_concept_id +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
-				html +='</button><button type="button" id="saveBtn';
+				html +='</button>&nbsp;&nbsp;<button type="button" id="saveBtn';
 				html +=training_concept_id;
 				html +='" onclick="saveNew(\''+ training_concept_id +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button>';
 
-				html += '</div>';
+				html += '</div></div>';
 				$('#concept').append(html);
 				
 				
@@ -1232,15 +1235,15 @@ $('.add_concept').bind('click', function(e){
 				html += '<input type="text"  placeholder="section Name" class="form-control" id="section_name';
 				html +=training_section_id;
 				html +='"/>';
-				html +='<label>Sort Order</label>';
+				html +='<br><label>Sort Order</label>';
 				html += '<input type="number"  placeholder="Sort Order" class="form-control" id="sort_order';
 				html +=training_section_id;
 				html +='"/>';
 
-			    html += '<button type="button" id="deleteBtnsection';
+			    html += '<br><button type="button" id="deleteBtnsection';
 				html +=training_section_id;
-				html +='" onclick="deleteBtnsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
-				html +='</button><button type="button" id="saveBtn';
+				html +='" onclick="deleteNewsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
+				html +='</button>&nbsp;&nbsp;<button type="button" id="saveBtnsection';
 				html +=training_section_id;
 				html +='" onclick="saveNewsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button>';
 
@@ -1338,38 +1341,38 @@ $('.add_concept').bind('click', function(e){
 							
 							var html = '';
 							for (var i = 0; i < json.length; i++) {
-								html += '<div  id="concept-row' + json[i]['training_concept_id'] + '">';
-								html +='<div class="col"><label >Concept Name</label></div>';
+								html += '<div class="form-group row"  id="concept-row' + json[i]['training_concept_id'] + '">';
+								html +='<div class="col"><label >Concept Name</label>';
 								html += '<input type="hidden"  class="form-control" id="training_concept_id';
 								html +=json[i]['training_concept_id'];
 								html +='" value="';
 								html +=json[i]['training_concept_id'];
-								html +='"  />';
+								html +='"  /></div>';
 
-								html += '<input type="text"  placeholder="Concept Name" class="form-control" id="concept_name';
+								html += '<div class="col"><input type="text"  placeholder="Concept Name" class="form-control" id="concept_name';
 								html +=json[i]['training_concept_id'];
 								html +='" value="';
 								html +=json[i]['concept_name'];
-								html +='" disabled />';
+								html +='" disabled /></div>';
 
 
 							
 								
 								
-								html += '<button type="button" id="deleteBtn';
+								html += '<div class="col"><button type="button" id="deleteBtn';
 								html +=json[i]['training_concept_id'];
 								html +='" onclick="deleteNew(\''+ json[i]['training_concept_id'] +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
-								html +='</button>';
+								html +='</button>&nbsp;&nbsp;';
 								
 								html +='<button type="button" id="editBtn';
 								html +=json[i]['training_concept_id'];
 								html +='" onclick="editData(\''+ json[i]['training_concept_id'] +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-edit"></i>';
-								html +='</button>';
+								html +='</button>&nbsp;&nbsp;';
 								html +='<button type="button" id="saveBtn';
 								html +=json[i]['training_concept_id'];
 								html +='" onclick="saveNew(\''+ json[i]['training_concept_id'] +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button>';
 
-								html += '</div>';
+								html += '</div></div>';
 							}
 							
 						}
@@ -1506,22 +1509,22 @@ $('.add_concept').bind('click', function(e){
 								html +='" value="';
 								html +=json[i]['section_name'];
 								html +='" disabled />';
-								html +='<div class="col"><label >Sort Order</label></div>';
+								html +='<br><div class="col"><label >Sort Order</label></div>';
 								html += '<input type="number"  placeholder="Sort Order" class="form-control" id="sort_order';
 								html +=json[i]['training_section_id'];
 								html +='" value="';
 								html +=json[i]['sort_order'];
 								html +='" disabled />';
 
-								html += '<button type="button" id="deleteBtnsection';
+								html += '<br><button type="button" id="deleteBtnsection';
 								html +=json[i]['training_section_id'];
 								html +='" onclick="deleteNewsection(\''+ json[i]['training_section_id'] +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
-								html +='</button>';
+								html +='</button>&nbsp;&nbsp;';
 								
 								html +='<button type="button" id="editBtnsection';
 								html +=json[i]['training_section_id'];
 								html +='" onclick="editDatasection(\''+ json[i]['training_section_id'] +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-edit"></i>';
-								html +='</button>';
+								html +='</button>&nbsp;&nbsp;';
 								html +='<button type="button" id="saveBtnsection';
 								html +=json[i]['training_section_id'];
 								html +='" onclick="saveNewsection(\''+ json[i]['training_section_id'] +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button>';
@@ -1533,6 +1536,9 @@ $('.add_concept').bind('click', function(e){
 						if (html){
 							document.getElementById("section").innerHTML = "";
 							$("#section").append(html);
+							getSectionDetails();
+
+						
 						}
 					}
 				});
@@ -1561,6 +1567,132 @@ $('.add_concept').bind('click', function(e){
 				html +='"/>"';
 
 			}
+			
+			
+			function getSectionDetails(){
+				var training_master_id = $("#training_master_id").data('value');
+				
+				$.ajax({
+					type: 'post',
+					url: '<?php echo base_url(); ?>Trainer_Add_Courses/training_section/getsectionDetails',
+					data: {training_master_id: training_master_id},
+					dataType: 'json',				
+					success: function(json){
+
+						var tabs ='';
+		var tabs_content ='';
+		jQuery.each(json.training_section_data, function(sort_order, val ) {
+			var active = '';
+			var hide = '';
+			var show = '';
+
+			tabs +='<div class="accordion js-accordion accordion--boxed " id="#section_content_'+sort_order+'" data-domfactory-upgraded="accordion">';
+		tabs +='<div class="accordion__item">';
+			tabs += '<a href="#" class="accordion__toggle collapsed" data-toggle="collapse" data-target="#section_content_'+sort_order+'" data-parent="#section_content_'+sort_order+'" aria-expanded="false">';
+				 tabs += '<span class="flex">'+val.section_name+'</span>';
+				 tabs += '<span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>';
+			 tabs += '</a>';
+			 tabs += '<div class="accordion__menu collapse" id="section_content_'+sort_order+'" style="">';
+				tabs += ' <div class="accordion__menu-link">';
+				   tabs += '<div class="tab-pane section_details_nav fade show" data_value = "'+sort_order+'" id="section_content_'+val.training_section_id+'" role="tabpanel" aria-labelledby="section_content_'+val.training_section_id+'-tab" style="width: inherit;">';
+							tabs +='<input type="hidden" id="hidden_section_id" data-value = '+val.training_section_id+' class="form-control hidden_section_id" value ="'+val.training_section_id+'"/>';
+							tabs += '<div class="">';
+							tabs +='<form action="#"  name="section_details_form_'+sort_order+'"  data-value="'+sort_order+'" id="section_details_form_'+sort_order+'" class="section_details_form_'+sort_order+'" p_t_10" novalidate>'
+								tabs += '<div class="form-group row">';
+									tabs += '<label class="col-lg-3 col-form-label"><?php echo $text_Section_Name; ?></label>';
+									tabs += '<div class="col-lg-9">';
+										tabs += '<input type="text" name="section_details_name" data-value = '+ sort_order +'_'+ sort_order +' id="section_details_name_'+ sort_order +'_'+ sort_order +'" class="form-control section_details_name" required >';
+										tabs +='<div id="" class="error_duplication hide dup_section_alert_'+ sort_order +'_'+ sort_order +'">';
+											tabs +='Duplicate value';
+										tabs +='</div>';
+										tabs += '<div class="invalid-feedback">';
+										tabs += 'Please provide valid <?php echo $text_Section_Name; ?>.';
+										tabs += '</div>';
+									tabs += '</div>';
+								tabs += '</div>';
+
+
+								
+								tabs += '<div class="form-group row">';
+									tabs += '<label class="col-lg-3 col-form-label"><?php echo $text_sort_order; ?></label>';
+									tabs += '<div class="col-lg-9">';
+										tabs += '<input type="text" name="section_details_sort_order" data-value = '+ sort_order +'_'+ sort_order +' id="section_details_sort_order_'+ sort_order +'_'+ sort_order +'" class="form-control section_details_sort_order" placeholder="Integer only" required onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;">';
+										tabs +='<div id="" class="error_duplication hide dup_section_sort_alert_'+ sort_order +'_'+ sort_order +'">';
+											tabs +='Duplicate value';
+										tabs +='</div>';
+										tabs += '<div class="invalid-feedback">';
+											tabs += 'Please provide valid <?php echo $text_sort_order; ?>.';
+										tabs += '</div>';
+									tabs += '</div>';
+								tabs += '</div>';
+
+
+								tabs+= '<div class="form-group row">';
+			        			tabs+= '<label class="col-lg-3 col-form-label"><?php echo $text_video_time; ?></label>';
+			        			tabs+= '<div class="col-lg-9">';
+			        				tabs+= '<input type="text"  name="section_details_video_time" data-value = '+ $data_value +'_'+ sort_order +' id="section_details_video_time_'+ $data_value +'_'+ sort_order +'" class="form-control section_details_video_time" required >';
+			        				tabs+='<div id="" class="hide '+ $data_value +'_'+ sort_order +'">';
+										
+									tabs+='</div>';
+			        				tabs+= '<div class="invalid-feedback">';
+			        					tabs+= 'Please provide valid <?php echo $text_video_time; ?>.';
+			        				tabs+= '</div>';
+			        			tabs+= '</div>';
+			        			tabs+= '</div>';
+
+
+								tabs += '<div class="form-group row">';
+									tabs += '<label class="col-lg-3 col-form-label">Upload</label>';
+									tabs += '<div class="col-lg-9">';
+										tabs += '<input name="section_details_file" id="section_details_file_'+ sort_order +'" class="form-control " type="file" accept="video/*">';
+									  
+										tabs+='<div id="section_details_file_error_'+ sort_order +'" class="error_duplication hide dup_sort_alert_'+ sort_order +'">';
+											tabs+='Please select video file';
+										tabs+='</div>';
+									tabs += '</div>';
+								tabs += '</div>';
+								tabs += '<div id="section_progress_'+ sort_order +'" class="progress progress-xs hide">';
+									tabs += '<div id="section_details_progress_'+ sort_order +'" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">';
+										tabs += ' </div>';
+								tabs += '</div>';
+
+								tabs+='<div id="section_details_file_success_'+ sort_order +'" class="successfully_upload hide">';
+									tabs+='Successfully Uploaded';
+								tabs+='</div>';
+
+								tabs+='<div id="section_details_file_uerror_'+ sort_order +'" class="error_duplication hide">';
+									tabs+='Upload Field';
+								tabs+='</div>';
+
+							tabs += '</form>';
+
+								tabs +='<div class="text-right">';
+									tabs +='<button type="submit" onclick="addsection_details('+ sort_order +', '+val.training_section_id+', event)" data-value="'+ sort_order +'" id="section_details_form_button_'+ sort_order +'" class="btn btn-primary section_details_form" data-style="expand-right">Submit</button>';
+								tabs +='</div>';
+
+								tabs +='<div class="total_new_section_details_main" id="new_section_details_'+ sort_order +'">';
+							
+								tabs +='</div>';
+
+								tabs +='<div class="text-left">';
+									tabs +='<button type="button" data-value="'+ sort_order +'" class="add_section_details btn btn-primary" ">Add Section</button>';
+								tabs +='</div>';
+							tabs += '</div>';
+						tabs += '</div>';
+				tabs += '</div>';
+		   tabs += '</div>';
+		tabs += '</div>';
+		
+	tabs += '</div>';
+		});
+
+		$('#section_list_content').append(tabs);
+
+
+					
+					}
+				});
+			}	
         </script>
 		
 	

@@ -45,15 +45,15 @@
 					<div class="form-group">
 						<label class="form-label"
 							   for="email">Email:</label>
-						<input type="text" class="form-control" placeholder="Your email address ..." id="checkout_email">
+						<input type="text" class="form-control" placeholder="Your email address ..." id="checkout_email" required>
 					</div>
 					<div id="checkemail_err"></div>
 					<div class="form-group">
 						<label class="form-label"
 							   for="password">Password:</label>
-						<input type="password" class="form-control" placeholder="Your password ..." id="checkout_pwd">
-						<p class="text-right"><a href="reset-password.html"
-							   class="small">Forgot your password?</a></p>
+						<input type="password" class="form-control" placeholder="Your password ..." id="checkout_pwd" required>
+						<!-- <p class="text-right"><a href="reset-password.html"
+							   class="small">Forgot your password?</a></p> -->
 					</div>
 					<div id="checkpwd_err"></div>
 					<div class="text-center">
