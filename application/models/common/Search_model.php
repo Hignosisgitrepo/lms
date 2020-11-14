@@ -75,6 +75,7 @@ class Search_model extends CI_Model {
 	    $result = $this->db->query($query, array($id));
 	    
 	    return $result->result();
+	}
 	
 	function getItemInCart($data = array()) {
 	    $query = $this->db->query("SELECT count(*) as total FROM shopping_cart WHERE customer_id = '" . $data['customer_id'] . "' AND session_id = '" . $data['session_id'] . "' AND product_id = '" . $data['product_id'] . "'");
