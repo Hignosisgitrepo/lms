@@ -1,4 +1,11 @@
-<form action="#"  class="basic_form" enctype="multipart/form-data" novalidate>
+<style>
+html[dir=ltr].dark-mode .border-left-4 {
+	border-left-color: #e21b5c!important;
+	height:70px;
+}
+
+</style>
+<form action="#" class="basic_form" novalidate>
 		<div class="row p_t_10">
 			<div id="basic_alert" class="alert alert-success hide" data-dismiss="alert" role="alert">
 			  Basic details has been added successfully.
@@ -102,7 +109,7 @@
 				<div class="form-group row">
 					<label class="col-lg-3 col-form-label"><?php echo $text_price; ?></label>
 					<div class="col-lg-9">
-						<input type="number" id="price" class="form-control" placeholder="Enter Price" required>
+						<input type="number" id="price" class="form-control" placeholder="Enter Price" min="0" required>
 						<div class="invalid-feedback">
 							Please select a <?php echo $text_price; ?>.
 						</div>
@@ -114,7 +121,7 @@
 				<div class="form-group row">
 					<label class="col-lg-3 col-form-label"><?php echo $text_Price_Discount; ?> (%)</label>
 					<div class="col-lg-9">
-					<input type="number" id="discount" class="form-control" placeholder="Enter Discount" required>
+					<input type="number" id="discount" class="form-control" placeholder="Enter Discount"  min="0" max="100" autocomplete="off" required>
 
 						<div class="invalid-feedback">
 							Please select a <?php echo $text_Price_Discount; ?>.
@@ -122,54 +129,53 @@
 					</div>
 					
 				</div>
-			
-				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_Price_After_Discount; ?></label>
-					<div class="col-lg-9">
-					<input type="number" id="price_after_discount" class="form-control" placeholder="Price After Discount" disabled>
-
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_Price_After_Discount; ?>.
-						</div>
-					</div>
-					
-				</div>
-				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_Platform_commission; ?> (%)</label>
-					<div class="col-lg-9">
-					<input type="text" id="platform_commission" class="form-control" placeholder="Platform Commission" value="<?php echo $platformcommisison; ?>%" disabled required>
-
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_Platform_commission; ?>.
-						</div>
-					</div>
-					
-				</div>
 
 				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_commission_value; ?></label>
-					<div class="col-lg-9">
-					<input type="number" id="commission_value" class="form-control" placeholder="Commission Value" value="" disabled>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									
+									<input type="hidden" id="price_after_discount" class="form-control" placeholder="Price After Discount" disabled>
 
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_commission_value; ?>.
-						</div>
-					</div>
-					
-				</div>
+									<b id="price_after_discount1"></b> 
+                                        <div>Price After Discount</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									<input type="hidden" id="platform_commission" class="form-control" placeholder="Platform Commission" value="<?php echo $platformcommisison; ?>" disabled required>
 
-				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_minimum_commission_value; ?></label>
-					<div class="col-lg-9">
-			
-					<input type="number" id="minimum_commission_value" class="form-control" placeholder="Minimum Commission Value" value="<?php echo $minimum_commission; ?>" disabled>
+										<b id="platform_commission1"> <?php echo $platformcommisison; ?> %</b>
+                                        <div>Platform Commission</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									<input type="hidden" id="commission_value" class="form-control" placeholder="Commission Value" value="" disabled>
+
+										<b id="commission_value1"></b> 
+                                        <div>Commission Value</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									<input type="hidden" id="minimum_commission_value" class="form-control" placeholder="Minimum Commission Value" value="<?php echo $minimum_commission; ?>" disabled>
+
+									<?php echo $minimum_commission; ?> 
+										
+                                        <div>Minimum Commission Value</div>
+                                    </div>
+                                </div>
+                            </div>
+				</div>		
 				
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_minimum_commission_value; ?>.
-						</div>
-					</div>
-					
-				</div>
+
 
 				<div class="form-group row">
 				<!--	<label class="col-lg-10 col-form-label" id="text_final"><?php echo $text_Final_Price; ?></label>-->

@@ -364,7 +364,7 @@
 				$("#tr_email").attr('placeholder','Enter your Email ID');
 				$(".form-group").addClass('was-validated');
 				err++;
-				return false;
+				
 			} else {
 				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -374,14 +374,14 @@
 					$(".form-group").addClass('was-validated');
 				
 					err++;
-					return false;
+				
 				}
 			}
 			if (password == '') {
 				$("#tr_password").attr('placeholder','Enter your password');
 				$(".form-group").addClass('was-validated');
 				err++;
-				return false;
+				
 			}
 			
 			$.ajax({
@@ -394,7 +394,8 @@
 						window.location = url_path;
 					} else {	
 
-						toastr.warning('please give valid inputs');			
+						toastr.warning('Invalid Email / Password');		
+							
 						if(json['err_email']) {
 							$("#tr_email").attr('placeholder',json['err_email']);
 						}
@@ -456,13 +457,15 @@
 						if(json['success'] == 1) {
 							window.location = url_path;
 						} else {
+							
 							if(json['err_login']) {
-								toastr.warning('Please enter valid credentials');
+								toastr.warning('Invaid Email / Password');
+								
 								return false;
 							}
 							
 							if(json['err_password']) {
-								toastr.warning('Please enter valid credentials');
+								toastr.warning('Invaid Email / Password');
 								return false;
 							}
 							
@@ -721,7 +724,7 @@
 						if(json['success'] == 1) {
 							window.location = url_path;
 						} else {
-							toastr.warning('Please give valid credentials');
+							toastr.warning('Invaid Email / Password');
 							return false;
 							if(json['err_login']) {
 								$("#checkout_email").attr("placeholder",json['err_login']);
@@ -781,7 +784,7 @@
 								  "newestOnTop": false,
 								  "progressBar": false,
 								  "positionClass": "toast-top-right",
-								  "preventDuplicates": false,
+								  //"preventDuplicates": false,
 								  "onclick": null,
 								  "showDuration": "300",
 								  "hideDuration": "500",
@@ -790,7 +793,8 @@
 								  "showEasing": "swing",
 								  "hideEasing": "linear",
 								  "showMethod": "fadeIn",
-								  "hideMethod": "fadeOut"
+								  "hideMethod": "fadeOut",
+								  "preventDuplicates": true
 								}
 		});	
 

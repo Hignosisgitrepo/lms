@@ -18,6 +18,7 @@ class List_training extends UserController {
     }
     
     public function list_training_data() {
+      
         $data['text_add'] = $this->lang->line('text_add');
         $data['text_add_form'] = $this->lang->line('text_add_form');
 
