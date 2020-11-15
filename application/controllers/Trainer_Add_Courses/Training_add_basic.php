@@ -62,7 +62,7 @@ class Training_add_basic extends UserController {
                 'course_duration' => isset($course_duration)? 0:$course_duration,
                 'session_duration' => isset($session_duration)? 0:$session_duration,
                 'no_of_sessions' => isset($no_of_sessions)?0:$no_of_sessions,
-                'training_start_date' => isset($start_date)?'':$start_date,
+                'training_start_date' => $start_date,
                 'training_start_time' => date("H:i", strtotime($start_hour.':'.$start_time.':00')), 
                 'time_zone'=>$time_zone,
                 'training_started' => 0,
