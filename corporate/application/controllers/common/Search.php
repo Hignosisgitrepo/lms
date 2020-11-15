@@ -13,11 +13,15 @@ class Search extends ClientController {
     }
 	
     public function index($keyword = NULL) {
-        $new_str = str_replace('+', ' ', $keyword);
-        $results = $this->search_model->getTrainings($new_str);
-        $data['trainings'] = array();
-		
 	    $this->global['menus'] = $this->menuCreation();
+        if($this->input->post('keyword')){
+            $keyword = $this->input->post('keyword');
+            $results = $this->search_model->getTrainings($keyword);
+        } else {
+            $new_str = str_replace('+', ' ', $keyword);
+            $results = $this->search_model->getTrainings($new_str);
+        }
+        $data['trainings'] = array();
         
         foreach($results as $result) {
             $category_data = $this->search_model->getTrainingCategoryData($result['category_id']);
@@ -47,7 +51,6 @@ class Search extends ClientController {
                 'training_image'    => $result['training_image']
             );
         }
-        //print_R($data['trainings']);exit;
 	    
 	    $this->loadViews('common/search', $this->global, $data, NULL);
     }

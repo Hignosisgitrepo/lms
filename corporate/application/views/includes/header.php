@@ -205,12 +205,9 @@
                             <span class="navbar-text-50">264</span>
                         </small>
                     </span>
-
                     <!-- Navbar Search -->
-
-                    
 					 <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" style="width: 400px" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>search/keyword">
-						<input type="text" class="form-control typeahead" placeholder="Search ..." id="search_box">
+						<input type="text" class="form-control typeahead" placeholder="Search ..." id="search_box" name="keyword">
 					 </form>
 					 <div id="results" style="display: block; position: absolute; left: 224.5px; top: 70px; width: 410px;z-index:1"><ul class="list-gpfrm" style="margin-left:15px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul></div>
 

@@ -2,6 +2,13 @@
 
 class Common_model extends CI_Model {
     
+    public function getSearchData($keyword) {
+        $query = $this->db->query("SELECT DISTINCT training_name FROM training_master WHERE training_name LIKE '%" .  $keyword . "%' AND owner = 'T'");
+        
+        $result = $query->result();
+        return $result;
+    }
+    
     function addSetup($data = array()) {
         $this->db->trans_start();
         $code = "config";

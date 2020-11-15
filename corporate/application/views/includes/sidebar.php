@@ -802,6 +802,240 @@
 		   		}
 		    }
         </script>
+	<Script>
+		$(document).ready(function () {
+			$("#search_box").keyup(function () {
+				$.ajax({
+					type: "POST",
+					url: "<?php echo base_url(); ?>common_ajax/searchData",
+					data: {
+						keyword: $("#search_box").val()
+					},
+					dataType: "json",
+					success: function (data) {
+						//console.log(data);
+						if (data.length > 0) {
+							$('#DropdownCountry').empty();
+							$('#search_box').attr("data-toggle", "dropdown");
+							$('#DropdownCountry').dropdown('toggle');
+						}
+						else if (data.length == 0) {
+							$('#search_box').attr("data-toggle", "");
+						}
+						$.each(data, function (key,value) {
+							if (data.length >= 0) {
+								var link_search = value['training_name'].split(/\s/).join('+');
+								console.log(link_search);
+								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a onclick="openLink(\''+ link_search +'\');" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
+							} else {
+								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
+							}
+						});
+					}
+				});
+			});
+			$('ul.txtcountry').on('click', 'li a', function () {
+				$('#search_box').val($(this).text());
+			});
+		});
+		
+		var input = document.getElementById("search_box");
+		input.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				alert(input);
+			}
+		});
+		
+	</script>
+	
+	<script>
+		function openLink(link_search) {
+			 var url_path = '<?php echo base_url(); ?>search/' + link_search;
+			 window.location = url_path;
+		}
+	</script>
+	<script>
+		function viewTraining(b64_tmid) {
+			 var url_path = '<?php echo base_url(); ?>search-training/' + b64_tmid;
+			 window.location = url_path;
+		}
+	</script>
+	
+	<script>
+		function addToCart(training_master_id) {
+			$.ajax({
+				type:'POST',
+				url:'<?php echo base_url(); ?>common/cart/add',
+				data:{training_master_id: training_master_id},
+				dataType: 'json',
+				success:function(json){
+					if(json['success'] == 1) {
+						$('#cart').empty();
+						
+						var html = '';
+						html +='<button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-caret="false"><i class="material-icons">shopping_cart</i><span class="badge badge-notifications badge-accent">' + json['total'] + '</span></button><div class="dropdown-menu dropdown-menu-right"><div data-perfect-scrollbar class="position-relative"><div class="dropdown-header"><strong>Shopping Cart</strong></div><div class="list-group list-group-flush mb-0">';
+						for (var i = 0; i < json['items'].length; i++) {
+							html +='<a href="';
+							html +=json['items'][i]['href'];
+							html +='"class="list-group-item list-group-item-action"><span class="d-flex"><span class="avatar avatar-xs mr-2"><img src="';html +=json['items'][i]['training_image'];
+							html +='" alt="';
+							html +=json['items'][i]['training_name'];
+							html +='"class="avatar-img rounded-circle"></span><span class="flex d-flex flex-column"><strong class="text-black-100">';
+							html +=json['items'][i]['training_name'];
+							html +='</strong><span class="text-black-70">';
+							html +=json['items'][i]['trainer_name'];
+							html +='</span><span class="text-black-70">';
+							html +=json['items'][i]['price'];
+							html +='</span></span></span></a>';
+						}
+						html +='</div></div><div class="dropdown-header"><h3>Total : ';
+						html +=json['total_sum'];
+						html +='</h3></div><a href="<?php echo base_url(); ?>shopping-cart" class="btn btn-info" style="width:100%">Go To Cart</a></div>';
+					}
+					if (html){
+						document.getElementById("cart").innerHTML = "";
+						$("#cart").append(html);
+					}
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+		}
+	</script>
+	<script>
+		function deleteCart(cart_id) {
+			var url_path = '<?php echo base_url(); ?>shopping-cart';
+
+			Swal.fire({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						type:'POST',
+						url:'<?php echo base_url(); ?>common/cart/delete',
+						data:{cart_id: cart_id},
+						dataType: 'json',
+						success:function(json){
+							if(json['success'] == 1) {
+								window.location = url_path;
+							}
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+						}
+					});
+
+					Swal.fire(
+					'Deleted!',
+					'Your cart has been deleted.',
+					'success'
+					)
+				
+				}
+				});
+	
+
+				
+		}
+	</script>
+	<script>
+		$(document).ready(function () {
+			$.ajax({
+				type:'POST',
+				url:'<?php echo base_url(); ?>common/cart/getCartItem',
+				data:{},
+				dataType: 'json',
+				success:function(json){
+					if(json['success'] == 1) {
+						if(json['total'] != 0) {
+							$('#cart').empty();
+							var html = '';
+							html +='<button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-caret="false"><i class="material-icons">shopping_cart</i><span class="badge badge-notifications badge-accent">' + json['total'] + '</span></button><div class="dropdown-menu dropdown-menu-right"><div data-perfect-scrollbar class="position-relative"><div class="dropdown-header"><strong>Shopping Cart</strong></div><div class="list-group list-group-flush mb-0">';
+							for (var i = 0; i < json['items'].length; i++) {
+								html +='<a href="';
+								html +=json['items'][i]['href'];
+								html +='"class="list-group-item list-group-item-action"><span class="d-flex"><span class="avatar avatar-xs mr-2"><img src="';html +=json['items'][i]['training_image'];
+                                html +='" alt="';
+								html +=json['items'][i]['training_name'];
+								html +='"class="avatar-img rounded-circle"></span><span class="flex d-flex flex-column"><strong class="text-black-100">';
+								html +=json['items'][i]['training_name'];
+								html +='</strong><span class="text-black-70">';
+								html +=json['items'][i]['trainer_name'];
+								html +='</span><span class="text-black-70">';
+								html +=json['items'][i]['price'];
+								html +='</span></span></span></a>';
+							}
+							html +='</div></div><div class="dropdown-header"><h3>Total : ';
+							html +=json['total_sum'];
+							html +='</h3></div><a href="<?php echo base_url(); ?>shopping-cart" class="btn btn-info" style="width:100%">Go To Cart</a></div>';
+						} else {
+							$('#cart').empty();
+							var html = '';
+							html +='<button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-caret="false"><i class="material-icons">shopping_cart</i></button>';
+						}
+						if (html){
+							document.getElementById("cart").innerHTML = "";
+							$("#cart").append(html);
+						}
+					}
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+		});
+	</script>
+	<script>
+        function displayRadioValue() { 
+            var ele = document.getElementsByTagName('input'); 
+              
+            for(i = 0; i < ele.length; i++) { 
+                  
+                if(ele[i].type="radio") { 
+                  
+                    if(ele[i].checked)  
+						if(ele[i].value == 'pp') {
+							var url_path = '<?php echo base_url(); ?>paypal-order-summary';
+							window.location = url_path;
+						}
+                } 
+            }
+        } 
+
+		$(document).ready(function () {	
+
+
+		
+		toastr.options = {
+								  "closeButton": false,
+								  "debug": false,
+								  "newestOnTop": false,
+								  "progressBar": false,
+								  "positionClass": "toast-top-right",
+								  //"preventDuplicates": false,
+								  "onclick": null,
+								  "showDuration": "300",
+								  "hideDuration": "500",
+								  "timeOut": "2000",
+								  "extendedTimeOut": "1000",
+								  "showEasing": "swing",
+								  "hideEasing": "linear",
+								  "showMethod": "fadeIn",
+								  "hideMethod": "fadeOut",
+								  "preventDuplicates": true
+								}
+		});	
+
+	
+    </script>
     </body>
 
 </html>
