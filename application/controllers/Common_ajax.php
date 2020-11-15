@@ -277,14 +277,18 @@ class Common_ajax extends CI_Controller {
 	
 	public function searchData() {
 	    $keyword = $this->input->post('keyword');
-	    $json = $this->common_model->getSearchData($keyword);
+	    if(!empty($keyword)) {
+    	    $json = $this->common_model->getSearchData($keyword);
+	    } else {
+	        $json = '';
+	    }
 	    
 	    echo json_encode($json);
 	}
 	
 	public function searchFormData() {
 	    $keyword = $this->input->post('search_box');
-		print_R($keyword);exit;
+		//print_R($keyword);exit;
 	    
 	    echo json_encode($json);
 	}

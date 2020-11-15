@@ -87,6 +87,24 @@ $route['add-designation'] = 'designation/designation/add';
 $route['edit-designation/(:any)'] = 'designation/designation/edit/$1';
 //Designation
 
+//Search
+$route['search/(:any)'] = 'common/search/index/$1';
+$route['search/keyword'] = 'common/search/searchKeyword';
+$route['search-training/(:any)'] = 'common/search/searchTraining/$1';
+$route['shopping-cart'] = 'common/cart';
+$route['checkout'] = 'common/checkout';
+$route['paypal-order-summary'] = 'payment/paypal/express_checkout';
+$route['express_checkout'] = 'payment/express_checkout';
+$route['paypal/express_checkout/SetExpressCheckout'] = 'payment/paypal/express_checkout/SetExpressCheckout';
+
+$route['paypal/express_checkout/GetExpressCheckoutDetails'] = 'payment/paypal/express_checkout/GetExpressCheckoutDetails';
+$route['paypal/express_checkout/DoExpressCheckoutPayment'] = 'payment/paypal/express_checkout/DoExpressCheckoutPayment';
+$route['paypal/express_checkout/OrderComplete'] = 'payment/paypal/express_checkout/OrderComplete';
+$route['paypal/express_checkout/OrderCancelled'] = 'payment/paypal/express_checkout/OrderCancelled';
+
+$route['course-view/(:any)'] = 'customer/mycourses/view/$1';
+$route['mycourses'] = 'customer/mycourses';
+
 $route['setting'] = 'setting/setting';
 $route['profile'] = 'common/profile';
 $route['profile'] = 'common/profile';
