@@ -52,6 +52,45 @@
       <link type="text/css"
               href="<?php echo $this->config->item('default_url'); ?>/assets/common/css/toastr.css"
               rel="stylesheet">
+	  <style type="text/css">
+
+		.gst20{
+
+			margin-top:20px;
+
+		}
+
+		.list-gpfrm-list a{
+
+			text-decoration: none !important;
+
+		}
+
+		.list-gpfrm li{
+
+			cursor: pointer;
+
+			padding: 4px 0px;
+
+		}
+
+		.list-gpfrm{
+
+			list-style-type: none;
+
+    		background: #fff;
+
+		}
+
+		.list-gpfrm li:hover{
+
+			color: white;
+
+			background-color: #eee;
+
+		}
+
+	</style>
    </head>
    <body class="layout-sticky-subnav layout-default ">
       <div class="preloader">
@@ -102,11 +141,10 @@
                </span>-->
             <span class="d-none d-lg-block"><?php echo $company_name; ?></span>
          </a>
-         <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" action="" style="max-width: 400px">
-            <button class="btn" type="submit"><i class="material-icons">search</i></button>
-            <input type="text" class="form-control typeahead" placeholder="Search ..." name="search_box" id="search_box">
-			<ul class="dropdown-menu txtcountry" style="margin-left:15px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul>
+         <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" style="width: 400px">
+            <input type="text" class="form-control typeahead" placeholder="Search ..." id="search_box">
          </form>
+		 <div id="results" style="display: block; position: absolute; left: 184.5px; top: 55px; width: 410px;"><ul class="list-gpfrm" style="margin-left:15px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul></div>
          <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
             <li class="nav-item dropdown">
                <a href="#"
