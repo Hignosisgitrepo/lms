@@ -117,16 +117,7 @@ public function saveConcept() {
                 $this->trainer_model->edit_into_training_concept($c_name,$c_id);
 
             }
-            $results= $this->trainer_model->get_training_section_data($tid);
-
-            foreach($results as $res) {
-	            
-	            $data['section_data'][] = array(
-                    'training_concept_id'=>$res->training_concept_id,
-	                'concept_name' => $res->concept_name
-	               
-	            );
-            }
+           
             
 	        $json['success'] = $this->lang->line('text_addsuccess');
 	    }
