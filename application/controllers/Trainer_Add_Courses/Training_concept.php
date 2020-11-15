@@ -98,7 +98,7 @@ public function saveConcept() {
             'created_by' => $this->global['trainerId'],
             'created_date' => date('Y-m-d H:i:s'),
             'modified_by' => '0',
-            'modified_date' => '0000-00-00',
+            'modified_date' => '',
 	        
 	    );
 	  
