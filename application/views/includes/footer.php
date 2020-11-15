@@ -364,7 +364,7 @@
 				$("#tr_email").attr('placeholder','Enter your Email ID');
 				$(".form-group").addClass('was-validated');
 				err++;
-				return false;
+				
 			} else {
 				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -374,14 +374,14 @@
 					$(".form-group").addClass('was-validated');
 				
 					err++;
-					return false;
+				
 				}
 			}
 			if (password == '') {
 				$("#tr_password").attr('placeholder','Enter your password');
 				$(".form-group").addClass('was-validated');
 				err++;
-				return false;
+				
 			}
 			
 			$.ajax({
@@ -394,7 +394,8 @@
 						window.location = url_path;
 					} else {	
 
-						toastr.warning('please give valid inputs');			
+						toastr.warning('Invalid Email / Password');		
+							
 						if(json['err_email']) {
 							$("#tr_email").attr('placeholder',json['err_email']);
 						}
@@ -456,13 +457,15 @@
 						if(json['success'] == 1) {
 							window.location = url_path;
 						} else {
+							
 							if(json['err_login']) {
-								toastr.warning('Please enter valid credentials');
+								toastr.warning('Invaid Email / Password');
+								
 								return false;
 							}
 							
 							if(json['err_password']) {
-								toastr.warning('Please enter valid credentials');
+								toastr.warning('Invaid Email / Password');
 								return false;
 							}
 							
@@ -648,7 +651,7 @@
 							if (data.length >= 0) {
 								var link_search = value['training_name'].split(/\s/).join('+');
 								console.log(link_search);
-								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a class="myLink" href="<?php echo base_url(); ?>	search/' + link_search + '" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
+								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a onclick="openLink(\''+ link_search +'\');" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
 							} else {
 								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
 							}
@@ -658,9 +661,25 @@
 			});
 			$('ul.txtcountry').on('click', 'li a', function () {
 				$('#search_box').val($(this).text());
-				$(".myLink").click();
 			});
 		});
+		
+		var input = document.getElementById("search_box");
+		input.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				alert(input);
+			}
+		});
+		
+	</script>
+	
+	<script>
+		function openLink(link_search) {
+			 var url_path = '<?php echo base_url(); ?>search/' + link_search;
+			 alert(url_path);
+			 window.location = url_path;
+		}
 	</script>
 	<!--<Script>
 		$("#search_box").keypress(function(event) { 
@@ -744,7 +763,7 @@
 						if(json['success'] == 1) {
 							window.location = url_path;
 						} else {
-							toastr.warning('Please give valid credentials');
+							toastr.warning('Invaid Email / Password');
 							return false;
 							if(json['err_login']) {
 								$("#checkout_email").attr("placeholder",json['err_login']);
@@ -804,7 +823,7 @@
 								  "newestOnTop": false,
 								  "progressBar": false,
 								  "positionClass": "toast-top-right",
-								  "preventDuplicates": false,
+								  //"preventDuplicates": false,
 								  "onclick": null,
 								  "showDuration": "300",
 								  "hideDuration": "500",
@@ -813,7 +832,8 @@
 								  "showEasing": "swing",
 								  "hideEasing": "linear",
 								  "showMethod": "fadeIn",
-								  "hideMethod": "fadeOut"
+								  "hideMethod": "fadeOut",
+								  "preventDuplicates": true
 								}
 		});	
 
