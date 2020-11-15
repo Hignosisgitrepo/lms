@@ -38,8 +38,8 @@ class Training_add_basic extends UserController {
             $course_duration    = $this->input->post('course_duration');
             $session_duration   = $this->input->post('session_duration');
             $no_of_sessions      = $this->input->post('no_of_session');
-
-            $start_date         =  if($this->input->post('start_date') == '' )? 'NULL' : $this->input->post('start_date');
+            
+            $start_date         =  ($this->input->post('start_date') == '' ? 'NULL' : $this->input->post('start_date'));
             
             $start_hour     =   $this->input->post('start_hour');
             $start_time     =    $this->input->post('start_time');
