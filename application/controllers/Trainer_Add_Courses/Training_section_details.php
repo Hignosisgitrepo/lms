@@ -39,9 +39,7 @@ class Training_section_details extends UserController {
                     'video_file_path' => $response['ObjectURL'],
                     'sort_order' => $section_details_sort_order,
                     'created_by' => $this->global['trainerId'],
-                    'created_date' => date('Y-m-d H:i:s'),
-                    'modified_by' => '0',
-                    'modified_date' => NULL,
+                    'created_date' => date('Y-m-d H:i:s')
                 ); 
 
                  $add_section = $this->trainer_model->insert_into_training_section_details($insert_array);
