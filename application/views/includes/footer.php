@@ -677,7 +677,6 @@
 	<script>
 		function openLink(link_search) {
 			 var url_path = '<?php echo base_url(); ?>search/' + link_search;
-			 alert(url_path);
 			 window.location = url_path;
 		}
 	</script>
