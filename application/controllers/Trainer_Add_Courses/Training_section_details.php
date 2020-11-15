@@ -18,8 +18,8 @@ class Training_section_details extends UserController {
     }
 
     public function add_trainer_section_details_info() {
-		
-		print_r($_FILES['file_']); exit;
+		print_r($_POST);
+		print_r($_FILES); exit;
         $section_id = $_POST['section_id'];
         $section_details_name = $_POST['section_details_name'];
         $section_details_sort_order = $_POST['section_details_sort_order'];
