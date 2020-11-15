@@ -131,9 +131,9 @@ class Trainer_model extends CI_Model {
     
     function insert_into_training_section($data) {
         
-        $query = "INSERT INTO training_section (training_master_id, section_name, sort_order, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_section (training_master_id, section_name, sort_order, created_by, created_date) VALUES (?, ?, ?, ?, ?)";
         
-        $result = $this->db->query($query, array($data['training_master_id'], $data['section_name'], $data['sort_order'], $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));	 
+        $result = $this->db->query($query, array($data['training_master_id'], $data['section_name'], $data['sort_order'], $data['created_by'], $data['created_date']));	 
         $insert_id = $this->db->insert_id();
         
         $data = array('insert_id' => $insert_id,
@@ -145,9 +145,9 @@ class Trainer_model extends CI_Model {
 
     function insert_into_training_concept($data) {
         
-        $query = "INSERT INTO training_concepts (training_master_id, concept_name, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_concepts (training_master_id, concept_name, created_by, created_date) VALUES (?, ?, ?, ?)";
 
-        $result = $this->db->query($query, array($data['training_master_id'], $data['concept_name'],  $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));
+        $result = $this->db->query($query, array($data['training_master_id'], $data['concept_name'],  $data['created_by'], $data['created_date']));
 
         $insert_id = $this->db->insert_id();
 
@@ -235,9 +235,9 @@ class Trainer_model extends CI_Model {
     }
     function insert_into_training_section_details($data) {
         
-        $query = "INSERT INTO training_section_detail (training_section_id, sub_section_name, video_file_path, sort_order, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_section_detail (training_section_id, sub_section_name, video_file_path, sort_order, created_by, created_date) VALUES (?, ?, ?, ?, ?, ?)";
         
-        $result = $this->db->query($query, array($data['training_section_id'], $data['sub_section_name'], $data['video_file_path'], $data['sort_order'], $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));
+        $result = $this->db->query($query, array($data['training_section_id'], $data['sub_section_name'], $data['video_file_path'], $data['sort_order'], $data['created_by'], $data['created_date']));
         
         return $result;
         
