@@ -984,8 +984,6 @@ $('.add_concept').bind('click', function(e){
 
 					$('#section_progress_'+id).removeClass('hide');
 					$('#section_details_form_button_'+id).addClass('hide');
-					
-					console.log(fd);
 
 					$.ajax({
 
