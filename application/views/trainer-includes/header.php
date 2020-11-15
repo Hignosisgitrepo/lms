@@ -10,7 +10,11 @@
 <html lang="en"
       dir="ltr"
       class="dark-mode">
-
+<style>
+html[dir].dark-mode .border-bottom-2 {
+    border-bottom-color:#e3e3ea!important;
+}
+</style>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible"
@@ -400,3 +404,5 @@
                 </div>
              
                 <!-- // END Navbar -->
+
+                

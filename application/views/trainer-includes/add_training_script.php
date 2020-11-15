@@ -1,8 +1,13 @@
+<script src="JavaScript/jquery-1.10.2.js" type="text/javascript"></script> 
+
+
 
         <script type="text/javascript">
 			$(document).ready(function() {
-			
-			
+				
+
+				$("#price_after_discount1").html('0');
+				$("#commission_value1").html('0');
 				var ccy=$('#currencies').val();
 				var dd;
 				if(ccy==1){
@@ -35,13 +40,15 @@
 					var discount=$(this).val();
 					var price=$("#price").val();
 					var platform_commission=$("#platform_commission").val();
-					var platform=platform_commission.slice(0, -1) ;
+					var platform=platform_commission;
 					var minimum_commission=$("#minimum_commission_value").val();
 
 					if(discount.length!=0){
 						
 						var price_after_discount=price-((price*discount)/100);
 						var commission_value=(price_after_discount*platform)/100;
+						$("#price_after_discount1").html(price_after_discount);
+						$("#commission_value1").html(commission_value);
 						$("#price_after_discount").val(price_after_discount);
 						$("#commission_value").val(commission_value);
 
@@ -68,6 +75,8 @@
 						$("#final_price").val(final);
 
 					}else{
+						$("#price_after_discount1").html('0');
+						$("#commission_value1").html('0');
 						$("#price_after_discount").val('');
 						$("#final_price1").html('');
 						$("#final_price").val('');
