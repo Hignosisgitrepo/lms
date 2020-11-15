@@ -1,8 +1,4 @@
-<script src="JavaScript/jquery-1.10.2.js" type="text/javascript"></script> 
-
-
-
-        <script type="text/javascript">
+     <script type="text/javascript">
 			$(document).ready(function() {
 				
 
