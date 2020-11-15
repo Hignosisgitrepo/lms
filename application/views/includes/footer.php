@@ -651,9 +651,9 @@
 							if (data.length >= 0) {
 								var link_search = value['training_name'].split(/\s/).join('+');
 								console.log(link_search);
-								$('#DropdownCountry').append('<li role="displayCountries" ><a class="myLink" href="<?php echo base_url(); ?>	search/' + link_search + '" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
+								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a class="myLink" href="<?php echo base_url(); ?>	search/' + link_search + '" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
 							} else {
-								$('#DropdownCountry').append('<li role="displayCountries" ><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
+								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
 							}
 						});
 					}
@@ -665,6 +665,29 @@
 			});
 		});
 	</script>
+	<!--<Script>
+		$("#search_box").keypress(function(event) { 
+			if (event.keyCode === 13) { 
+				alert($("#search_box").val());
+				$.ajax({
+					type: "POST",
+					url: "<?php echo base_url(); ?>common_ajax/searchFormData",
+					data: {
+						keyword: $("#search_box").val()
+					},
+					dataType: "json",
+					success: function (data) {
+						//console.log(data);
+						if (data.length > 0) {
+							$('#DropdownCountry').empty();
+							$('#search_box').attr("data-toggle", "dropdown");
+							$('#DropdownCountry').dropdown('toggle');
+						}
+					}
+				});
+			}
+		});
+	</script>-->
 	<script>
 		function changeDiv() {
 			var div1 = document.getElementById("login_div");

@@ -14,11 +14,10 @@ class Search_model extends CI_Model {
 	}
 	
 	function getTrainings($training_name) {
-	    $this->db->distinct();
-	    $this->db->select('*');
-	    $this->db->like("training_name", $training_name);
-	    $this->db->where("owner", 'T');
-	    return $this->db->get('training_master')->result_array();
+	    $query = $this->db->query("SELECT DISTINCT * FROM training_master WHERE training_name LIKE '" .  $training_name . "%' AND owner = 'T'");
+	    
+	    $result = $query->result();
+	    return $result;
 	}
 	
 	function getTrainingData($training_master_id) {
