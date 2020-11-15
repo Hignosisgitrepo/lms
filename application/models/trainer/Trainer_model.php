@@ -235,9 +235,9 @@ class Trainer_model extends CI_Model {
     }
     function insert_into_training_section_details($data) {
         
-        $query = "INSERT INTO training_section_detail (training_section_id, sub_section_name, video_file_path, sort_order, created_by, created_date) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_section_detail (training_section_id, sub_section_name, video_file_path, video_time, sort_order, created_by, created_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
-        $result = $this->db->query($query, array($data['training_section_id'], $data['sub_section_name'], $data['video_file_path'], $data['sort_order'], $data['created_by'], $data['created_date']));
+        $result = $this->db->query($query, array($data['training_section_id'], $data['sub_section_name'], $data['video_file_path'], $data['video_time'], $data['sort_order'], $data['created_by'], $data['created_date']));
         
         return $result;
         
