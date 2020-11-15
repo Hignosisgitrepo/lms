@@ -38,12 +38,16 @@ class Training_add_basic extends UserController {
             $course_duration    = $this->input->post('course_duration');
             $session_duration   = $this->input->post('session_duration');
             $no_of_sessions      = $this->input->post('no_of_session');
-            $start_date         = $this->input->post('start_date');
+            
+            $start_date         =  ($this->input->post('start_date') == '' ? 'NULL' : $this->input->post('start_date'));
+            
             $start_hour     =   $this->input->post('start_hour');
             $start_time     =    $this->input->post('start_time');
             $time_zone     =    $this->input->post('time_zone');
             $get_training_type = $this->common_model->getMaintainanceDetail($training_type);
             
+           
+
             $training_master = array(
                 'training_name' => $training_name,
                 'training_description' => $training_description,
@@ -58,9 +62,10 @@ class Training_add_basic extends UserController {
                 'price_after_discount' => $price_after_discount,
                 'platform_commission' => $platform_commission,
                 'final_price' => $final_price,
-                'course_duration' => $course_duration,
-                'session_duration' => $session_duration,
-                'no_of_sessions' => $no_of_sessions,
+                
+                'course_duration' => isset($course_duration)? 0:$course_duration,
+                'session_duration' => isset($session_duration)? 0:$session_duration,
+                'no_of_sessions' => isset($no_of_sessions)?0:$no_of_sessions,
                 'training_start_date' => $start_date,
                 'training_start_time' => date("H:i", strtotime($start_hour.':'.$start_time.':00')), 
                 'time_zone'=>$time_zone,
