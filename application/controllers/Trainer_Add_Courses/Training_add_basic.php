@@ -71,9 +71,7 @@ class Training_add_basic extends UserController {
                 'time_zone'=>$time_zone,
                 'training_started' => 0,
                 'created_by' => $this->global['trainerId'],
-                'created_date' => date('Y-m-d H:i:s'),
-                'modified_by' => '0',
-                'modified_date' => NULL,
+                'created_date' => date('Y-m-d H:i:s')
             );
             
             $add_basic_details = $this->trainer_model->insert_into_training_master($training_master);
