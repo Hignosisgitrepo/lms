@@ -826,7 +826,7 @@
 							if (data.length >= 0) {
 								var link_search = value['training_name'].split(/\s/).join('+');
 								console.log(link_search);
-								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a onclick="openLink(\''+ link_search +'\');" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
+								$('#DropdownCountry').append('<li class="list-gpfrm-list" onclick="openLink(\''+ link_search +'\');"><a role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
 							} else {
 								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
 							}
