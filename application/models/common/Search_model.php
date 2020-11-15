@@ -14,7 +14,7 @@ class Search_model extends CI_Model {
 	}
 	
 	function getTrainings($training_name) {
-	    $query = $this->db->query("SELECT DISTINCT * FROM training_master WHERE training_name LIKE '" .  $training_name . "%' AND owner = 'T'");
+	    $query = $this->db->query("SELECT * FROM training_master WHERE training_name LIKE '%" .  $training_name . "%' AND owner = 'T'");
 	    
 	    $result = $query->result();
 	    return $result;

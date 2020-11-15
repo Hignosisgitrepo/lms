@@ -3,10 +3,10 @@
 class Common_model extends CI_Model {
     
     public function getSearchData($keyword) {
-        $this->db->order_by('training_master_id', 'DESC');
-        $this->db->like("training_name", $keyword);
-        $this->db->where("owner", 'T');
-        return $this->db->get('training_master')->result_array();
+        $query = $this->db->query("SELECT DISTINCT training_name FROM training_master WHERE training_name LIKE '%" .  $keyword . "%' AND owner = 'T'");
+        
+        $result = $query->result();
+        return $result;
     }
     
     function addSetup($data = array()) {

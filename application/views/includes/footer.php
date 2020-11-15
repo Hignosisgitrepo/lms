@@ -651,7 +651,7 @@
 							if (data.length >= 0) {
 								var link_search = value['training_name'].split(/\s/).join('+');
 								console.log(link_search);
-								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a class="myLink" href="<?php echo base_url(); ?>	search/' + link_search + '" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
+								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a onclick="openLink(\''+ link_search +'\');" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
 							} else {
 								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
 							}
@@ -661,9 +661,25 @@
 			});
 			$('ul.txtcountry').on('click', 'li a', function () {
 				$('#search_box').val($(this).text());
-				$(".myLink").click();
 			});
 		});
+		
+		var input = document.getElementById("search_box");
+		input.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				alert(input);
+			}
+		});
+		
+	</script>
+	
+	<script>
+		function openLink(link_search) {
+			 var url_path = '<?php echo base_url(); ?>search/' + link_search;
+			 alert(url_path);
+			 window.location = url_path;
+		}
 	</script>
 	<!--<Script>
 		$("#search_box").keypress(function(event) { 
