@@ -39,7 +39,7 @@ class Training_add_basic extends UserController {
             $session_duration   = $this->input->post('session_duration');
             $no_of_sessions      = $this->input->post('no_of_session');
             
-            $start_date         =  ($this->input->post('start_date') == '' ? 'NULL' : $this->input->post('start_date'));
+            $start_date         =  ($this->input->post('start_date') == '' ? NULL : $this->input->post('start_date'));
             
             $start_hour     =   $this->input->post('start_hour');
             $start_time     =    $this->input->post('start_time');
@@ -72,8 +72,8 @@ class Training_add_basic extends UserController {
                 'training_started' => 0,
                 'created_by' => $this->global['trainerId'],
                 'created_date' => date('Y-m-d H:i:s'),
-                'modified_by' => '',
-                'modified_date' => '',
+                'modified_by' => '0',
+                'modified_date' => NULL,
             );
             
             $add_basic_details = $this->trainer_model->insert_into_training_master($training_master);
