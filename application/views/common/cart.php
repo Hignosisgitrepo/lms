@@ -68,12 +68,12 @@
 							
 						</div>
 						
-						<div class="mr-3 text-right text-50 text-uppercase posts-card__tag d-flex align-items-center">
-						<small><a onclick="deleteCart('<?php echo $item['cart_id']; ?>');">
-								
-									<i class="material-icons text-muted-light mr-1">delete</i> Remove
-								
-						</a></small>
+						<div class="mr-3 text-right text-50 text-uppercase posts-card__tag d-flex align-items-right">
+							<small><a onclick="deleteCart('<?php echo $item['cart_id']; ?>');">
+									
+							<i class="fa fa-times" aria-hidden="true"></i>
+									
+							</a></small>
 						</div>
 					</div>
 				  </div>
