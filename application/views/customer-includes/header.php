@@ -166,7 +166,7 @@
                        data-boundary="window">
                         <span class="material-icons">swap_horiz</span>
                       </a>
-					<?php } else if(($customer_data->is_trainer == 1) && ($customer_data->trainer_id != 0)) { ?>
+					<?php } else if(($is_trainer == 1) && ($trainer_id != 0)) { ?>
 					  <a class="navbar-toggler navbar-toggler-custom align-items-center justify-content-center d-none d-lg-flex" data-toggle="tooltip" data-title="Waiting for Adminstrator's Confirmation!" data-placement="bottom"
                        data-boundary="window">
                         <span class="material-icons">timer</span>

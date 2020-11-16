@@ -46,8 +46,6 @@ class Training_add_basic extends UserController {
             $training_type      = $this->input->post('training_type');
             $currencies         = $this->input->post('currencies');
             $price              = $this->input->post('price');
-
-
             $discount              = $this->input->post('discount');
             $price_after_discount              = $this->input->post('price_after_discount');
             $platform_commission              = $this->input->post('platform_commission');
@@ -55,10 +53,8 @@ class Training_add_basic extends UserController {
             $days_selected      = $this->input->post('days_selected');
             $course_duration    = $this->input->post('course_duration');
             $session_duration   = $this->input->post('session_duration');
-            $no_of_sessions      = $this->input->post('no_of_session');
-            
-            $start_date         =  ($this->input->post('start_date') == '' ? NULL : $this->input->post('start_date'));
-            
+            $no_of_sessions      = $this->input->post('no_of_session');            
+            $start_date         =  ($this->input->post('start_date') == '' ? NULL : $this->input->post('start_date'));            
             $start_hour     =   $this->input->post('start_hour');
             $start_time     =    $this->input->post('start_time');
             $time_zone     =    $this->input->post('time_zone');
@@ -75,15 +71,13 @@ class Training_add_basic extends UserController {
                 'training_type' => $get_training_type->maintainance_value,
                 'currencies' => $currencies,
                 'price' => $price,
-
                 'discount' => $discount,
                 'price_after_discount' => $price_after_discount,
                 'platform_commission' => $platform_commission,
-                'final_price' => $final_price,
-                
-                'course_duration' => isset($course_duration)? 0:$course_duration,
-                'session_duration' => isset($session_duration)? 0:$session_duration,
-                'no_of_sessions' => isset($no_of_sessions)?0:$no_of_sessions,
+                'final_price' => $final_price,                
+                'course_duration' => isset($course_duration)? $course_duration:0,
+                'session_duration' => isset($session_duration)? $session_duration:0,
+                'no_of_sessions' => isset($no_of_sessions)? $no_of_sessions:0,
                 'training_start_date' => $start_date,
                 'training_start_time' => date("H:i", strtotime($start_hour.':'.$start_time.':00')), 
                 'time_zone'=>$time_zone,
@@ -96,7 +90,8 @@ class Training_add_basic extends UserController {
             
             if($add_basic_details['result'] == 1){
 
-                if($training_type == 'Online'){
+                if($get_training_type->maintainance_value == 'Online'){
+
                     foreach ($days_selected as $day) {
                         $training_days = array(
                             'training_master_id' => $add_basic_details['insert_id'],

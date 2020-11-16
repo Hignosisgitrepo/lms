@@ -22,14 +22,6 @@
 			<div class="page-separator">
 				<div class="page-separator__text">My Courses</div>
 			</div>
-
-			<!-- <div class="page-heading">
-<h4>Learning Paths</h4>
-<a 
-href="" 
-class="text-underline ml-sm-auto">All my learning paths</a>
-</div> -->
-
 			<div class="row card-group-row mb-lg-8pt">
 			  <?php if($orders) { ?>
 				<?php foreach($orders as $order) { ?>

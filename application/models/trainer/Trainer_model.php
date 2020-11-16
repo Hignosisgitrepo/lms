@@ -319,7 +319,7 @@ class Trainer_model extends CI_Model {
     
     function getTrainingSchedules($id) {
         
-        $query = "SELECT  TS.* FROM training_schedule TS WHERE TS.training_master_id = ?";
+        $query = "SELECT * FROM training_schedule WHERE training_master_id = ?";
         
         $result = $this->db->query($query, array($id));
         
