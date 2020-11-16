@@ -132,10 +132,10 @@ class Express_checkout extends CI_Controller
             'maxamt' => round($cart['shopping_cart']['grand_total'] * 2,2), 					// The expected maximum total amount the order will be, including S&H and sales tax.
             'returnurl' => site_url('paypal/express_checkout/GetExpressCheckoutDetails'), 							    // Required.  URL to which the customer will be returned after returning from PayPal.  2048 char max.
             'cancelurl' => site_url('paypal/express_checkout/OrderCancelled'), 							    // Required.  URL to which the customer will be returned if they cancel payment on PayPal's site.
-            'hdrimg' => 'https://www.angelleye.com/images/angelleye-paypal-header-750x90.jpg', 			// URL for the image displayed as the header during checkout.  Max size of 750x90.  Should be stored on an https:// server or you'll get a warning message in the browser.
-            'logoimg' => 'https://www.angelleye.com/images/angelleye-logo-190x60.jpg', 					// A URL to your logo image.  Formats:  .gif, .jpg, .png.  190x60.  PayPal places your logo image at the top of the cart review area.  This logo needs to be stored on a https:// server.
-            'brandname' => 'LMS', 							                                // A label that overrides the business name in the PayPal account on the PayPal hosted checkout pages.  127 char max.
-            'customerservicenumber' => '816-555-5555', 				                                // Merchant Customer Service number displayed on the PayPal Review page. 16 char max.
+            'hdrimg' => $this->config->item('default_url').'/assets/image/magadia_logo.png', 			// URL for the image displayed as the header during checkout.  Max size of 750x90.  Should be stored on an https:// server or you'll get a warning message in the browser.
+            'logoimg' => $this->config->item('default_url').'/assets/image/magadia_logo.png', 					// A URL to your logo image.  Formats:  .gif, .jpg, .png.  190x60.  PayPal places your logo image at the top of the cart review area.  This logo needs to be stored on a https:// server.
+            'brandname' => 'Magadia E-Learning', 							                                // A label that overrides the business name in the PayPal account on the PayPal hosted checkout pages.  127 char max.
+            'customerservicenumber' => '8249-131-290', 				                                // Merchant Customer Service number displayed on the PayPal Review page. 16 char max.
         );
         
         /**
@@ -290,9 +290,9 @@ class Express_checkout extends CI_Controller
              * We're going to set static values for these things in our static
              * shopping cart, and then re-calculate our grand total.
              */
-            $cart['shopping_cart']['shipping'] = 10.00;
-            $cart['shopping_cart']['handling'] = 2.50;
-            $cart['shopping_cart']['tax'] = 1.50;
+            $cart['shopping_cart']['shipping'] = 0;
+            $cart['shopping_cart']['handling'] = 0;
+            $cart['shopping_cart']['tax'] = 0;
             
             $cart['shopping_cart']['grand_total'] = number_format(
                 $cart['shopping_cart']['subtotal']

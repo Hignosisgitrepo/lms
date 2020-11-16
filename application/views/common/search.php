@@ -79,8 +79,12 @@
 										</div>
 									</div>
 									<div class="col-auto d-flex flex-column align-items-center justify-content-center">
-										<h5 class="m-0"><?php echo $training['price']; ?></h5>
-										<p class="lh-1 mb-0"><small class="text-70"><strike><?php echo $training['price']; ?></strike></small></p>
+										<?php if($training['discount'] != 0) { ?>
+										  <h5 class="m-0"><?php echo $training['price_after_discount']; ?></h5>
+										  <p class="lh-1 mb-0"><small class="text-70"><strike><?php echo $training['price']; ?></strike></small></p>
+										<?php } else { ?>
+										  <h5 class="m-0"><?php echo $training['price']; ?></h5>
+										<?php } ?>
 									</div>
 								</div>
 							</div>
