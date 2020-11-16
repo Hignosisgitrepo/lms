@@ -23,7 +23,7 @@
                         <div class="col-lg-12">
                            
                         <label class="form-label" for="email">Email:</label>
-                        <input  type="text" class="form-control email" placeholder="Email ID" name="cu_email" id="cu_email" value="" required>
+                        <input autocomplete="off" type="text" class="form-control email" placeholder="Email ID" name="cu_email" id="cu_email" value="" required>
                            
                         </div>
                      </div>
@@ -33,7 +33,7 @@
 
                         
                         <label class="form-label" for="password">Password:</label>
-                           <input  type="password" class="form-control" placeholder="Enter your password" id="cu_password" name="cu_password" value="" required>
+                           <input autocomplete="off" type="password" class="form-control" placeholder="Enter your password" id="cu_password" name="cu_password" value="" required>
 
 
                           
