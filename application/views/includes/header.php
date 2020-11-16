@@ -158,8 +158,8 @@
                </span>-->
             <span class="d-none d-lg-block"><?php echo $company_name; ?></span>
          </a>
-		 <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" style="width: 400px" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>search/keyword">
-			<input type="text" class="form-control typeahead" placeholder="Search ..." id="search_box" name="keyword">
+		 <form autocomplete="off" class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" style="width: 400px" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>search/keyword">
+			<input autocomplete="off" type="text" class="form-control typeahead" placeholder="Search ..." id="search_box" name="keyword">
 		 </form>
 		 <div id="results" style="display: block; position: absolute; left: 184.5px; top: 55px; width: 410px;"><ul class="list-gpfrm" style="margin-left:15px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul></div>
          <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
