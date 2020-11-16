@@ -13,6 +13,14 @@ class Search_model extends CI_Model {
 	    return $result->result();
 	}
 	
+	function getOtherTrainings($training_master_id, $trainer_id) {
+	    $query = $this->db->query("SELECT * FROM training_master WHERE training_master_id = '" . $training_master_id . "' AND created_by = '" . $trainer_id . "' AND owner = 'T'");
+	    
+	    $result = $query->result();
+	    
+	    return $result;
+	}
+	
 	function getTrainings($training_name) {
 	    $this->db->distinct();
 	    $this->db->select('*');
