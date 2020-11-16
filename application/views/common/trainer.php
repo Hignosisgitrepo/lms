@@ -214,9 +214,9 @@
 								<select class="form-control" name="tr_phonecode" id="tr_phonecode">
 									<?php foreach($countries as $country) { ?>
 									  <?php if($country->id == $country_id) { ?>
-										<option value="<?php echo $country->id; ?>" selected="selected"><?php echo $country->sortname; ?></option>
+										<option value="<?php echo $country->id; ?>" selected="selected"><?php echo $country->sortname; ?> (+<?php echo $country->phonecode; ?>)</option>
 									  <?php } else { ?>
-										<option value="<?php echo $country->id; ?>"><?php echo $country->sortname; ?></option>
+										<option value="<?php echo $country->id; ?>"><?php echo $country->sortname; ?> (+<?php echo $country->phonecode; ?>)</option>
 									  <?php } ?>
 									<?php } ?>
 								</select>

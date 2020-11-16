@@ -35,7 +35,7 @@ class Common extends BaseController {
 	    echo json_encode($json);
 	}
 	
-	public function getCurrency() {
+	public function getCurrency() { 
 	    $json = array();
 	    $data = array(
 	        'currency_id' => $this->input->post('currency_id')
