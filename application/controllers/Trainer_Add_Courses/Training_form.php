@@ -84,6 +84,7 @@ class Training_form extends UserController {
         }else{
             $data['platformcommisison']='0';
         }
-        $this->loadTrainerViews("trainer/training_forms/add_training", $this->global, $data, NULL);
+       // $this->loadTrainerViews("trainer/training_forms/add_training", $this->global, $data, NULL);
+        $this->loadTrainerViews("trainer/training_forms/add_training", $this->global, $data,"add_training_script", NULL);
     }
 }

@@ -16,8 +16,26 @@ class Training_add_basic extends UserController {
         $this->load->model('trainer/trainer_model');
 		$this->lang->load('common_lang', language_folder($this->global['default_language'])->language_directory);
     }
+
+    public function getCurrencySymbol(){
+        $json = array();
+        $cid=$this->input->post('cid');
+        $results= $this->trainer_model->get_currency_symbol($cid);
+        //print_r($results);exit;
+        foreach($results as $res) {
+            
+            $json[] = array(
+                'training_concept_id'=>$res->training_concept_id,
+                'concept_name' => $res->concept_name
+                
+            );
+        }
+        echo json_encode($json);
+    }
     
     public function add_trainer_basic_details() {
+        
+        
         
         if(isset($_POST)){
             
@@ -38,12 +56,16 @@ class Training_add_basic extends UserController {
             $course_duration    = $this->input->post('course_duration');
             $session_duration   = $this->input->post('session_duration');
             $no_of_sessions      = $this->input->post('no_of_session');
-            $start_date         = $this->input->post('start_date');
+            
+            $start_date         =  ($this->input->post('start_date') == '' ? NULL : $this->input->post('start_date'));
+            
             $start_hour     =   $this->input->post('start_hour');
             $start_time     =    $this->input->post('start_time');
             $time_zone     =    $this->input->post('time_zone');
             $get_training_type = $this->common_model->getMaintainanceDetail($training_type);
             
+           
+
             $training_master = array(
                 'training_name' => $training_name,
                 'training_description' => $training_description,
@@ -58,19 +80,18 @@ class Training_add_basic extends UserController {
                 'price_after_discount' => $price_after_discount,
                 'platform_commission' => $platform_commission,
                 'final_price' => $final_price,
-                'course_duration' => $course_duration,
-                'session_duration' => $session_duration,
-                'no_of_sessions' => $no_of_sessions,
+                
+                'course_duration' => isset($course_duration)? 0:$course_duration,
+                'session_duration' => isset($session_duration)? 0:$session_duration,
+                'no_of_sessions' => isset($no_of_sessions)?0:$no_of_sessions,
                 'training_start_date' => $start_date,
                 'training_start_time' => date("H:i", strtotime($start_hour.':'.$start_time.':00')), 
                 'time_zone'=>$time_zone,
                 'training_started' => 0,
                 'created_by' => $this->global['trainerId'],
-                'created_date' => date('Y-m-d H:i:s'),
-                'modified_by' => '',
-                'modified_date' => '',
+                'created_date' => date('Y-m-d H:i:s')
             );
-            
+        
             $add_basic_details = $this->trainer_model->insert_into_training_master($training_master);
             
             if($add_basic_details['result'] == 1){

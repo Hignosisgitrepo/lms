@@ -106,9 +106,9 @@ class Trainer_model extends CI_Model {
     
     function insert_into_training_master($data) {
         
-        $query = "INSERT INTO training_master (training_name,training_description, owner, category_id,program_level, training_type, currency_id, price,discount,price_after_discount,platform_commission,final_price, course_duration, session_duration, no_of_sessions, training_start_date, training_start_time,time_zone, training_started, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?, ?, ?)";
+        $query = "INSERT INTO training_master (training_name,training_description, owner, category_id,program_level, training_type, currency_id, price,discount,price_after_discount,platform_commission,final_price, course_duration, session_duration, no_of_sessions, training_start_date, training_start_time,time_zone, training_started, created_by, created_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?)";
 
-        $result = $this->db->query($query, array($data['training_name'],$data['training_description'], $data['owner'], $data['category_id'], $data['program_level'], $data['training_type'], $data['currencies'], $data['price'],$data['discount'],$data['price_after_discount'],$data['platform_commission'],$data['final_price'], $data['course_duration'], $data['session_duration'], $data['no_of_sessions'], $data['training_start_date'],$data['training_start_time'],$data['time_zone'], $data['training_started'], $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));
+        $result = $this->db->query($query, array($data['training_name'],$data['training_description'], $data['owner'], $data['category_id'], $data['program_level'], $data['training_type'], $data['currencies'], $data['price'],$data['discount'],$data['price_after_discount'],$data['platform_commission'],$data['final_price'], $data['course_duration'], $data['session_duration'], $data['no_of_sessions'], $data['training_start_date'],$data['training_start_time'],$data['time_zone'], $data['training_started'], $data['created_by'], $data['created_date']));
 
         $insert_id = $this->db->insert_id();
 
@@ -119,6 +119,20 @@ class Trainer_model extends CI_Model {
         
     }
     
+    // function edit_training_master($data,$tid) {
+        
+    //     $query = "UPDATE training_master set training_name='".$data['training_name']."' ,training_description='".$data['training_description']."',owner='".$data['owner']."',category_id='".$data['category_id']."',program_level='".$data['program_level']."',training_type='".$data['training_type']."',currency_id='".$data['currencies']."',price='".$data['price']."',discount='".$data['discount']."',price_after_discount='".$data['price_after_discount']."',platform_commission='".$data['platform_commission']."',final_price='".$data['final_price']."',course_duration='".$data['course_duration']."', session_duration='".$data['session_duration']."', no_of_sessions='".$data['no_of_sessions']."', training_start_date='".$data['training_start_date']."',training_start_time='".$data['training_start_time']."',time_zone='".$data['time_zone']."',training_started='". $data['training_started']."', created_by='".$data['created_by']."', created_date='".$data['created_date']."',modified_by='". $data['modified_by']."',modified_date='". $data['modified_date']."' where training_master_id='".$tid."'";
+
+    //     $result = $this->db->query($query);
+    //     $insert_id = $this->db->insert_id();
+
+    //     $data = array('insert_id' => $insert_id,
+    //                   'result' => $result);
+
+    //     return $data;
+        
+    // }
+
     function insert_into_training_days($data) {
         
         $query = "INSERT INTO training_days (training_master_id, training_day) VALUES (?, ?)";
@@ -131,9 +145,9 @@ class Trainer_model extends CI_Model {
     
     function insert_into_training_section($data) {
         
-        $query = "INSERT INTO training_section (training_master_id, section_name, sort_order, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_section (training_master_id, section_name, sort_order, created_by, created_date) VALUES (?, ?, ?, ?, ?)";
         
-        $result = $this->db->query($query, array($data['training_master_id'], $data['section_name'], $data['sort_order'], $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));	 
+        $result = $this->db->query($query, array($data['training_master_id'], $data['section_name'], $data['sort_order'], $data['created_by'], $data['created_date']));	 
         $insert_id = $this->db->insert_id();
         
         $data = array('insert_id' => $insert_id,
@@ -145,9 +159,9 @@ class Trainer_model extends CI_Model {
 
     function insert_into_training_concept($data) {
         
-        $query = "INSERT INTO training_concepts (training_master_id, concept_name, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_concepts (training_master_id, concept_name, created_by, created_date) VALUES (?, ?, ?, ?)";
 
-        $result = $this->db->query($query, array($data['training_master_id'], $data['concept_name'],  $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));
+        $result = $this->db->query($query, array($data['training_master_id'], $data['concept_name'],  $data['created_by'], $data['created_date']));
 
         $insert_id = $this->db->insert_id();
 
@@ -235,9 +249,9 @@ class Trainer_model extends CI_Model {
     }
     function insert_into_training_section_details($data) {
         
-        $query = "INSERT INTO training_section_detail (training_section_id, sub_section_name, video_file_path, sort_order, created_by, created_date, modified_by, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO training_section_detail (training_section_id, sub_section_name, video_file_path, video_time, sort_order, created_by, created_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
-        $result = $this->db->query($query, array($data['training_section_id'], $data['sub_section_name'], $data['video_file_path'], $data['sort_order'], $data['created_by'], $data['created_date'], $data['modified_by'], $data['modified_date']));
+        $result = $this->db->query($query, array($data['training_section_id'], $data['sub_section_name'], $data['video_file_path'], $data['video_time'], $data['sort_order'], $data['created_by'], $data['created_date']));
         
         return $result;
         

@@ -1,4 +1,11 @@
-<form action="#"  class="basic_form" enctype="multipart/form-data" novalidate>
+<style>
+html[dir=ltr].dark-mode .border-left-4 {
+	border-left-color: #5bc0de!important;
+	height:100px;
+}
+
+</style>
+<form action="#" class="basic_form" novalidate>
 		<div class="row p_t_10">
 			<div id="basic_alert" class="alert alert-success hide" data-dismiss="alert" role="alert">
 			  Basic details has been added successfully.
@@ -7,6 +14,7 @@
 				<div class="form-group row">
 					<label class="col-lg-3 col-form-label"><?php echo $text_Training_Name; ?></label>
 					<div class="col-lg-9">
+						
 						<input type="text" id="training_name" class="form-control" required >
 						<div class="invalid-feedback">
 							Please provide valid <?php echo $text_Training_Name; ?>.
@@ -83,17 +91,22 @@
 					<label class="col-lg-3 col-form-label"><?php echo $text_currencies; ?></label>
 					<div class="col-lg-9">
 						<select class="form-control" name="currencies" id="currencies" required>
-							 <option value=""><?php echo $text_select; ?></option>
+							<option value=""><?php echo $text_select; ?></option>
 							 <?php foreach($currencies as $currency): ?>
 								<?php if($currency->currency_name == "USD") { ?>
-								<inpu type="hidden" id="ccy_code" value="<?php echo $currency->currency_code; ?>">
-                                <option value="<?php echo $currency->currency_id; ?>" selected="selected"><?php echo $currency->currency_name; ?> - <?php echo $currency->currency_code; ?></option>
+
+								<option value="<?php echo $currency->currency_id; ?>" selected="selected"> <?php echo $currency->currency_code; ?> - <?php echo $currency->currency_symbol; ?></option>
+
 								<?php } else { ?>
-									<inpu type="hidden" id="ccy_code" value="<?php echo $currency->currency_code; ?>">
-                                <option value="<?php echo $currency->currency_id; ?>"><?php echo $currency->currency_name; ?> - <?php echo $currency->currency_code; ?></option>
-                                <?php } ?>
-                               <?php endforeach; ?>
+								<option value="<?php echo $currency->currency_id; ?>"><?php echo $currency->currency_code; ?> - <?php echo $currency->currency_symbol; ?></option>
+								
+								<?php } ?>
+
+							   <?php endforeach; ?>
+							   
 						</select>
+
+
 						<div class="invalid-feedback">
 							Please select a <?php echo $text_currencies; ?>.
 						</div>
@@ -102,7 +115,7 @@
 				<div class="form-group row">
 					<label class="col-lg-3 col-form-label"><?php echo $text_price; ?></label>
 					<div class="col-lg-9">
-						<input type="number" id="price" class="form-control" placeholder="Enter Price" required>
+						<input type="text" id="price" class="form-control" placeholder="Enter Price"  autocomplete="off" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
 						<div class="invalid-feedback">
 							Please select a <?php echo $text_price; ?>.
 						</div>
@@ -114,7 +127,7 @@
 				<div class="form-group row">
 					<label class="col-lg-3 col-form-label"><?php echo $text_Price_Discount; ?> (%)</label>
 					<div class="col-lg-9">
-					<input type="number" id="discount" class="form-control" placeholder="Enter Discount" required>
+					<input type="text" id="discount" class="form-control" placeholder="Enter Discount"   autocomplete="off" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
 
 						<div class="invalid-feedback">
 							Please select a <?php echo $text_Price_Discount; ?>.
@@ -122,65 +135,74 @@
 					</div>
 					
 				</div>
-			
-				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_Price_After_Discount; ?></label>
-					<div class="col-lg-9">
-					<input type="number" id="price_after_discount" class="form-control" placeholder="Price After Discount" disabled>
-
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_Price_After_Discount; ?>.
-						</div>
-					</div>
-					
-				</div>
-				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_Platform_commission; ?> (%)</label>
-					<div class="col-lg-9">
-					<input type="text" id="platform_commission" class="form-control" placeholder="Platform Commission" value="<?php echo $platformcommisison; ?>%" disabled required>
-
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_Platform_commission; ?>.
-						</div>
-					</div>
-					
-				</div>
 
 				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_commission_value; ?></label>
-					<div class="col-lg-9">
-					<input type="number" id="commission_value" class="form-control" placeholder="Commission Value" value="" disabled>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									
+									<input type="hidden" id="price_after_discount" class="form-control" placeholder="Price After Discount" disabled>
+									<h4 class=" mb-0"><b class="final_currency"></b> <b id="price_after_discount1"></b> </h4>
+									
+                                        <div>Price After Discount</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									<input type="hidden" id="platform_commission" class="form-control" placeholder="Platform Commission" value="<?php echo $platformcommisison; ?>" disabled required>
+									<h4 class=" mb-0"><b id="platform_commission1"> <?php echo $platformcommisison; ?> %</b> </h4>
 
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_commission_value; ?>.
-						</div>
-					</div>
-					
-				</div>
+										
+                                        <div>Platform Commission</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									<input type="hidden" id="commission_value" class="form-control" placeholder="Commission Value" value="" disabled>
+									  <h4 class=" mb-0"><b class="final_currency"></b><b id="commission_value1"></b>  </h4>
 
-				<div class="form-group row">
-					<label class="col-lg-3 col-form-label"><?php echo $text_minimum_commission_value; ?></label>
-					<div class="col-lg-9">
-			
-					<input type="number" id="minimum_commission_value" class="form-control" placeholder="Minimum Commission Value" value="<?php echo $minimum_commission; ?>" disabled>
+										
+                                        <div>Commission Value</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+                                <div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+                                    <div class="card-body">
+									<input type="hidden" id="minimum_commission_value" class="form-control" placeholder="Minimum Commission Value" value="<?php echo $minimum_commission; ?>" disabled>
+									<h4 class=" mb-0"><b class="final_currency"></b><?php echo $minimum_commission; ?>   </h4>
+
+									
+										
+                                        <div>Minimum Commission Value</div>
+                                    </div>
+                                </div>
+							</div>
+							<div class="col">
+
+							<div class="card border-1 border-left-4 border-left-accent text-center mb-lg-0" style="border-color:red">
+								<div class="card-body">
+								<h4 class=" mb-0"><b class="final_currency"></b><b id="final_price1"></b> <b id="final_price2"></b>   </h4>
+	
+									<p class="" id="text_final_approve" style="color:red">You will pay platform for every subsription</p>
+									<p class="" id="text_final_reject" style="color:green">Platform will pay you for every subsription</p>
+									<div id="text_final">Final Value</div>
+									<input type="hidden" id="final_price" class="form-control" placeholder="Final Price" disabled required>
+								</div>
+								
+								
+							</div>
+							</div>
+
+				</div>		
 				
-						<div class="invalid-feedback">
-							Please select a <?php echo $text_minimum_commission_value; ?>.
-						</div>
-					</div>
-					
-				</div>
 
-				<div class="form-group row">
-				<!--	<label class="col-lg-10 col-form-label" id="text_final"><?php echo $text_Final_Price; ?></label>-->
-					<label class="col-lg-12 col-form-label" id="text_final_approve" style="color:red">You will pay platform <b id="final_price1"></b> <b id="final_currency"></b> for every subsription</label>
-					<label class="col-lg-12 col-form-label" id="text_final_reject" style="color:green">Platform will pay you <b id="final_price2"></b> <b id="final_currency1"></b> for every subsription</label>
-					
-					<input type="hidden" id="final_price" class="form-control" placeholder="Final Price" disabled required>
 
-					
-					
-				</div>
+				
 
 				<div class="hide" id="online_section">
 					<hr>
@@ -278,7 +300,7 @@
 						<div class="col">
 							<div class="form-group">
 							<label>Time Zone</label>
-						<select  class="form-control select3 timezone_select" id="time_zone" >
+						<select   class="form-control select2  timezone_select" id="time_zone" >
 						<?php $tzlist = DateTimeZone::listIdentifiers(DateTimeZone::ALL); ?>
 						<?php foreach($tzlist as $timez): ?>
 							<?php if($timez=='America/Denver'){ ?>

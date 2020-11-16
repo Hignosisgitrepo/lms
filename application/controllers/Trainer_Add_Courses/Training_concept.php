@@ -31,11 +31,10 @@ class Training_concept extends UserController {
                 'concept_name' => $concept_name,
               
                 'created_by' => $this->global['trainerId'],
-                'created_date' => date('Y-m-d H:i:s'),
-                'modified_by' => '',
-                'modified_date' => '',
+                'created_date' => date('Y-m-d H:i:s')
             ); 
         }
+        
 
         foreach ($insert_array as $insert) {
             $add_concept = $this->trainer_model->insert_into_training_concept($insert);
@@ -96,11 +95,11 @@ public function saveConcept() {
             'concept_name' => $this->input->post('concept_name'),
           
             'created_by' => $this->global['trainerId'],
-            'created_date' => date('Y-m-d H:i:s'),
-            'modified_by' => '',
-            'modified_date' => '',
+            'created_date' => date('Y-m-d H:i:s')
 	        
 	    );
+
+        // print_r($data); exit;
 	  
 	 
 	    $err = 0;
@@ -117,16 +116,7 @@ public function saveConcept() {
                 $this->trainer_model->edit_into_training_concept($c_name,$c_id);
 
             }
-            $results= $this->trainer_model->get_training_section_data($tid);
-
-            foreach($results as $res) {
-	            
-	            $data['section_data'][] = array(
-                    'training_concept_id'=>$res->training_concept_id,
-	                'concept_name' => $res->concept_name
-	               
-	            );
-            }
+           
             
 	        $json['success'] = $this->lang->line('text_addsuccess');
 	    }
