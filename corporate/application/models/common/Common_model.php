@@ -287,4 +287,10 @@ class Common_model extends CI_Model {
         $result = $query->result();
         return $result;
     }
+    
+    function getTrainerData($customer_id) {
+        $query = $this->db->query("SELECT * FROM `customer` as c, `trainer` as t WHERE c.customer_id = '" . $customer_id . "' AND c.customer_id = t.customer_id");
+        $result = $query->row();
+        return $result;
+    }
 }

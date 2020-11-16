@@ -130,7 +130,8 @@
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/select2/select2.min.js"></script>
 
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/daterangepicker.js"></script>
-
+		
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!-- toaster -->
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/toastr.min.js"></script>
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/js/toastr.js"></script>
