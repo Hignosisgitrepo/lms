@@ -7,6 +7,23 @@
    $icon_img = setting('config_icon', 'config');
    $icon = $icon_img->value;
    ?>
+<?php if($this->session->userdata ('customer_id') != '') {
+		$customer_data = $this->common_model->getCustomerData($this->session->userdata ('customer_id'));
+		if(empty($customer_data)) { 
+		  $is_trainer = 0;
+		  $approve_status = 0;
+		  $trainer_id = 0;
+		} else {
+		  $is_trainer = $customer_data->is_trainer;
+		  $approve_status = $customer_data->approve_status;
+		  $trainer_id = $customer_data->trainer_id;
+		}
+	} else {
+		$is_trainer = 0;
+		$approve_status = 0;
+		$trainer_id = 0;
+	}
+?>
 <html lang="en"
    dir="ltr">
    <head>
@@ -183,14 +200,14 @@
 			<li class="nav-item">
 				<?php if($this->session->userdata ('customer_id') != '') {
 				  $customer_data = $this->common_model->getCustomerData($this->session->userdata ('customer_id')); ?>
-                  <?php if(($customer_data->is_trainer == 1) && ($customer_data->approve_status == 1)) { ?>
+                  <?php if(($is_trainer == 1) && ($approve_status == 1)) { ?>
 					<a class="nav-link" href="<?php echo base_url(); ?>trainer-dashboard">Trainer</a> 
-				  <?php } else if(($customer_data->is_trainer == 1) && ($customer_data->trainer_id != 0)) { ?>
+				  <?php } else if(($is_trainer == 1) && ($trainer_id != 0)) { ?>
 					<a class="nav-link">
                         Waiting for confirmation
 					</a>
 				  <?php } else { ?>
-					<a onclick="createTrainer();" class="dropdown-item">
+					<a onclick="createTrainer();" class="nav-link">
 						Teach on LMS
 					</a>
 			   <?php } ?>
@@ -227,6 +244,15 @@
             </li>
 			<?php if($this->session->userdata ('customer_id') != '') {
 						$customer_data = $this->common_model->getCustomerData($this->session->userdata ('customer_id'));
+						if(empty($customer_data)) { 
+						  $is_trainer = 0;
+						  $approve_status = 0;
+						  $trainer_id = 0;
+						} else {
+						  $is_trainer = $customer_data->is_trainer;
+						  $approve_status = $customer_data->approve_status;
+						  $trainer_id = $customer_data->trainer_id;
+						}
 				} ?>
             <li class="nav-item dropdown has-arrow">
                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -234,11 +260,11 @@
                </a>
                <div class="dropdown-menu">
 				  <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard">Student Dashboard</a>
-				  <?php if(($customer_data->is_trainer == 1) && ($customer_data->approve_status == 1)) { ?>
+				  <?php if(($is_trainer == 1) && ($approve_status == 1)) { ?>
 					  <a href="<?php echo base_url(); ?>trainer-dashboard" class="dropdown-item">
 						Trainer Dashboard
 					  </a>
-				  <?php } else if(($customer_data->is_trainer == 1) && ($customer_data->trainer_id != 0)) { ?>
+				  <?php } else if(($is_trainer == 1) && ($trainer_id != 0)) { ?>
 					  <a class="dropdown-item">
 						Wait for Confirmation
 					  </a>
