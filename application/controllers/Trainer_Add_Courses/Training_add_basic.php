@@ -16,8 +16,26 @@ class Training_add_basic extends UserController {
         $this->load->model('trainer/trainer_model');
 		$this->lang->load('common_lang', language_folder($this->global['default_language'])->language_directory);
     }
+
+    public function getCurrencySymbol(){
+        $json = array();
+        $cid=$this->input->post('cid');
+        $results= $this->trainer_model->get_currency_symbol($cid);
+        //print_r($results);exit;
+        foreach($results as $res) {
+            
+            $json[] = array(
+                'training_concept_id'=>$res->training_concept_id,
+                'concept_name' => $res->concept_name
+                
+            );
+        }
+        echo json_encode($json);
+    }
     
     public function add_trainer_basic_details() {
+        
+        
         
         if(isset($_POST)){
             
@@ -75,7 +93,7 @@ class Training_add_basic extends UserController {
                 'modified_by' => '',
                 'modified_date' => '',
             );
-            
+        
             $add_basic_details = $this->trainer_model->insert_into_training_master($training_master);
             
             if($add_basic_details['result'] == 1){

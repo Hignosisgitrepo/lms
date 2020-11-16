@@ -1,5 +1,3 @@
-<script src="JavaScript/jquery-1.10.2.js" type="text/javascript"></script> 
-
 
 
         <script type="text/javascript">
@@ -8,34 +6,42 @@
 
 				$("#price_after_discount1").html('0');
 				$("#commission_value1").html('0');
+			
 				var ccy=$('#currencies').val();
-				var dd;
-				if(ccy==1){
-					dd="GBP";
-				}else if(ccy==2){
-					dd="USD";
+				if(ccy!=''){
+				var cc = $("#currencies option:selected"); 
+                var symbol= cc.text().slice(-1);
+				$(".final_currency").html(symbol);
+				
 				}else{
-					dd="INR";
+					$(".final_currency").html('');
 				}
-				$("#final_currency").html(dd);
-				$("#final_currency1").html(dd);
 				$('#currencies').on('change', '', function (e) {
-					var c=$(this).val();
-					if(c==1){
-					dd="GBP";
-				}else if(c==2){
-					dd="USD";
-				}else{
-					dd="INR";
-				}
-					$("#final_currency").html(dd);
-					$("#final_currency1").html(dd);
+					
+					var ccy=$('#currencies').val();
+					if(ccy!=''){
+						var cc = $("#currencies option:selected"); 
+						var symbol= cc.text().slice(-1);
+						$(".final_currency").html(symbol);
+					}else{
+						$(".final_currency").html('');
+					}
 				});
 
 				$(".days_select").select2({'width':'100%'});
 				$("#no_of_session").val(0);
 				$("#text_final_approve").hide();
 				$("#text_final_reject").hide();
+
+				$("#price").keyup(function(){
+					var price=$("#price").val();
+					if(price=='0'){
+						$("#discount").val('0');
+						
+					}else{
+						$("#discount").val('');
+					}
+				});
 				$("#discount").keyup(function(){
 					var discount=$(this).val();
 					var price=$("#price").val();
@@ -46,13 +52,13 @@
 					if(discount.length!=0){
 						
 						var price_after_discount=price-((price*discount)/100);
-						var commission_value=(price_after_discount*platform)/100;
+						var commission_value= (Math.round(price_after_discount * platform) / 100).toFixed(2);
 						$("#price_after_discount1").html(price_after_discount);
 						$("#commission_value1").html(commission_value);
 						$("#price_after_discount").val(price_after_discount);
 						$("#commission_value").val(commission_value);
 
-						var final_price=price_after_discount-((price_after_discount*platform)/100);
+						var final_price=price_after_discount-commission_value;
 						var final;
 						if(final_price>=minimum_commission){
 							final=final_price;
@@ -61,6 +67,8 @@
 							$("#text_final_reject").show();
 							$('#text_final').hide();
 							$("#final_price2").html(final);
+							$("#final_price1").html('');
+							
 						}else{
 							final=final_price-minimum_commission;
 							
@@ -68,9 +76,12 @@
 							$("#text_final_reject").hide();
 							$('#text_final').hide();
 							$("#final_price1").html(minimum_commission);
+							$("#final_price2").html('');
+							
 						}
 					//	var final_price1 = document.getElementById("final_price1");
 						
+					
 						
 						$("#final_price").val(final);
 
@@ -79,7 +90,9 @@
 						$("#commission_value1").html('0');
 						$("#price_after_discount").val('');
 						$("#final_price1").html('');
+						$("#final_price2").html('');
 						$("#final_price").val('');
+						
 						$("#commission_value").val('');
 						$("#text_final_approve").hide();
 						$("#text_final_reject").hide();
@@ -897,7 +910,7 @@ $('.add_concept').bind('click', function(e){
 
 
 							$tabs+= '<div class="form-group row">';
-			        			$tabs+= '<label class="col-lg-3 col-form-label"><?php echo $text_video_time; ?></label>';
+			        			$tabs+= '<label class="col-lg-3 col-form-label"><?php echo $text_video_time; ?> in min<</label>';
 			        			$tabs+= '<div class="col-lg-9">';
 			        				$tabs+= '<input type="text"  name="section_details_video_time" data-value = '+ $data_value +'_'+ sort_counter +' id="section_details_video_time_'+ $data_value +'_'+ sort_counter +'" class="form-control section_details_video_time" required >';
 			        				$tabs+='<div id="" class="hide '+ $data_value +'_'+ sort_counter +'">';
@@ -1084,29 +1097,33 @@ $('.add_concept').bind('click', function(e){
 				document.getElementById("newBtnsection").disabled = true;
 
 				
-				html = '<div class="form-group" id="section-row' + training_section_id + '">';
-				html +='<label>Section Name</label>';
+				html = '<div class="card"><div class="card-body">';
+				
+				html += '<div class="text-right"><button type="button" id="deleteBtnsection';
+				html +=training_section_id;
+				html +='" onclick="deleteNewsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
+				html +='</button>&nbsp;&nbsp;<button type="button" id="saveBtnsection';
+				html +=training_section_id;
+				html +='" onclick="saveNewsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button></div>';
 
-				html += '<input type="hidden"  class="form-control" id="training_section_id';
+
+				html +='<br><div class="form-group row" id="section-row' + training_section_id + '">';
+				html +='<label class="col-lg-3 col-form-label">Section Name</label>';
+
+				html += '<div class="col-lg-9"><input type="hidden"  class="form-control" id="training_section_id';
 				html +=training_section_id;
 				html +='" value="0"/>';
 
 				html += '<input type="text"  placeholder="section Name" class="form-control" id="section_name';
 				html +=training_section_id;
-				html +='"/>';
-				html +='<br><label>Sort Order</label>';
-				html += '<input type="number"  placeholder="Sort Order" class="form-control" id="sort_order';
+				html +='"/></div></div>';
+				html +='<div class="form-group row"><label class="col-lg-3 col-form-label">Sort Order</label>';
+				html += '<div class="col-lg-9"><input type="text"  placeholder="Sort Order" class="form-control" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" id="sort_order';
 				html +=training_section_id;
-				html +='"/>';
+				html +='"/></div></div>';
 
-			    html += '<br><button type="button" id="deleteBtnsection';
-				html +=training_section_id;
-				html +='" onclick="deleteNewsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
-				html +='</button>&nbsp;&nbsp;<button type="button" id="saveBtnsection';
-				html +=training_section_id;
-				html +='" onclick="saveNewsection(\''+ training_section_id +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button>';
-
-				html += '</div>';
+			
+				html += '</div></div></div>';
 				
 				
 				$('#section').append(html);
@@ -1355,27 +1372,10 @@ $('.add_concept').bind('click', function(e){
 						
 							var html = '';
 							for (var i = 0; i < json.length; i++) {
-								html += '<div  id="section-row' + json[i]['training_section_id'] + '">';
-								html +='<div class="col"><label >section Name</label></div>';
-								html += '<input type="hidden"  class="form-control" id="training_section_id';
-								html +=json[i]['training_section_id'];
-								html +='" value="';
-								html +=json[i]['training_section_id'];
-								html +='"  />';
+								
+								html += '<div class="card"><div class="card-body">';
 
-								html += '<input type="text"  placeholder="section Name" class="form-control section_form" id="section_name';
-								html +=json[i]['training_section_id'];
-								html +='" value="';
-								html +=json[i]['section_name'];
-								html +='" disabled />';
-								html +='<br><div class="col"><label >Sort Order</label></div>';
-								html += '<input type="number"  placeholder="Sort Order" class="form-control" id="sort_order';
-								html +=json[i]['training_section_id'];
-								html +='" value="';
-								html +=json[i]['sort_order'];
-								html +='" disabled />';
-
-								html += '<br><button type="button" id="deleteBtnsection';
+								html += '<div class="text-right"><button type="button" id="deleteBtnsection';
 								html +=json[i]['training_section_id'];
 								html +='" onclick="deleteNewsection(\''+ json[i]['training_section_id'] +'\');" data-toggle="tooltip" class="btn btn-danger"><i class="fa fa-minus-circle"></i>';
 								html +='</button>&nbsp;&nbsp;';
@@ -1386,16 +1386,39 @@ $('.add_concept').bind('click', function(e){
 								html +='</button>&nbsp;&nbsp;';
 								html +='<button type="button" id="saveBtnsection';
 								html +=json[i]['training_section_id'];
-								html +='" onclick="saveNewsection(\''+ json[i]['training_section_id'] +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button>';
+								html +='" onclick="saveNewsection(\''+ json[i]['training_section_id'] +'\');" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-save"></i></button></div>';
 
-								html += '</div>';
+
+								html += '<div   id="section-row' + json[i]['training_section_id'] + '">';
+								
+								html +='<div class="form-group row" ><label class="col-lg-3 col-form-label">section Name</label>';
+								html += '<div class="col-lg-9"><input type="hidden"  class="form-control" id="training_section_id';
+								html +=json[i]['training_section_id'];
+								html +='" value="';
+								html +=json[i]['training_section_id'];
+								html +='"  />';
+
+								html += '<input type="text"  placeholder="section Name" class="form-control section_form" id="section_name';
+								html +=json[i]['training_section_id'];
+								html +='" value="';
+								html +=json[i]['section_name'];
+								html +='" disabled /></div></div>';
+								html +='<div class="form-group row" ><label class="col-lg-3 col-form-label">Sort Order</label>';
+								html += '<div class="col-lg-9"><input type="number"  placeholder="Sort Order" class="form-control" id="sort_order';
+								html +=json[i]['training_section_id'];
+								html +='" value="';
+								html +=json[i]['sort_order'];
+								html +='" disabled /></div></div></div>';
+
+								
+								html += '</div></div></div>';
 							}
 							
 						}
 						if (html){
 							document.getElementById("section").innerHTML = "";
 							$("#section").append(html);
-							getSectionDetails();
+							
 
 						
 						}
@@ -1430,7 +1453,7 @@ $('.add_concept').bind('click', function(e){
 			
 			function getSectionDetails(){
 				var training_master_id = $("#training_master_id").data('value');
-				
+			
 				$.ajax({
 					type: 'post',
 					url: '<?php echo base_url(); ?>Trainer_Add_Courses/training_section/getsectionDetails',
@@ -1446,13 +1469,13 @@ $('.add_concept').bind('click', function(e){
 			var show = '';
 
 			tabs +='<div class="accordion js-accordion accordion--boxed " id="#section_content_'+sort_order+'" data-domfactory-upgraded="accordion">';
-		tabs +='<div class="accordion__item">';
-			tabs += '<a href="#" class="accordion__toggle collapsed" data-toggle="collapse" data-target="#section_content_'+sort_order+'" data-parent="#section_content_'+sort_order+'" aria-expanded="false">';
+		tabs +='<div class="card"><div class="card-body">';
+			tabs += '<a href="#" class=" collapsed" data-toggle="collapse" data-target="#section_content_'+sort_order+'" data-parent="#section_content_'+sort_order+'" aria-expanded="false">';
 				 tabs += '<span class="flex">'+val.section_name+'</span>';
 				 tabs += '<span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>';
 			 tabs += '</a>';
 			 tabs += '<div class="accordion__menu collapse" id="section_content_'+sort_order+'" style="">';
-				tabs += ' <div class="accordion__menu-link">';
+				tabs += ' <div class="">';
 				   tabs += '<div class="tab-pane section_details_nav fade show" data_value = "'+sort_order+'" id="section_content_'+val.training_section_id+'" role="tabpanel" aria-labelledby="section_content_'+val.training_section_id+'-tab" style="width: inherit;">';
 							tabs +='<input type="hidden" id="hidden_section_id" data-value = '+val.training_section_id+' class="form-control hidden_section_id" value ="'+val.training_section_id+'"/>';
 							tabs += '<div class="">';
@@ -1487,7 +1510,7 @@ $('.add_concept').bind('click', function(e){
 
 
 								tabs+= '<div class="form-group row">';
-			        			tabs+= '<label class="col-lg-3 col-form-label"><?php echo $text_video_time; ?></label>';
+			        			tabs+= '<label class="col-lg-3 col-form-label"><?php echo $text_video_time; ?> in min</label>';
 			        			tabs+= '<div class="col-lg-9">';
 			        				tabs+= '<input type="text"  name="section_details_video_time" data-value = '+ $data_value +'_'+ sort_order +' id="section_details_video_time_'+ $data_value +'_'+ sort_order +'" class="form-control section_details_video_time" required >';
 			        				tabs+='<div id="" class="hide '+ $data_value +'_'+ sort_order +'">';
@@ -1542,7 +1565,7 @@ $('.add_concept').bind('click', function(e){
 		   tabs += '</div>';
 		tabs += '</div>';
 		
-	tabs += '</div>';
+	tabs += '</div></div>';
 		});
 
 		$('#section_list_content').append(tabs);

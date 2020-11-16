@@ -63,29 +63,18 @@
 			<div id="login_err"></div>
             <form method="POST" id="register" name="register" novalidate>
                 <div class="form-group">
-                    <label class="text-label"
-                           for="email_2"><?php echo $text_email; ?></label>
-                    <div class="input-group input-group-merge">
-                        <input id="user_name" type="email" required="" class="form-control form-control-prepended" placeholder="<?php echo $text_email; ?>" name="user_name">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="far fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
+
+                <label class="form-label" for="email">Email:</label>
+                        <input  type="text" class="form-control email" placeholder="Email ID" name="user_name" id="user_name" value="" required>
+               
+                    
                 </div>
 				<div id="user_name_err"></div>
                 <div class="form-group">
-                    <label class="text-label"
-                           for="password_2"><?php echo $text_password; ?></label>
-                    <div class="input-group input-group-merge">
-                        <input id="password" type="password" name="password" required="" class="form-control form-control-prepended" placeholder="<?php echo $text_password; ?>">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <span class="fa fa-key"></span>
-                            </div>
-                        </div>
-                    </div>
+                              
+                <label class="form-label" for="password">Password:</label>
+                           <input  type="password" class="form-control" placeholder="Enter your password" id="password" name="password" value="" required>
+
                 </div>
 				<div id="password_err"></div>
                 <div class="form-group text-center">
@@ -121,7 +110,8 @@
 				var password = document.getElementById("password").value;
 				var err = 0;
 				if (user_name == '') {
-					$("#user_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><?php echo $err_username; ?></div>').show('fast').delay(5000).hide('fast');
+                    $("#user_name").attr("placeholder","Plese enter your Email ID");
+				    $(".form-group").addClass('was-validated');
 					document.getElementById("user_name").focus();
 					err++;
 					return false;
@@ -129,16 +119,18 @@
 					var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 					if (reg.test(user_name) == false) {
-						$("#user_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><?php echo $err_username; ?></div>').show('fast').delay(5000).hide('fast');
-						document.getElementById("user_name").focus();
+                        $("#user_name").val('');
+                        $("#user_name").attr("placeholder","Invalid Email ID");
+                        $(".form-group").addClass('was-validated');						document.getElementById("user_name").focus();
 						
 						err++;
 						return false;
 					}
 				}
 				if (password == '') {
-					$("#password_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><?php echo $err_password; ?></div>').show('fast').delay(5000).hide('fast');
-					document.getElementById("password").focus();
+                    $("#password").attr("placeholder","Plese enter your password");
+				    $(".form-group").addClass('was-validated');
+                    document.getElementById("password").focus();
 					err++;
 					return false;
 				}
@@ -154,12 +146,14 @@
 								window.location = url_path;
 							} else {
 								if(json['err_username']) {
-									$("#user_name_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_username'] + '</div>').show('fast').delay(5000).hide('fast');
+                                    $("#user_name").attr("placeholder",json['err_username']);
+				                    $(".form-group").addClass('was-validated');
 									document.getElementById("user_name").focus();
 									return false;
 								}
 								if(json['err_password']) {
-									$("#pasword_err").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>' + json['err_password'] + '</div>').show('fast').delay(5000).hide('fast');
+                                    $("#pasword").attr("placeholder",json['err_password']);
+				                    $(".form-group").addClass('was-validated');
 									document.getElementById("password").focus();
 									return false;
 								}	

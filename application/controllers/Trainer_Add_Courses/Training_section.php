@@ -33,7 +33,7 @@ class Training_section extends UserController {
                 'created_by' => $this->global['trainerId'],
                 'created_date' => date('Y-m-d H:i:s'),
                 'modified_by' => '0',
-                'modified_date' => '',
+                'modified_date' => 'NULL',
             ); 
         }
 

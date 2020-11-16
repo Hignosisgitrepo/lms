@@ -212,12 +212,12 @@
 							 <label class="form-label" for="validationSample01" style="color:#fff"><?php echo $text_phone; ?> <span class="text-danger">*</span></label>
 							 <div class="input-group">
 								
-								   <select class="form-control" name="co_phonecode" id="co_phonecode">
+								   <select class="form" name="co_phonecode" id="co_phonecode">
 									  <?php foreach($countries as $country) { ?>
 										<?php if($country_id == $country->id) { ?>
-										  <option value="<?php echo $country->id; ?>" selected="selected"selected><?php echo $country->sortname; ?></option>
+										  <option value="<?php echo $country->id; ?>" selected="selected"selected> &nbsp; <?php echo $country->sortname;  ?>&nbsp; (+<?php echo $country->phonecode; ?>)</option>
 										<?php } else { ?>
-										  <option value="<?php echo $country->id; ?>"><?php echo $country->sortname; ?></option>
+										  <option value="<?php echo $country->id; ?>">&nbsp; <?php echo $country->sortname; ?> (+<?php echo $country->phonecode; ?>)</option>
 										<?php } ?>
 									  <?php } ?>
 								   </select>
@@ -1854,6 +1854,9 @@
 				}
 			});
 		}
-	</script>
+      
+   </script>
+
+   
    </body>
 </html>

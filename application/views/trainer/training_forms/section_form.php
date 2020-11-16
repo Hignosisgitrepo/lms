@@ -22,7 +22,7 @@
 		</div>
 	<div class="text-right">
 
-	<button type="button" data-value="3" id="next_button_3"  class="next_button btn btn-primary ">Next</button>
+	<button type="button" data-value="3" id="next_button_3" onclick="getSectionDetails();"  class="next_button btn btn-primary ">Next</button>
 
 
 </div>
