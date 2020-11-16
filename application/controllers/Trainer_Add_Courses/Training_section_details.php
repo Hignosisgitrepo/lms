@@ -21,7 +21,7 @@ class Training_section_details extends UserController {
         $section_id = $_POST['section_id'];
         $section_details_name = $_POST['section_details_name'];
         $section_details_sort_order = $_POST['section_details_sort_order'];
-
+        $section_details_video_time = $_POST['section_details_video_time'];
         if(isset($_FILES['file_']) && $_FILES['file_']['error'] != 1){
             $file_name = $_FILES['file_']['name'];   
             $temp_file_location = $_FILES['file_']['tmp_name']; 
@@ -37,11 +37,10 @@ class Training_section_details extends UserController {
                     'training_section_id' => $section_id,
                     'sub_section_name' => $section_details_name,
                     'video_file_path' => $response['ObjectURL'],
+                    'video_time' => $section_details_video_time,
                     'sort_order' => $section_details_sort_order,
                     'created_by' => $this->global['trainerId'],
-                    'created_date' => date('Y-m-d H:i:s'),
-                    'modified_by' => '0',
-                    'modified_date' => 'NULL',
+                    'created_date' => date('Y-m-d H:i:s')
                 ); 
 
                  $add_section = $this->trainer_model->insert_into_training_section_details($insert_array);

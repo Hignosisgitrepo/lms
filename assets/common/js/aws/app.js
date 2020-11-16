@@ -256,7 +256,7 @@ function showMeeting(e) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    startButton.addEventListener("click", showMeeting);
+    // startButton.addEventListener("click", showMeeting);
 
     // if (isMeetingHost) {
     //         stopButton.addEventListener("click", stop);

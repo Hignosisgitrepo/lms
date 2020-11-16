@@ -75,6 +75,45 @@
         <link type="text/css"
               href="<?php echo $this->config->item('default_url'); ?>/assets/common/css/toastr.css"
               rel="stylesheet">
+	  <style type="text/css">
+
+		.gst20{
+
+			margin-top:20px;
+
+		}
+
+		.list-gpfrm-list a{
+
+			text-decoration: none !important;
+
+		}
+
+		.list-gpfrm li{
+
+			cursor: pointer;
+
+			padding: 4px 0px;
+
+		}
+
+		.list-gpfrm{
+
+			list-style-type: none;
+
+    		background: #fff;
+
+		}
+
+		.list-gpfrm li:hover{
+
+			color: white;
+
+			background-color: #eee;
+
+		}
+
+	</style>
     </head>
 
     <body class="layout-boxed ">
@@ -166,17 +205,11 @@
                             <span class="navbar-text-50">264</span>
                         </small>
                     </span>
-
                     <!-- Navbar Search -->
-
-                    <form class="search-form navbar-search d-none d-md-flex mr-16pt"
-                          action="index.html">
-                        <button class="btn"
-                                type="submit"><i class="material-icons">search</i></button>
-                        <input type="text"
-                               class="form-control"
-                               placeholder="Search ...">
-                    </form>
+					 <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" style="width: 400px" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>search/keyword">
+						<input type="text" class="form-control typeahead" placeholder="Search ..." id="search_box" name="keyword">
+					 </form>
+					 <div id="results" style="display: block; position: absolute; left: 224.5px; top: 70px; width: 410px;z-index:1"><ul class="list-gpfrm" style="margin-left:15px;margin-right:0px;" role="menu" aria-labelledby="dropdownMenu"  id="DropdownCountry"></ul></div>
 
                     <!-- // END Navbar Search -->
 
@@ -185,7 +218,16 @@
                     <!-- Navbar Menu -->
 
                     <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
-
+						
+						<div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"data-toggle="tooltip"
+											 data-title="Messages"
+											 data-placement="bottom"
+											 data-boundary="window" id="cart">
+						   <button class="nav-link btn-flush"
+									type="button">
+								<i class="material-icons">shopping_cart</i>
+							</button>
+						</div>
                         <!-- Notifications dropdown -->
                         <div class="nav-item dropdown dropdown-notifications dropdown-xs-down-full"
                              data-toggle="tooltip"
