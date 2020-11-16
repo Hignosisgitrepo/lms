@@ -213,7 +213,7 @@
          </ul>
          <ul class="nav navbar-nav ml-auto mr-0">
             <div class="nav-item ml-16pt dropdown dropdown-notifications dropdown-xs-down-full"data-toggle="tooltip"
-                                 data-title="Messages"
+                                 data-title="Shopping Cart"
                                  data-placement="bottom"
                                  data-boundary="window" id="cart">
                <button class="nav-link btn-flush"

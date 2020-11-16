@@ -22,7 +22,8 @@ class Checkout extends ClientController {
         if(empty($this->global['userId'])) {
             base_url();
         } else {
-			$this->loadViews('common/checkout', $this->global, $data, NULL);
+            redirect(base_url().'paypal-order-summary');
+			//$this->loadViews('common/checkout', $this->global, $data, NULL);
         }
     }
 }

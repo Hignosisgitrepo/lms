@@ -102,8 +102,8 @@ $route['paypal/express_checkout/DoExpressCheckoutPayment'] = 'payment/paypal/exp
 $route['paypal/express_checkout/OrderComplete'] = 'payment/paypal/express_checkout/OrderComplete';
 $route['paypal/express_checkout/OrderCancelled'] = 'payment/paypal/express_checkout/OrderCancelled';
 
-$route['course-view/(:any)'] = 'customer/mycourses/view/$1';
-$route['mycourses'] = 'customer/mycourses';
+$route['course-view/(:any)'] = 'common/mycourses/view/$1';
+$route['mytrainings'] = 'common/mycourses';
 
 $route['setting'] = 'setting/setting';
 $route['profile'] = 'common/profile';

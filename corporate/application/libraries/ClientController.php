@@ -112,6 +112,14 @@ class ClientController extends CI_Controller {
 	            'children' => array()
 	        );
 	    }
+	    if ($this->hasPermission('access', 'mytrainings')) {
+	        $training_mapping[] = array(
+	            'name'	   => 'My Training',
+	            'short' => 'mytrainings',
+	            'href'     => base_url(). 'mytrainings',
+	            'children' => array()
+	        );
+	    }
 	    
 	    if ($training_mapping) {
 	        $menus[] = array(

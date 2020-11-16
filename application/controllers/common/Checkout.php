@@ -17,7 +17,7 @@ class Checkout extends CI_Controller {
         if(empty($this->session->userdata ('customer_id'))) {
             $this->load->view('common/checkout-login', $data, NULL, NULL);
         } else {
-            $this->load->view('common/checkout', $data, NULL, NULL);
+            redirect(base_url().'paypal-order-summary');
         }
     }
 }

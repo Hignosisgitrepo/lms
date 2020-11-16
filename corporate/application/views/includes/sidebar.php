@@ -130,7 +130,8 @@
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/select2/select2.min.js"></script>
 
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/daterangepicker.js"></script>
-
+		
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!-- toaster -->
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/toastr.min.js"></script>
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/js/toastr.js"></script>
@@ -826,7 +827,7 @@
 							if (data.length >= 0) {
 								var link_search = value['training_name'].split(/\s/).join('+');
 								console.log(link_search);
-								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a onclick="openLink(\''+ link_search +'\');" role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
+								$('#DropdownCountry').append('<li class="list-gpfrm-list" onclick="openLink(\''+ link_search +'\');"><a role="menuitem dropdownCountryli" class="dropdownlivalue">' + value['training_name'] + '</a></li>');
 							} else {
 								$('#DropdownCountry').append('<li class="list-gpfrm-list"><a role="menuitem dropdownCountryli" class="dropdownlivalue">Sorry , No data found!</a></li>');
 							}
