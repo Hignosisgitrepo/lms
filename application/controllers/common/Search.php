@@ -27,6 +27,8 @@ class Search extends CI_Controller {
             $trainer_data = $this->search_model->getTrainerData($result->created_by);
             $program_level_name = $this->common_model->getMaintainanceDetail($result->program_level);
             $data['trainings'][] = array(
+                'discount'    => $result->discount,
+                'price_after_discount'    => $result->price_after_discount,
                 'training_master_id'    => $result->training_master_id,
                 'b64_tmid'    => urlencode(base64_encode($result->training_master_id)),
                 'training_name'    => $result->training_name,
