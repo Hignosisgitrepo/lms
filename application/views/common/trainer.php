@@ -96,15 +96,9 @@
                </span>-->
             <span class="d-none d-lg-block"><?php echo $company_name; ?></span>
          </a>
-         <form class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt"
-            action=""
-            style="max-width: 230px">
-            <button class="btn"
-               type="submit"><i class="material-icons">search</i></button>
-            <input type="text"
-               class="form-control"
-               placeholder="Search ...">
-         </form>
+		 <form autocomplete="off" class="search-form form-control-rounded navbar-search d-none d-lg-flex mr-16pt" style="width: 400px" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>search/keyword">
+			<input autocomplete="off" type="text" class="form-control typeahead" placeholder="Search ..." id="search_box" name="keyword">
+		 </form>
          <ul class="nav navbar-nav d-none d-sm-flex flex justify-content-start ml-8pt">
             <li class="nav-item dropdown">
                <a href="#"
