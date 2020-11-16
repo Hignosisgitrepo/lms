@@ -522,6 +522,7 @@
 						document.getElementById("cart").innerHTML = "";
 						$("#cart").append(html);
 					}
+					$("#cartTraining").remove();
 				},
 				error: function (xhr, ajaxOptions, thrownError) {
 					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
