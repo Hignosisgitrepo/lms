@@ -29,4 +29,10 @@ class Category_model extends CI_Model {
         $result = $query->result();
         return $result;
     }
+    
+    function getCategoryTrainings($category_id) {
+        $query = $this->db->query("SELECT * FROM `training_master` WHERE category_id = '" . $category_id . "'");
+        $result = $query->result();
+        return $result;
+    }
 }
