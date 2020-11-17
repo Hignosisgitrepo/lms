@@ -401,7 +401,7 @@ class Setting extends AdminController {
 	        if ($this->form_validation->run() == false) {
 	            //$this->index();
 	        } else {
-	            $this->setting_model->editSetting($_POST);
+	            $this->setting_model->editSetting($_POST, $this->global['userId']);
                 redirect(base_url().'setting');
 	        }
 	    }
