@@ -20,13 +20,13 @@ class Chime_attendees{
         return $config;
 	}
 
-	public function aws_creating_attendees($training_master_id, $training_section_id, $training_section_detail_id, $meeting_id, $customer_id, $region){
+	public function aws_creating_attendees($training_master_id, $training_schedule_id, $isMeetingHost, $customer_id, $meeting_id, $region){
 
   		$auth = $this->Aws_auth($region);
 
         $meeting = new chime_client($auth);
 
-        $ExternalUserId = $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id.'_'.$meeting_id.'_'.$customer_id;
+        $ExternalUserId = $training_master_id.'_'.$training_schedule_id.'_'.$isMeetingHost.'_'.$customer_id.'_'.$meeting_id;
 
         try {
             $response = $meeting->createAttendee([

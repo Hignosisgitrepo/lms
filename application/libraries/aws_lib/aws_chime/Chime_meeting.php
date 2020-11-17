@@ -28,15 +28,15 @@ class Chime_meeting{
         return $config;
 	}
 
-	public function aws_creating_meeting($training_master_id, $training_section_id, $training_section_detail_id, $customer_id, $region){
+	public function aws_creating_meeting($training_master_id, $training_schedule_id, $isMeetingHost, $customer_id, $region){
 
   		$auth = $this->Aws_auth($region);
 
         $meeting = new chime_client($auth);
 
-        $ClientRequestToken = $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id;
-        $ExternalMeetingId = $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id;
-        $ExternalUserId = $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id.'_'.$customer_id;
+        $ClientRequestToken = $training_master_id.'_'.$training_schedule_id.'_'.$isMeetingHost.'_'.$customer_id;
+        $ExternalMeetingId = $training_master_id.'_'.$training_schedule_id.'_'.$isMeetingHost.'_'.$customer_id;
+        $ExternalUserId = $training_master_id.'_'.$training_schedule_id.'_'.$isMeetingHost.'_'.$customer_id;
 
         $data = [
                 'ClientRequestToken' => $ClientRequestToken,
@@ -44,7 +44,7 @@ class Chime_meeting{
                 'MediaRegion' => $region,
                 'Tags' => [
                     [
-                        'Key' => $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id, 
+                        'Key' => $training_master_id.'_'.$training_schedule_id.'_'.$isMeetingHost.'_'.$customer_id, 
                         'Value' => 'abc', 
                     ]
                 ],
@@ -68,8 +68,8 @@ class Chime_meeting{
             if($MetaData_status_code == 201){ 
                 $insert_meeting_attendees_details = array(
                     'training_master_id'  => $training_master_id,
-                    'training_section_id'  => $training_section_id,
-                    'training_section_detail_id'  => $training_section_detail_id,
+                    'training_schedule_id'  => $training_schedule_id,
+                    'isMeetingHost'  => $isMeetingHost,
                     'MeetingId' => $response['Meeting']['MeetingId'],
                     'customer_id' => $customer_id,
                     'AttendeeId' => $response_att['Attendee']['AttendeeId'],

@@ -1,40 +1,3 @@
-<style>
-	.nav-tabs {
-    border-bottom: none !important;
-}
-
-#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #336683 !important;
-    background-color: #a4d6ef !important;
-    border-color: transparent transparent #f3f3f3;
-}
-#tabs .nav-tabs .nav-link {
-    border: 1px solid transparent;
-    color: #eee;
-    font-size: 20px;
-    background-color: #336683;
-    border: 1px solid #a4d6ef;
-    color: #a4d6ef;
-}
-
-.nav-item {
-    border-radius: 0 !important;
-}
-
-.nav-item:last-child {
-    border-top-right-radius: .5rem !important;
-    border-bottom-right-radius: .5rem !important;
-}
-
-.nav-item:first-child {
-    border-top-left-radius: .5rem !important;
-    border-bottom-left-radius: .5rem !important;
-}
-
-.nav-tabs .nav-link.active{
-   background-color: #a4d6ef !important; 
-}
-</style>
 <div class="mdk-box bg-primary js-mdk-box mb-0" data-effects="blend-background"><div class="mdk-box__bg"></div>
     <div class="mdk-box__content">
         <div class="hero py-64pt text-center text-sm-left">
@@ -96,9 +59,12 @@
 					            <div class="page-separator__text">Table of Contents</div>
 					        </div>
 					        <div class="row mb-0">
-					            <div class="col-lg-7">
+					        	<?php if($course['training_type'] == 'offline') { ?>
+						            <div class='col-lg-7'>
+					            <?php } else { ?>
+					            	<div class='col-lg-12'>
+					            <?php } ?>
 					            <?php if(!empty($section_data)) { ?>
-
 					                <!-- <?php $training_master_id = urlencode(base64_encode($training_details[0]['training_master_id'])); ?> -->
 					                
 
@@ -134,22 +100,17 @@
 					            <?php } else { ?>
 
 					            <?php } ?>
-
-
-
 					            </div>
-
-					            <div class="col-lg-5 justify-content-center">
-
-					                <div class="card">
-					                    <div class="embed-responsive embed-responsive-16by9">
-					                        <div id="container">
-											</div>
-					                    </div>
-					                </div>
-
-					            </div>
-					            
+					            <?php if($course['training_type'] == 'offline') { ?>
+						            <div class="col-lg-5 justify-content-center">
+						                <div class="card">
+						                    <div class="embed-responsive embed-responsive-16by9">
+						                        <div id="container">
+												</div>
+						                    </div>
+						                </div>
+						            </div>
+					            <?php } ?>
 					        </div>
 		                </div>
 		                <?php if($course['training_type'] == 'Online') { ?>
@@ -158,10 +119,15 @@
 	                            <div class="posts-cards mb-24pt">
 
 	                            	<?php foreach($schedule_data as $schedule) { ?>
+	                            		<?php $training_master_id = urlencode(base64_encode($schedule['training_master_id'])); ?>
+                                        <?php $training_schedule_id = urlencode(base64_encode($schedule['training_schedule_id'])); ?>
+                                        <?php $isMeetingHost = urlencode(base64_encode($schedule['isMeetingHost'])); ?>
+                                        <?php $customer_id = urlencode(base64_encode($schedule['customer_id'])); ?>
+                                        <?php $meeting_id = urlencode(base64_encode($schedule['meeting_id'])); ?>
                             			<div class="card posts-card">
 				                            <div class="posts-card__content d-flex align-items-center flex-wrap">
 				                                <div class="avatar avatar-lg mr-3">
-					                                <img src="<?php echo $this->config->item('default_url'); ?>/assets/image/logo.png"" alt="avatar" class="avatar-img rounded">
+					                                <img src="<?php echo $this->config->item('default_url'); ?>/assets/image/logo.png" alt="avatar" class="avatar-img rounded">
 					                            </div>
 				                                <div class="posts-card__title flex d-flex flex-column">
 				                                    <p class="card-title mr-3 text-50"><?php echo $schedule['training_day']; ?></p>
@@ -176,8 +142,8 @@
 				                                    <!-- <small class="text-50">35 views last week</small> -->
 				                                </div>
 				                                <div class="dropdown ml-auto">
-				                                	<!-- <?php echo $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id.'_'.$meeting_id.'_'.$customer_id; ?> -->
-				                                	<button data-value="" class="attend_meeting btn btn-outline-dark mb-16pt mb-sm-0 mr-sm-16pt">Attend meeting <i class="material-icons icon--right">play_circle_outline</i>
+				                                	<!--  -->
+				                                	<button data-value="<?php echo $training_master_id.'_'.$training_schedule_id.'_'.$isMeetingHost.'_'.$customer_id.'_'.$meeting_id; ?>" class="attend_meeting btn btn-outline-dark mb-16pt mb-sm-0 mr-sm-16pt">Attend meeting <i class="material-icons icon--right">play_circle_outline</i>
 				                                    <!-- <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">more_vert</i></a>
 				                                    <div class="dropdown-menu dropdown-menu-right">
 				                                        <a href="javascript:void(0)" class="dropdown-item">Action</a>
