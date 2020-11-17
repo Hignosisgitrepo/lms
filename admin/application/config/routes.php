@@ -43,6 +43,12 @@ $route['setting'] = 'setting/setting';
 $route['save-setting'] = 'setting/setting/save';
 //Settings
 
+//commission
+$route['commission/(:any)'] = 'commission/Commission/getCommissionList/$1';
+$route['add-commission/(:any)'] = 'commission/Commission/add/$1';
+$route['edit-commission/(:any)'] = 'commission/Commission/edit/$1';
+//commission
+
 //General
 $route['profile'] = 'common/profile';
 $route['default_controller'] = 'login';
