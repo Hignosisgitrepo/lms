@@ -33,7 +33,8 @@
 					<div class="row"
 						 role="tablist">
 						<div class="col-auto">
-							<button type="submit" form="form-category" data-toggle="tooltip" title="Save" class="btn btn-outline-success"><?php echo $btn_save; ?></button>
+							<button type="submit" data-toggle="tooltip" title="Save" form="form-category" class="btn btn-outline-success"><i class="fa fa-save"></i></button>
+			                <a href="<?php echo base_url(); ?>categories" data-toggle="tooltip" title="Back" class="btn btn-white"><i class="fa fa-reply"></i></a>
 						</div>
 					</div>
 

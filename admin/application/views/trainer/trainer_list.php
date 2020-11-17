@@ -62,7 +62,7 @@
 													   class="sort"
 													   data-sort="js-lists-values-phonenumber"><?php echo $text_telephone; ?></a>
 												</th>
-												<th style="width: 37px;"><?php echo $text_fullname; ?></th>
+												<th style="width: 37px;"><?php echo $text_status; ?></th>
 												<th class="text-right pl-0">Action</th>
 											</tr>
 										</thead>
@@ -100,7 +100,7 @@
 															<a class="btn btn-warning" data-toggle="tooltip" title="Deactivate">
 																<i class="fa fa-thumbs-down"></i>
 															</a>
-															<a class="btn btn-info" data-toggle="tooltip" title="View Courses">
+															<a class="btn btn-info" data-toggle="tooltip" title="View Courses" href="<?php echo base_url(); ?>view-courses/<?php echo $b64_tid; ?>">
 																<i class="fa fa-code"></i>
 															</a>
 														
