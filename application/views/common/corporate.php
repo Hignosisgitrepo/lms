@@ -6,6 +6,8 @@
    $logo = $logo_img->value;
    $icon_img = setting('config_icon', 'config');
    $icon = $icon_img->value;
+   
+   $categories = $this->common_model->getCategories();
    ?>
 <html lang="en"
    dir="ltr">
@@ -100,34 +102,20 @@
                            <a href="#"
                               class="nav-link dropdown-toggle"
                               data-toggle="dropdown"
-                              data-caret="false">Courses</a>
+                              data-caret="false">Course Categories</a>
                            <div class="dropdown-menu">
-                              <a href="courses.html"
-                                 class="dropdown-item">Browse Courses</a>
-                              <a href="student-course.html"
-                                 class="dropdown-item">Preview Course</a>
-                              <a href="student-lesson.html"
-                                 class="dropdown-item">Preview Lesson</a>
-                              <a href="student-take-course.html"
-                                 class="dropdown-item"><span class="mr-16pt">Take Course</span> <span class="badge badge-notifications badge-accent text-uppercase ml-auto">Pro</span></a>
-                              <a href="student-take-lesson.html"
-                                 class="dropdown-item">Take Lesson</a>
-                              <a href="student-take-quiz.html"
-                                 class="dropdown-item">Take Quiz</a>
-                              <a href="student-quiz-result-details.html"
-                                 class="dropdown-item">Quiz Result</a>
-                              <a href="student-dashboard.html"
-                                 class="dropdown-item">Student Dashboard</a>
-                              <a href="student-my-courses.html"
-                                 class="dropdown-item">My Courses</a>
-                              <a href="student-quiz-results.html"
-                                 class="dropdown-item">My Quizzes</a>
-                              <a href="help-center.html"
-                                 class="dropdown-item">Help Center</a>
+							<?php if(!empty($categories)) { ?>
+							  <?php foreach($categories as $category) { ?>
+								<?php $b64_cid = urlencode(base64_encode($category->category_id)); ?>
+								<a href="<?php echo base_url(); ?>category-trainings/<?php echo $b64_cid; ?>" class="dropdown-item"><?php echo $category->category_name; ?></a>
+							  <?php } ?>
+							 <?php } else { ?>
+								No Categories Available
+							 <?php } ?>
                            </div>
                         </li>
                         <li class="nav-item">
-                           <a href="pricing.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="nav-link">Pricing</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -136,19 +124,19 @@
                               data-toggle="dropdown"
                               data-caret="false">Resources</a>
                            <div class="dropdown-menu">
-                              <a href="instructor-dashboard.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Instructor Dashboard</a>
-                              <a href="instructor-courses.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Manage Courses</a>
-                              <a href="instructor-quizzes.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Manage Quizzes</a>
-                              <a href="instructor-earnings.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Earnings</a>
-                              <a href="instructor-statement.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Statement</a>
-                              <a href="instructor-edit-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Edit Course</a>
-                              <a href="instructor-edit-quiz.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="dropdown-item">Edit Quiz</a>
                            </div>
                         </li>
@@ -366,7 +354,7 @@
                      <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
                         data-toggle="popover"
                         data-trigger="click">
-                        <a href="student-course.html"
+                        <a href="<?php echo base_url(); ?>coming-soon"
                            class="card-img-top js-image"
                            data-position=""
                            data-height="140">
@@ -382,11 +370,11 @@
                         <div class="card-body flex">
                            <div class="d-flex">
                               <div class="flex">
-                                 <a class="card-title"
-                                    href="student-course.html">Learn Sketch</a>
+                                 <a class="<?php echo base_url(); ?>coming-soon"
+                                    href="<?php echo base_url(); ?>coming-soon">Learn Sketch</a>
                                  <small class="text-50 font-weight-bold mb-4pt">Elijah Murray</small>
                               </div>
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -473,7 +461,7 @@
                               </div>
                            </div>
                            <div class="col text-right">
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary">Watch trailer</a>
                            </div>
                         </div>
@@ -483,7 +471,7 @@
                      <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
                         data-toggle="popover"
                         data-trigger="click">
-                        <a href="student-course.html"
+                        <a href="<?php echo base_url(); ?>coming-soon"
                            class="card-img-top js-image"
                            data-position=""
                            data-height="140">
@@ -500,10 +488,10 @@
                            <div class="d-flex">
                               <div class="flex">
                                  <a class="card-title"
-                                    href="student-course.html">Learn Flinto</a>
+                                    href="<?php echo base_url(); ?>coming-soon">Learn Flinto</a>
                                  <small class="text-50 font-weight-bold mb-4pt">Elijah Murray</small>
                               </div>
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -590,7 +578,7 @@
                               </div>
                            </div>
                            <div class="col text-right">
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary">Watch trailer</a>
                            </div>
                         </div>
@@ -600,7 +588,7 @@
                      <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
                         data-toggle="popover"
                         data-trigger="click">
-                        <a href="student-course.html"
+                        <a href="<?php echo base_url(); ?>coming-soon"
                            class="card-img-top js-image"
                            data-position=""
                            data-height="140">
@@ -617,10 +605,10 @@
                            <div class="d-flex">
                               <div class="flex">
                                  <a class="card-title"
-                                    href="student-course.html">Learn Photoshop</a>
+                                    href="<?php echo base_url(); ?>coming-soon">Learn Photoshop</a>
                                  <small class="text-50 font-weight-bold mb-4pt">Elijah Murray</small>
                               </div>
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -707,7 +695,7 @@
                               </div>
                            </div>
                            <div class="col text-right">
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary">Watch trailer</a>
                            </div>
                         </div>
@@ -717,7 +705,7 @@
                      <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary-dodger-blue js-overlay card-group-row__card"
                         data-toggle="popover"
                         data-trigger="click">
-                        <a href="student-course.html"
+                        <a href="<?php echo base_url(); ?>coming-soon"
                            class="card-img-top js-image"
                            data-position=""
                            data-height="140">
@@ -734,10 +722,10 @@
                            <div class="d-flex">
                               <div class="flex">
                                  <a class="card-title"
-                                    href="student-course.html">Learn Figma</a>
+                                    href="<?php echo base_url(); ?>coming-soon">Learn Figma</a>
                                  <small class="text-50 font-weight-bold mb-4pt">Elijah Murray</small>
                               </div>
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -824,7 +812,7 @@
                               </div>
                            </div>
                            <div class="col text-right">
-                              <a href="student-course.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary">Watch trailer</a>
                            </div>
                         </div>
@@ -868,7 +856,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -904,9 +892,9 @@
                               </div>
                            </div>
                            <div class="d-flex align-items-center justify-content-center">
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary mr-8pt">Resume</a>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-outline-secondary ml-0">Start over</a>
                            </div>
                         </div>
@@ -952,7 +940,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -988,9 +976,9 @@
                               </div>
                            </div>
                            <div class="d-flex align-items-center justify-content-center">
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary mr-8pt">Resume</a>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-outline-secondary ml-0">Start over</a>
                            </div>
                         </div>
@@ -1036,7 +1024,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -1072,9 +1060,9 @@
                               </div>
                            </div>
                            <div class="d-flex align-items-center justify-content-center">
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary mr-8pt">Resume</a>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-outline-secondary ml-0">Start over</a>
                            </div>
                         </div>
@@ -1122,7 +1110,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -1158,9 +1146,9 @@
                               </div>
                            </div>
                            <div class="d-flex align-items-center justify-content-center">
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary mr-8pt">Resume</a>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-outline-secondary ml-0">Start over</a>
                            </div>
                         </div>
@@ -1206,7 +1194,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -1242,9 +1230,9 @@
                               </div>
                            </div>
                            <div class="d-flex align-items-center justify-content-center">
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary mr-8pt">Resume</a>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-outline-secondary ml-0">Start over</a>
                            </div>
                         </div>
@@ -1290,7 +1278,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  data-toggle="tooltip"
                                  data-title="Add Favorite"
                                  data-placement="top"
@@ -1326,9 +1314,9 @@
                               </div>
                            </div>
                            <div class="d-flex align-items-center justify-content-center">
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-primary mr-8pt">Resume</a>
-                              <a href="undefinedstudent-path.html"
+                              <a href="<?php echo base_url(); ?>coming-soon"
                                  class="btn btn-outline-secondary ml-0">Start over</a>
                            </div>
                         </div>
@@ -1368,20 +1356,20 @@
                                     data-toggle="tooltip"
                                     data-placement="top"
                                     title="Janell D.">
-                                    <a href=""><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/256_luke-porter-261779-unsplash.jpg"
+                                    <a href="<?php echo base_url(); ?>coming-soon"><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/256_luke-porter-261779-unsplash.jpg"
                                        alt="Avatar"
                                        class="avatar-img rounded-circle"></a>
                                  </div>
                               </div>
                               <a style="text-decoration: none;"
                                  class="d-flex align-items-center"
-                                 href=""><i class="material-icons mr-1"
+                                 href="<?php echo base_url(); ?>coming-soon"><i class="material-icons mr-1"
                                  style="font-size: inherit;">remove_red_eye</i> <small>327</small></a>
                            </div>
                            <div class="posts-card-popular__title card-body">
                               <small class="text-muted text-uppercase">sketch</small>
                               <a class="card-title"
-                                 href="">Merge Duplicates Inconsistent Symbols</a>
+                                 href="<?php echo base_url(); ?>coming-soon">Merge Duplicates Inconsistent Symbols</a>
                            </div>
                         </div>
                      </div>
@@ -1400,20 +1388,20 @@
                                     data-toggle="tooltip"
                                     data-placement="top"
                                     title="Janell D.">
-                                    <a href=""><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/256_michael-dam-258165-unsplash.jpg"
+                                    <a href="<?php echo base_url(); ?>coming-soon"><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/256_michael-dam-258165-unsplash.jpg"
                                        alt="Avatar"
                                        class="avatar-img rounded-circle"></a>
                                  </div>
                               </div>
                               <a style="text-decoration: none;"
                                  class="d-flex align-items-center"
-                                 href=""><i class="material-icons mr-1"
+                                 href="<?php echo base_url(); ?>coming-soon"><i class="material-icons mr-1"
                                  style="font-size: inherit;">remove_red_eye</i> <small>327</small></a>
                            </div>
                            <div class="posts-card-popular__title card-body">
                               <small class="text-muted text-uppercase">invision</small>
                               <a class="card-title"
-                                 href="">Design Systems Essentials</a>
+                                 href="<?php echo base_url(); ?>coming-soon">Design Systems Essentials</a>
                            </div>
                         </div>
                      </div>
@@ -1432,20 +1420,20 @@
                                     data-toggle="tooltip"
                                     data-placement="top"
                                     title="Janell D.">
-                                    <a href=""><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/256_rsz_1andy-lee-642320-unsplash.jpg"
+                                    <a href="<?php echo base_url(); ?>coming-soon"><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/256_rsz_1andy-lee-642320-unsplash.jpg"
                                        alt="Avatar"
                                        class="avatar-img rounded-circle"></a>
                                  </div>
                               </div>
                               <a style="text-decoration: none;"
                                  class="d-flex align-items-center"
-                                 href=""><i class="material-icons mr-1"
+                                 href="<?php echo base_url(); ?>coming-soon"><i class="material-icons mr-1"
                                  style="font-size: inherit;">remove_red_eye</i> <small>327</small></a>
                            </div>
                            <div class="posts-card-popular__title card-body">
                               <small class="text-muted text-uppercase">photoshop</small>
                               <a class="card-title"
-                                 href="">Semantic Logo Design</a>
+                                 href="<?php echo base_url(); ?>coming-soon">Semantic Logo Design</a>
                            </div>
                         </div>
                      </div>
@@ -1455,12 +1443,12 @@
                   <div class="card posts-card mb-0">
                      <div class="posts-card__content d-flex align-items-center flex-wrap">
                         <div class="avatar avatar-lg mr-3">
-                           <a href="blog-post.html"><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/paths/invision_200x168.png"
+                           <a href="<?php echo base_url(); ?>coming-soon"><img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/paths/invision_200x168.png"
                               alt="avatar"
                               class="avatar-img rounded"></a>
                         </div>
                         <div class="posts-card__title flex d-flex flex-column">
-                           <a href="blog-post.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="card-title mr-3">Design Systems Essentials</a>
                            <small class="text-50">35 views last week</small>
                         </div>
@@ -1499,7 +1487,7 @@
                                  </div>
                               </div>
                               <div class="media-body">
-                                 <a href="">+2 more</a>
+                                 <a href="<?php echo base_url(); ?>coming-soon">+2 more</a>
                               </div>
                            </div>
                         </div>
@@ -1522,14 +1510,14 @@
                      </div>
                      <div class="media ml-12pt">
                         <div class="media-left mr-12pt">
-                           <a href="student-profile.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="avatar avatar-sm">
                               <!-- <img src="public/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
                               <span class="avatar-title rounded-circle">UK</span>
                            </a>
                         </div>
                         <div class="media-body media-middle">
-                           <a href="student-profile.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="card-title">Umberto Kass</a>
                            <div class="rating mt-4pt">
                               <span class="rating__item"><span class="material-icons">star</span></span>
@@ -1549,14 +1537,14 @@
                      </div>
                      <div class="media ml-12pt">
                         <div class="media-left mr-12pt">
-                           <a href="student-profile.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="avatar avatar-sm">
                               <!-- <img src="public/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
                               <span class="avatar-title rounded-circle">UK</span>
                            </a>
                         </div>
                         <div class="media-body media-middle">
-                           <a href="student-profile.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="card-title">Umberto Kass</a>
                            <div class="rating mt-4pt">
                               <span class="rating__item"><span class="material-icons">star</span></span>
@@ -1576,14 +1564,14 @@
                      </div>
                      <div class="media ml-12pt">
                         <div class="media-left mr-12pt">
-                           <a href="student-profile.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="avatar avatar-sm">
                               <!-- <img src="public/images/people/110/guy-.jpg" width="40" alt="avatar" class="rounded-circle"> -->
                               <span class="avatar-title rounded-circle">UK</span>
                            </a>
                         </div>
                         <div class="media-body media-middle">
-                           <a href="student-profile.html"
+                           <a href="<?php echo base_url(); ?>coming-soon"
                               class="card-title">Umberto Kass</a>
                            <div class="rating mt-4pt">
                               <span class="rating__item"><span class="material-icons">star</span></span>
@@ -1611,9 +1599,9 @@
             </p>
             <p class="measure-lead-max text-white-50 small mr-8pt">Luma is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard, Curriculum Management, Earnings and Reporting, ERP, HR, CMS, Tasks, Projects, eCommerce and more.</p>
             <p class="mb-8pt d-flex">
-               <a href=""
+               <a href="<?php echo base_url(); ?>coming-soon"
                   class="text-white-70 text-underline mr-8pt small">Terms</a>
-               <a href=""
+               <a href="<?php echo base_url(); ?>coming-soon"
                   class="text-white-70 text-underline small">Privacy policy</a>
             </p>
             <p class="text-white-50 small mt-n1 mb-0">Copyright 2019 &copy; All rights reserved.</p>

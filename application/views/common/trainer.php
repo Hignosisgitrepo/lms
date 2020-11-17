@@ -6,6 +6,7 @@
    $logo = $logo_img->value;
    $icon_img = setting('config_icon', 'config');
    $icon = $icon_img->value;
+   $categories = $this->common_model->getCategories();
    ?>
 <html lang="en"
    dir="ltr">
@@ -106,28 +107,14 @@
                   data-toggle="dropdown"
                   data-caret="false">Course Cateogories</a>
                <div class="dropdown-menu">
-                  <a href="courses.html"
-                     class="dropdown-item">Browse Courses</a>
-                  <a href="student-course.html"
-                     class="dropdown-item">Preview Course</a>
-                  <a href="student-lesson.html"
-                     class="dropdown-item">Preview Lesson</a>
-                  <a href="student-take-course.html"
-                     class="dropdown-item"><span class="mr-16pt">Take Course</span> <span class="badge badge-notifications badge-accent text-uppercase ml-auto">Pro</span></a>
-                  <a href="student-take-lesson.html"
-                     class="dropdown-item">Take Lesson</a>
-                  <a href="student-take-quiz.html"
-                     class="dropdown-item">Take Quiz</a>
-                  <a href="student-quiz-result-details.html"
-                     class="dropdown-item">Quiz Result</a>
-                  <a href="student-dashboard.html"
-                     class="dropdown-item">Student Dashboard</a>
-                  <a href="student-my-courses.html"
-                     class="dropdown-item">My Courses</a>
-                  <a href="student-quiz-results.html"
-                     class="dropdown-item">My Quizzes</a>
-                  <a href="help-center.html"
-                     class="dropdown-item">Help Center</a>
+				<?php if(!empty($categories)) { ?>
+				  <?php foreach($categories as $category) { ?>
+					<?php $b64_cid = urlencode(base64_encode($category->category_id)); ?>
+					<a href="<?php echo base_url(); ?>category-trainings/<?php echo $b64_cid; ?>" class="dropdown-item"><?php echo $category->category_name; ?></a>
+				  <?php } ?>
+				 <?php } else { ?>
+					No Categories Available
+				 <?php } ?>
                </div>
             </li>
             <li class="nav-item">
