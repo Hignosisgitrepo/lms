@@ -38,7 +38,7 @@ class User_model extends CI_Model {
     function addUser($data = array(), $user_id) {
         $this->db->trans_start();
         
-        $this->db->query("INSERT INTO `user` SET username = '" . $data['email_id'] . "', password = '" . $data['password'] . "', email = '" . $data['email_id'] . "', first_name = '" . $data['first_name'] . "', last_name = '" . $data['last_name'] . "', phone_no = '" . $data['phone_no'] . "', user_group_id = '" . $data['usergroup_id'] . "', status = '1', created_date = Now(), created_by = '" . $user_id . "'");
+        $this->db->query("INSERT INTO `user` SET username = '" . $data['email_id'] . "', password = '" . $data['password'] . "', email = '" . $data['email_id'] . "', first_name = '" . $data['first_name'] . "', last_name = '" . $data['last_name'] . "', phone_no = '" . $data['phone_no'] . "', user_group_id = '" . $data['usergroup_id'] . "', status = '1', created_date = Now(), created_by = '" . $user_id . "', image = ''");
         
         $insert_id = $this->db->insert_id();
         
@@ -91,14 +91,14 @@ class User_model extends CI_Model {
      
      function saveData($data = array(), $user_id) {
          $this->db->trans_start();
-         $this->db->query("INSERT INTO user SET username = '" . $data['username'] . "', password = '" . $data['password'] . "', email = '" . $data['email'] . "', name = '" . $data['name'] . "', phone_no = '" . $data['phone_no'] . "', user_group_id = '" . $data['user_group_id'] . "', status = '" . $data['status'] . "', created_date = NOW(), created_by = '" . $user_id . "'");
+         $this->db->query("INSERT INTO user SET username = '" . $data['username'] . "', password = '" . $data['password'] . "', email = '" . $data['email'] . "', name = '" . $data['name'] . "', phone_no = '" . $data['phone_no'] . "', user_group_id = '" . $data['user_group_id'] . "', status = '" . $data['status'] . "', created_date = NOW(), created_by = '" . $user_id . "', image = ''");
          
          $this->db->trans_complete();
      }
      
      function editData($data = array(), $user_id) {
          $this->db->trans_start();
-         $this->db->query("UPDATE `user` SET first_name = '" . $data['first_name'] . "', last_name = '" . $data['last_name'] . "', phone_no = '" . $data['phone_no'] . "', modified_date = Now(), modified_by = '" . $user_id . "' WHERE user_id = '" . $data['user_id'] . "'");
+         $this->db->query("UPDATE `user` SET first_name = '" . $data['first_name'] . "', last_name = '" . $data['last_name'] . "', phone_no = '" . $data['phone_no'] . "', modified_date = Now(), modified_by = '" . $user_id . "', image = '' WHERE user_id = '" . $data['user_id'] . "'");
                   
          $this->db->trans_complete();
      }
