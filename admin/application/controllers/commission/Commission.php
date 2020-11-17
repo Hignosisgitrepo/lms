@@ -64,7 +64,7 @@ class Commission extends AdminController {
                     'commission_id' => $res->commission_id,
                     'trainer_id' => $res->trainer_id,
                     'platform_commission' => $res->platform_commission,
-					'commission_start_date' => $res->commission_start_date,
+	                'commission_start_date' => date("m-d-Y", strtotime($res->commission_start_date)),
 					'status' => $res->comm_status
 	               
 	            );

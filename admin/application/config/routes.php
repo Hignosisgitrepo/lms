@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //trainers
 $route['trainers'] = 'trainer/trainer';
 $route['trainer-schedule'] = 'trainer/schedule';
+$route['view-courses/(:any)'] = 'trainer/trainer/getCourseList/$1';
 //trainers
 
 //category

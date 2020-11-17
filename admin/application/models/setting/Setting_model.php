@@ -8,7 +8,7 @@ class Setting_model extends CI_Model {
         return $result; 
     }
     
-    function editSetting($data = array()) {
+    function editSetting($data = array(), $user_id) {
         //print_r($data);
         $this->db->trans_start();
         $code = "config";
@@ -45,7 +45,7 @@ class Setting_model extends CI_Model {
                 $file_name = $path['file_name'];
             }
         }
-        $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = 'config_logo', `value` = '" . $file_name . "'");
+        $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = 'config_logo', `value` = '" . $file_name . "', created_by = '" . $user_id . "', created_date = NOW(), modified_by = '" . $user_id . "', modified_date = NOW()");
         if($_FILES['config_icon']['name'] == ''){
             if (isset($icon_image)) {
                 $file_name = $icon_image->value;
@@ -75,16 +75,16 @@ class Setting_model extends CI_Model {
                 $file_name = $path['file_name'];
             }
         }
-        $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = 'config_icon', `value` = '" . $file_name . "'");
+        $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = 'config_icon', `value` = '" . $file_name . "', created_by = '" . $user_id . "', created_date = NOW(), modified_by = '" . $user_id . "', modified_date = NOW()");
         
         foreach ($data as $key => $value) {
             if (substr($key, 0, strlen($code)) == $code) {
                 if (!is_array($value)) {
-                    $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = '" . $key . "', `value` = '" . $value . "'");
+                    $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = '" . $key . "', `value` = '" . $value . "', created_by = '" . $user_id . "', created_date = NOW(), modified_by = '" . $user_id . "', modified_date = NOW()");
                 } else {
                    // echo "iff2";
                     
-                    $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = '" . $key . "', `value` = '" . json_encode($value, true) . "'");
+                    $this->db->query("INSERT INTO setting SET project_id = '0', `code` = '" . $code . "', `key` = '" . $key . "', `value` = '" . json_encode($value, true) . "', created_by = '" . $user_id . "', created_date = NOW(), modified_by = '" . $user_id . "', modified_date = NOW()");
                 }
             }
         }

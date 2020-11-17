@@ -95,12 +95,7 @@
 														</div>
 
 													</td>
-													<td>
-
-														<a href=""
-														   class="chip chip-outline-secondary"><?php echo $res['status_name']; ?></a>
-
-													</td>
+													<td><?php echo $res['status_name']; ?></td>
 													<td>
 														<?php $b64_cid = urlencode(base64_encode($res['category_id'])); ?>
 														<a type="button" class="btn btn-dark" href="<?php echo base_url().'edit-category/'.$b64_cid; ?>">
