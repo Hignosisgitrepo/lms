@@ -55,6 +55,8 @@ $route['paypal/express_checkout/OrderCancelled'] = 'payment/paypal/express_check
 $route['course-view/(:any)'] = 'customer/mycourses/view/$1';
 $route['mycourses'] = 'customer/mycourses';
 $route['corporate-request'] = 'corporate';
+
+$route['category-trainings/(:any)'] = 'category/trainings/getList/$1';
 $route['general-setup'] = 'home/setup';
 $route['logout'] = 'home/logout';
 $route['login'] = 'login';
