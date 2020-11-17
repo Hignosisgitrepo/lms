@@ -31,7 +31,7 @@ class Search extends ClientController {
             $program_level_name = $this->common_model->getMaintainanceDetail($result['program_level']);
             $data['trainings'][] = array(
                 'discount'    => $result['discount'],
-                'price_after_discount'    => $result['price_after_discount'],
+                'price_after_discount'    => $currency_data->currency_symbol . ' ' . $result['price_after_discount'],
                 'training_master_id'    => $result['training_master_id'],
                 'b64_tmid'    => urlencode(base64_encode($result['training_master_id'])),
                 'training_name'    => $result['training_name'],

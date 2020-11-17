@@ -12,7 +12,7 @@
 				<div class="container page__container">
 					<h1 class="text-white"><?php echo $training_name; ?></h1>
 					<p class="lead text-white-50 measure-hero-lead"><?php echo $category_data[0]->description; ?></p>
-					<div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
+					<div class="d-flex flex-column flex-sm-row align-items-center justify-content-start" id="cartTraining">
 						<?php if($item_status == 0) { ?>
 						   <a onclick="addToCart('<?php echo $training_master_id; ?>');" class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Add to Cart&nbsp;&nbsp;<i class="fa fa-shopping-cart"></i></a>
 						<?php } else { ?>

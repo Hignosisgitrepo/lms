@@ -25,14 +25,6 @@
 				</div>
 			</div>
 
-			<div class="row"
-				 role="tablist">
-				<div class="col-auto">
-					<a href=""
-					   class="btn btn-outline-secondary">Shopping Cart</a>
-				</div>
-			</div>
-
 		</div>
 	</div>
 
@@ -48,16 +40,15 @@
 				  <div class="card posts-card">
 					<div class="posts-card__content d-flex  flex-wrap">
 						<div class="avatar avatar-lg mr-3">
-							<a href=""><img src="<?php echo $item['training_image']; ?>"
+							<img src="<?php echo $item['training_image']; ?>"
 									 alt="avatar"
-									 class="avatar-img rounded"></a>
+									 class="avatar-img rounded">
 						</div>
-						<div class="posts-card__title flex d-flex flex-column">
-							<a href=""
-							   class="card-title mr-3"><?php echo $item['training_name']; ?></a>
+						<div class="posts-card__title flex d-flex flex-column" style="max-width:500px">
+							<strong><?php echo $item['training_name']; ?></strong>
 							<small class="text-50">By <?php echo $item['trainer_name']; ?></small>
 						</div>
-						<div class="d-flex align-items-center flex-column flex-sm-row posts-card__meta">
+						<div class="d-flex align-items-center flex-column flex-sm-row posts-card__meta" style="margin:15px">
 							
 							<div class="media mr-2 ml-sm-auto align-items-center">
 								<div class="media-left mr-2 avatar-group">
@@ -68,8 +59,8 @@
 							
 						</div>
 						
-						<div class="mr-3 text-right text-50 text-uppercase posts-card__tag d-flex align-items-right">
-							<small><a onclick="deleteCart('<?php echo $item['cart_id']; ?>');">
+						<div class="mr-3 text-right text-50 text-uppercase posts-card__tag d-flex align-items-right" style="margin:15px">
+							<small><a onclick="deleteCart('<?php echo $item['cart_id']; ?>');" class="btn btn-danger">
 									
 							<i class="fa fa-times" aria-hidden="true"></i>
 									
