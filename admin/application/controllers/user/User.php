@@ -125,7 +125,7 @@ class User extends AdminController {
 	        $json['err_emailid'] = $this->lang->line('err_emailid');
 	        $err++;
 	    } else {
-	        if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,10}$/i", $data['email_id'])) {
+	        if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,10}$/i", $data['email_id'])) {
 	            $json['err_emailid'] = $this->lang->line('err_invalidmail');
 	            $err++;
 	        } else {
