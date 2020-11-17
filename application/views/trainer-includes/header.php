@@ -61,9 +61,9 @@ html[dir].dark-mode .border-bottom-2 {
               rel="stylesheet">
 
         <!-- Dark Mode CSS -->
-        <link type="text/css"
+       <!--  <link type="text/css"
               href="<?php echo $this->config->item('default_url'); ?>/assets/common/css/dark.css"
-              rel="stylesheet">
+              rel="stylesheet"> -->
 
         <!-- Custom CSS -->
         <link type="text/css"

@@ -17,10 +17,9 @@ class Dashboard extends UserController {
 		
 	    $data = array();
 	    $this->global['xyz'] = "123";
-	    $customer_data = $this->common_model->getCustomerData($this->global['customerId']);
-	    
-	    
-	    //print_r($this->global);exit;
+	    // $customer_data = $this->common_model->getCustomerData($this->global['customerId']);
+
+	    // print_r($data);exit;
 	    $this->loadViews("customer/dashboard", $this->global, $data, NULL);
 	}
 }

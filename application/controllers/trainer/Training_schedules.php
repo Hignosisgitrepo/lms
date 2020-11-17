@@ -42,11 +42,11 @@ class Training_schedules extends UserController {
 			}
 			
 			if($res->training_status == 0) {
-				$status = 'Not Started';
+				$status_word = 'Not Started';
 			} elseif($res->training_status == 1) {
-				$status = 'In Progress';
+				$status_word = 'In Progress';
 			} elseif($res->training_status == 2) {
-				$status = 'Completed';
+				$status_word = 'Completed';
 			}
 			
             $data['schedule_list'][] = array(
@@ -58,12 +58,13 @@ class Training_schedules extends UserController {
                 'end_time' => $res->end_time,
                 'training_status' => $res->training_status,
                 'training_day' => $day,
-                'status' => $status
+                'status' => $res->training_status,
+                'status_word' => $status_word,
             );
         }
 		
 		
-		//print_r($data['schedule_list']);exit;
+		// print_r($data['schedule_list']);exit;
 	    $this->global['menu'] = 123;
 	    //print_r($this->global);exit;
 	    $this->loadTrainerViews("trainer/schedule/training-schedules", $this->global, $data, NULL);
