@@ -2,6 +2,8 @@
 
 $lang['text_title'] = 'Trainers';
 $lang['text_list'] = 'Trainer List';
+$lang['text_course_view'] = 'Trainer Course List';
+$lang['text_course_viewtitle'] = 'Course View';
 
 $lang['text_enquirytitle'] = 'Corporate Enquiries';
 $lang['text_enquirylist'] = 'Corporate Enquiries List';

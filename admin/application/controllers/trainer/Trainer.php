@@ -87,4 +87,51 @@ class Trainer extends AdminController {
 	    
 	    echo json_encode($json);
 	}
+    
+    public function getCourseList($b64_tid = NULL) {
+		$this->global['pageTitle'] = $this->lang->line('text_course_viewtitle');
+		$this->global['menus'] = $this->menuCreation();
+        if (is_null($b64_tid)) {
+            redirect(base_url());
+        }
+		$data['text_list'] = $this->lang->line('text_course_viewtitle');
+		$data['text_trainerlist'] = $this->lang->line('text_list');
+		$data['text_dashboard'] = $this->lang->line('text_dashboard');
+		$trainer_id = base64_decode(urldecode($b64_tid));
+		$results = $this->trainer_model->getTrainingCourses($trainer_id);
+		$data['trainings'] = array();
+        
+        foreach($results as $result) {
+            $category_data = $this->trainer_model->getTrainingCategoryData($result->category_id);
+            $training_concepts = $this->trainer_model->getTopTrainingConcepts($result->training_master_id);
+            $currency_data = $this->common_model->getCurrency($result->currency_id);
+            $trainer_data = $this->trainer_model->getTrainerData($result->created_by);
+            $program_level_name = $this->common_model->getMaintainanceDetail($result->program_level);
+            $data['trainings'][] = array(
+                'discount'    => $result->discount,
+                'price_after_discount'    => $currency_data->currency_symbol . ' ' . $result->price_after_discount,
+                'training_master_id'    => $result->training_master_id,
+                'b64_tmid'    => urlencode(base64_encode($result->training_master_id)),
+                'training_name'    => $result->training_name,
+                'training_description'    => $result->training_description,
+                'owner'    => $result->owner,
+                'category_id'    => $result->category_id,
+                'program_level'    => $result->program_level,
+                'training_type'    => $result->training_type,
+                'currency_id'    => $result->currency_id,
+                'created_by'    => $result->created_by,
+                'category_name'    => $category_data[0]->category_name,
+                'price'    => $currency_data->currency_symbol . ' ' . $result->price,
+                'trainer_name'    => $trainer_data[0]->first_name . ' ' . $trainer_data[0]->last_name,
+                'concepts'    => $training_concepts,
+                'program_level_name'    => $program_level_name->maintainance_value,
+                'course_duration'    => $result->course_duration,
+                'session_duration'    => $result->session_duration,
+                'no_of_sessions'    => $result->no_of_sessions,
+                'training_image'    => $result->training_image
+            );
+        }
+		
+		$this->loadViews('trainer/course-list', $this->global, $data, NULL , NULL);
+    }
 }

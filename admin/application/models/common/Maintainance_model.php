@@ -5,7 +5,7 @@ class Maintainance_model extends CI_Model {
     function addMaintainance($data = array(), $id) {
         $this->db->trans_start();
         
-        $this->db->query("INSERT INTO `maintainance` SET maintainance_name = '" . $data['maintainance_name'] . "', created_by = '" . $id . "', created_date = NOW()");
+        $this->db->query("INSERT INTO `maintainance` SET maintainance_name = '" . $data['maintainance_name'] . "', client_id = 0, created_by = '" . $id . "', created_date = NOW()");
         
         $maintainance_id = $this->db->insert_id();
         
@@ -22,7 +22,7 @@ class Maintainance_model extends CI_Model {
     function editMaintainance($data = array(), $maintainance_id, $id) {
         $this->db->trans_start();
         
-        $this->db->query("UPDATE `maintainance` SET maintainance_name = '" . $data['maintainance_name'] . "', modified_by = '" . $id . "', modified_date = NOW() WHERE maintainance_id = '" . $maintainance_id . "'");
+        $this->db->query("UPDATE `maintainance` SET maintainance_name = '" . $data['maintainance_name'] . "', client_id = 0, modified_by = '" . $id . "', modified_date = NOW() WHERE maintainance_id = '" . $maintainance_id . "'");
         
         $this->db->query("DELETE FROM `maintainance_detail` WHERE maintainance_id = '" . $maintainance_id . "'");
         
