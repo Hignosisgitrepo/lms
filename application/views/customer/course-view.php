@@ -77,9 +77,9 @@
 	
     <div class="container page__container">
     	<div class="flex" style="max-width: 100%">
-		    <div class="card mb-0">
+		    <div class="mb-0">
 		        <div class="card-body">
-		            <ul class="nav nav-pills nav-justified">
+		            <ul class="card-title nav nav-pills nav-justified">
 		            	<?php if($course['training_type'] == 'Online') { ?>
 			                <li class="nav-item">
 			                    <a class="nav-link active" data-toggle="tab" href="#course_deatils">Course Deatils</a>
@@ -154,71 +154,46 @@
 		                </div>
 		                <?php if($course['training_type'] == 'Online') { ?>
 			                <div id="course_schedules" class="tab-pane">
-			                	<div class="table-responsive" data-toggle="lists" data-lists-sort-by="js-lists-values-from" data-lists-sort-desc="true" data-lists-values="[&quot;js-lists-values-name&quot;, &quot;js-lists-values-status&quot;, &quot;js-lists-values-policy&quot;, &quot;js-lists-values-reason&quot;, &quot;js-lists-values-days&quot;, &quot;js-lists-values-available&quot;, &quot;js-lists-values-from&quot;, &quot;js-lists-values-to&quot;]">
 
-                                <table class="table mb-0 thead-border-top-0 table-nowrap">
-                                    <thead>
-                                        <tr>
+	                            <div class="posts-cards mb-24pt">
 
-                                          <!--   <th style="width: 18px;" class="pr-0">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#leaves" id="customCheckAllleaves">
-                                                    <label class="custom-control-label" for="customCheckAllleaves"><span class="text-hide">Toggle all</span></label>
-                                                </div>
-                                            </th> -->
+	                            	<?php foreach($schedule_data as $schedule) { ?>
+                            			<div class="card posts-card">
+				                            <div class="posts-card__content d-flex align-items-center flex-wrap">
+				                                <div class="avatar avatar-lg mr-3">
+					                                <img src="<?php echo $this->config->item('default_url'); ?>/assets/image/logo.png"" alt="avatar" class="avatar-img rounded">
+					                            </div>
+				                                <div class="posts-card__title flex d-flex flex-column">
+				                                    <p class="card-title mr-3 text-50"><?php echo $schedule['training_day']; ?></p>
+				                                    <!-- <small class="text-50">35 views last week</small> -->
+				                                </div>
+				                                <div class="posts-card__title flex d-flex flex-column">
+				                                    <p class="card-title mr-3 text-50"><i class="material-icons text-muted-light mr-1">schedule</i> <?php echo $schedule['date']; ?> <?php echo $schedule['start_time']; ?></p>
+				                                    <!-- <small class="text-50">35 views last week</small> -->
+				                                </div>
+				                                <div class="posts-card__title flex d-flex flex-column">
+				                                    <p class="card-title mr-3 text-50"><?php echo $schedule['status']; ?></p>
+				                                    <!-- <small class="text-50">35 views last week</small> -->
+				                                </div>
+				                                <div class="dropdown ml-auto">
+				                                	<!-- <?php echo $training_master_id.'_'.$training_section_id.'_'.$training_section_detail_id.'_'.$meeting_id.'_'.$customer_id; ?> -->
+				                                	<button data-value="" class="attend_meeting btn btn-outline-dark mb-16pt mb-sm-0 mr-sm-16pt">Attend meeting <i class="material-icons icon--right">play_circle_outline</i>
+				                                    <!-- <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted"><i class="material-icons">more_vert</i></a>
+				                                    <div class="dropdown-menu dropdown-menu-right">
+				                                        <a href="javascript:void(0)" class="dropdown-item">Action</a>
+				                                        <a href="javascript:void(0)" class="dropdown-item">Other Action</a>
+				                                        <div class="dropdown-divider"></div>
+				                                        <a href="javascript:void(0)" class="dropdown-item">Some Other Action</a>
+				                                    </div> -->
+				                                </div>
+				                            </div>
+					                    </div>
+									<?php } ?>
 
-                                            <th style="width: 18px;">
-                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-name">Sl No</a>
-                                            </th>
-                                            <th>
-                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-status">Day</a>
-                                            </th>
-                                            <th>
-                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-status">Date</a>
-                                            </th>
-                                            <th style="width: 48px;">
-                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-policy">Start Time</a>
-                                            </th>
-                                            <th style="width: 150px;">
-                                                <a href="javascript:void(0)" class="sort" data-sort="js-lists-values-reason">Status</a>
-                                            </th>
-                                            <th style="width: 24px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="list" id="leaves">
-										<?php foreach($schedule_data as $schedule) { ?>
-										<tr>
-											<td >
-												<small><strong class="js-lists-values-name text-50"><?php echo $schedule['ctr']; ?></strong></small>
-											</td>
-											<td>
-												<small><strong class="js-lists-values-name text-50"><?php echo $schedule['training_day']; ?></strong></small>
-											</td>
-											<td>
-												<small><strong class="js-lists-values-name text-50"><?php echo $schedule['date']; ?></strong></small>
-											</td>
-											<td>
-												<small><strong class="js-lists-values-name text-50"><?php echo $schedule['start_time']; ?></strong></small>
-											</td>
-											<td>
-												<small><strong class="js-lists-values-name text-50"><?php echo $schedule['status']; ?></strong></small>
-											</td>
-											<td>
-												<?php if($schedule['training_status'] == 0) { ?>
-														<small><strong class="js-lists-values-name text-50">Start Training</strong></small>
-												<?php } else if($schedule['training_status'] == 1) { ?>
-													In Progress
-												<?php } else if($schedule['training_status'] == 2) { ?>
-													Completed
-												<?php } ?>
-											</td>
-										</tr>
+			                       
 
-									  <?php } ?>
-
-                                    </tbody>
-                                </table>
-                            </div>               	
+			                        
+			                    </div>              	
 			                </div>
 			            <?php } ?>
 		            </div>
