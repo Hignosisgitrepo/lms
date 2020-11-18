@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require APPPATH . '/libraries/BaseController.php';
+require APPPATH . '/libraries/ClientController.php';
 
-class Common extends BaseController {
+class Common extends ClientController {
 
 	public function __construct() {
 	    Parent::__construct();
