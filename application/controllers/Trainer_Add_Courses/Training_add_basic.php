@@ -109,7 +109,7 @@ class Training_add_basic extends UserController {
                     
                     
                     $total = $start_seconds + $session_time;
-                    $end_time = date('h:i:s a', strtotime(gmdate("H:i:s", $total)));
+                    $end_time = date('h:i:s', strtotime(gmdate("H:i:s", $total)));
                     $this->trainer_model->populate_schedule($add_basic_details['insert_id'], $start_date, $start_time, $end_time, $no_of_sessions);
                     
                     //Tarakant ends
