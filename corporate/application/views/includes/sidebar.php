@@ -1038,6 +1038,101 @@
 
 	
     </script>
+	<script>
+		$(window).on('load', function() {
+			changeCity();
+			changeCurrency();
+		});
+	</script>
+
+	<script type="text/javascript"><!--
+		function changeCurrency() {
+			var currency_id = document.getElementById("config_currency").value;
+			if(currency_id){
+				$.ajax({
+					type:'POST',
+					url:'<?php echo base_url(); ?>common/common/getCurrency',
+					data:{currency_id: currency_id},
+					dataType: 'json',
+					success:function(json){
+						document.getElementById("currency_symbol").value = json['currency_symbol'];
+
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+					}
+				});
+			}
+		}
+	//--></script>
+	<script>
+			function changeCity() {
+				var state_id = document.getElementById("config_state").value;
+				if(state_id){
+					$.ajax({
+						type:'POST',
+						url:'<?php echo base_url(); ?>common/common/getCity',
+						data:{state_id: state_id},
+						dataType: 'json',
+						success:function(json){
+							html = '<option value=""><?php echo $text_select; ?></option>';
+
+							if (json['city'] && json['city'] != '') {
+								for (i = 0; i < json['city'].length; i++) {
+									html += '<option value="' + json['city'][i]['id'] + '">' + json['city'][i]['name'] + '</option>';
+									if (json['city'][i]['id'] == '<?php echo $config_city; ?>') {
+										html += '<option value="' + json['city'][i]['id'] + '" selected="selected">' + json['city'][i]['name'] + '</option>';
+									}
+								}
+							} else {
+								html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
+							}
+							$('select[name=\'config_city\']').html(html);
+
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+						}
+					});
+				}
+			}
+		</script>
+		<script type="text/javascript"><!--
+			$('select[name=\'config_country\']').on('change', function() {
+				var country_id = $(this).val();
+				if(country_id){
+					$.ajax({
+						type:'POST',
+						url:'<?php echo base_url(); ?>common/common/getState',
+						data:{country_id: country_id},
+						dataType: 'json',
+						success:function(json){
+							console.log(json['states']);
+							html = '<option value=""><?php echo $text_select; ?></option>';
+							if (json['states'] && json['states'] != '') {
+								for (i = 0; i < json['states'].length; i++) {
+									html += '<option value="' + json['states'][i]['id'] + '">' + json['states'][i]['name'] + '</option>';
+									if (json['states'][i]['id'] == '<?php echo $config_state; ?>') {
+										html += '<option value="' + json['states'][i]['id'] + '" selected="selected">' + json['states'][i]['name'] + '</option>';
+									}
+								}
+							} else {
+								html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
+							}
+
+							$('select[name=\'config_state\']').html(html);
+							
+							document.getElementById("config_city").value = '';
+
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+						}
+					});
+				}
+			});
+			$('select[name=\'config_country\']').trigger('change');
+		//--></script>
     </body>
 
 </html>
