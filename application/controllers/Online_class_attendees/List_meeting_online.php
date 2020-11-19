@@ -24,7 +24,7 @@ class List_meeting_online extends UserController {
        $customer_data = $this->common_model->getCustomerData($this->global['customerId']);
        
        $results = $this->trainer_model->get_student_trainer_data($customer_data->training_master_id); 
-
+       // print_r($results); exit;
         foreach($results as $res) {
             $get_course_category = $this->category_model->getCategoryData($res->category_id);
             $get_currency = $this->common_model->getCurrency($res->currency_id);
@@ -60,7 +60,7 @@ class List_meeting_online extends UserController {
 
             
         }
-        
+        print_r($data); exit;
         $this->loadViews("online_class_attendees/list_online_meeting_attendees", $this->global, $data, NULL);
     }
 }

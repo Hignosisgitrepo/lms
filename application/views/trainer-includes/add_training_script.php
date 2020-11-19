@@ -1,5 +1,5 @@
 
-     <script typ"text/javascript">
+     <script type="text/javascript">
 			$(document).ready(function() {
 				
 

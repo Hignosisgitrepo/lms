@@ -64,7 +64,7 @@ class TestSound {
 }
 
 var startButton = document.getElementById("join_meeting");
-var stopButton = document.getElementById("stop-button");
+var stopButton = document.getElementById("button-meeting-end");
 
 var urlParams = new URLSearchParams(window.location.search);
 
@@ -256,11 +256,11 @@ function showMeeting(e) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    // startButton.addEventListener("click", showMeeting);
+    startButton.addEventListener("click", showMeeting);
 
-    // if (isMeetingHost) {
-    //         stopButton.addEventListener("click", stop);
-    //     }
+    //if (isMeetingHost) {
+        stopButton.addEventListener("click", stop);
+    //}
     start();
 });
 
@@ -554,5 +554,5 @@ async function contentShareStop() {
             videoFile.pause();
             videoFile.style.display = 'none';
         }
-    }
+}
 

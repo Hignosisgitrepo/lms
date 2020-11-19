@@ -1,28 +1,7 @@
-<!-- <div class="pt-32pt">
-	<div class="container_fulid page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
-		<div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
 
-			<div class="mb-24pt mb-sm-0 mr-sm-24pt">
-				<h2 class="mb-0">Start Meeting</h2>
-				<ol class="breadcrumb p-0 m-0">
-					<li class="breadcrumb-item"><a href="<?php echo site_url('trainer-dashboard'); ?>">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Start Meeting</li>
-				</ol>
-
-			</div>
-		</div>
-	</div>
-</div> -->
-
-<!-- Page Content -->
 
  <div id="available_devices" class="page__container">
     <div class="page-section">
-<!-- 
-        <div class="page-separator">
-            <div class="page-separator__text">Online Courses</div>
-        </div>
- -->
         <div class="row">
 			<?php if(!empty($meeting_data)) { ?>
 	              <?php $meeting_id = urlencode(base64_encode($meeting_data['meeting_id'])); ?>

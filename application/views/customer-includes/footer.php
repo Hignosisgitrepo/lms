@@ -82,7 +82,7 @@
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/vendor/toastr.min.js"></script>
         <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/js/toastr.js"></script>
 
-        <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/js/aws/app.js"></script>
+        <!-- <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/js/aws/app.js"></script> -->
 
         <!-- Tables -->
         <script src="<?php echo base_url('assets/common/js/toggle-check-all.js'); ?>"></script>

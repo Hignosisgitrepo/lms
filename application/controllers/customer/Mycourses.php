@@ -14,6 +14,7 @@ class Mycourses extends UserController {
         $this->load->model('common/search_model');
         $this->load->model('common/common_model');
         $this->load->model('customer/order_model');
+        $this->load->model('trainer/trainer_model');
     }
 	
 	public function index() {
@@ -41,8 +42,7 @@ class Mycourses extends UserController {
 	            'training_image'   => $this->config->item('default_url').'/assets/common/images/paths/angular_40x40@2x.png',
 	            'training_start_date'   => $course_data[0]->training_start_date,
 	            'training_start_time'   => $course_data[0]->training_start_time,
-	            'training_started'   => $course_data[0]->training_started
-	            
+	            'training_started'   => $course_data[0]->training_started	            
 	        );
 	        
 	        $data['orders'][] = array(
@@ -115,13 +115,19 @@ class Mycourses extends UserController {
 	    }
 	    
 		$data['schedule_data'] = array();
-	    if($course_data[0]->training_type == 'Online') {
+	    if($course_data[0]->training_type == 'Online') {	        
 	        
-	        
-	        $trainer_schedules = $this->search_model->getTrainingSchedules($course_data[0]->training_master_id);
+	        $trainer_schedules = $this->trainer_model->getTrainingSchedules($course_data[0]->training_master_id);
+
+
+
+
 	        
 	        $count = 1;
 	        foreach($trainer_schedules as $trainer_schedule) {
+	        	
+	        	$get_meeting_id = $this->trainer_model->get_meeting_id($course_data[0]->training_master_id, $trainer_schedule->training_schedule_id);
+
 	            if($trainer_schedule->day == 0) {
 	                $day = 'Sunday';
 	            } elseif($trainer_schedule->day == 1) {
@@ -147,18 +153,23 @@ class Mycourses extends UserController {
 	            }
 	            $data['schedule_data'][] = array(
 	                'ctr'   => $count,
-	                'training_section_id' => $trainer_schedule->date,
+	                'training_master_id' => $trainer_schedule->training_master_id,
+                	'training_schedule_id' => $trainer_schedule->training_schedule_id,
 	                'section_name' => $trainer_schedule->day,
-	                'sort_order' => $trainer_schedule->start_time,
-	                'sort_order' => $trainer_schedule->end_time,
-	                'sort_order' => $trainer_schedule->training_status,
+	                'date' 	=> $trainer_schedule->date,
+	                'start_time' => $trainer_schedule->start_time,
+	                'status' => $trainer_schedule->end_time,
+	                'training_status' => $trainer_schedule->training_status,
 	                'training_day' => $day,
-	                'status' => $status
+	                'status' => $status,
+	                'isMeetingHost' => 0,
+	                'customer_id' => $this->global['customerId'],
+	                'meeting_id' => isset($get_meeting_id[0]->MeetingId) ? $get_meeting_id[0]->MeetingId : ''
 	            );
 	            $count ++;
 	        }
 	    }
 	    
-	    $this->loadViews("customer/course-view", $this->global, $data, NULL);
+	    $this->loadViews("customer/course-view", $this->global, $data, "attend_meeting_script", NULL);
 	}
 }
