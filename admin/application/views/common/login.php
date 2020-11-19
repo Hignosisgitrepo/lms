@@ -44,7 +44,7 @@
 
         <!-- Preloader -->
         <link type="text/css"
-              href="<?php echo $this->config->item('default_url'); ?>/assets/common/css/preloader.css'"
+              href="<?php echo $this->config->item('default_url'); ?>/assets/common/css/preloader.css"
               rel="stylesheet">
 
         <!-- App CSS -->
