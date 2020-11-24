@@ -15,8 +15,8 @@ html[dir].dark-mode .border-bottom-2 {
     border-bottom-color:#e3e3ea!important;
 }
 </style>
-    <head>
-        <meta charset="utf-8">
+    <head><meta charset="windows-1252">
+        
         <meta http-equiv="X-UA-Compatible"
               content="IE=edge">
         <meta name="viewport"
@@ -61,9 +61,9 @@ html[dir].dark-mode .border-bottom-2 {
               rel="stylesheet">
 
         <!-- Dark Mode CSS -->
-        <link type="text/css"
+        <!--<link type="text/css"
               href="<?php echo $this->config->item('default_url'); ?>/assets/common/css/dark.css"
-              rel="stylesheet">
+              rel="stylesheet">-->
 
         <!-- Custom CSS -->
         <link type="text/css"
@@ -168,7 +168,7 @@ html[dir].dark-mode .border-bottom-2 {
 					
 					<!-- Sidebar Content -->
 
-                        <div class="d-flex align-items-center navbar-height">
+                        <!--<div class="d-flex align-items-center navbar-height">
                             <form action=""
                                   class="search-form search-form--black mx-16pt pr-0 pl-16pt">
                                 <input type="text"
@@ -177,7 +177,7 @@ html[dir].dark-mode .border-bottom-2 {
                                 <button class="btn"
                                         type="submit"><i class="material-icons">search</i></button>
                             </form>
-                        </div>
+                        </div>-->
                     <!-- // END Navbar Brand -->
 
                     <!--<span class="d-none d-md-flex align-items-center mr-16pt">

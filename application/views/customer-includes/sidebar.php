@@ -42,13 +42,13 @@
                                     <span class="sidebar-menu-text">Home</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item">
+                            <!--<li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
                                    href="<?php echo base_url(); ?>coming-soon">
                                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">local_library</span>
                                     <span class="sidebar-menu-text">Browse Courses</span>
                                 </a>
-                            </li>
+                            </li>-->
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
                                    href="<?php echo base_url(); ?>mycourses">
@@ -57,13 +57,13 @@
                                 </a>
                             </li>
 
-                            <li class="sidebar-menu-item">
+                            <!--<li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
                                    href="<?php echo site_url(); ?>online-meeting-attendees-list">
                                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">face</span>
                                     <span class="sidebar-menu-text">Online Classes</span>
                                 </a>
-                            </li>
+                            </li>-->
 
 
                         <!-- // END Sidebar Content -->

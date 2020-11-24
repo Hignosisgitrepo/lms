@@ -14,11 +14,11 @@
             </div>
         </div>
         <div class="row"
-			 role="tablist">
-			<div class="col-auto">
-				<a href="<?php echo base_url(); ?>trainer-dashboard" data-toggle="tooltip" title="Back" class="btn btn-white"><i class="fa fa-reply"></i></a>
-			</div>
-		</div>
+role="tablist">
+<div class="col-auto">
+<a href="<?php echo base_url(); ?>trainer-dashboard" data-toggle="tooltip" title="Back" class="btn btn-white"><i class="fa fa-reply"></i></a>
+</div>
+</div>
 
     </div>
 </div>
@@ -57,7 +57,7 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="flex">
-                                        <a class="card-title mb-4pt" href="<?php echo base_url(); ?>coming-soon"><?php echo $result['category_name']; ?> (<?php echo $result['training_type']; ?>)</a> 
+                                        <a class="card-title mb-4pt" href="<?php echo base_url(); ?>coming-soon"><?php echo $result['category_name']; ?> (<?php echo $result['training_type']; ?>)</a>
                                     </div>
                                     <a href="<?php echo base_url(); ?>coming-soon" class="ml-4pt material-icons text-20 card-course__icon-favorite">edit</a>
                                 </div>
@@ -134,24 +134,24 @@
                             </div>
                             <div class="col text-right">
                                 <a href="<?php echo site_url('view_course_details'); ?>/<?php echo $result['training_master_id']; ?>" class="btn btn-primary">View course</a>
-								
-	                            <?php if($result['training_type'] == 'Online') { ?>
-								  <a href="<?php echo base_url('training-schedules/' . $b64_tmid); ?>" class="btn btn-info">View Schedules</a>
-								<?php } ?>
+
+                           <!--<?php if($result['training_type'] == 'Online') { ?>
+ <a href="<?php echo base_url('training-schedules/' . $b64_tmid); ?>" class="btn btn-info">View Schedules</a>
+<?php } ?>-->
                             </div>
                         </div>
 
                     </div>
 
                 </div>
-                
+               
                 <?php endforeach; ?>
             <?php } else { ?>
               <div class="page-separator">
                         <div class="page-separator__text">No Courses</div>
                     </div>
             <?php } ?>
-            
+           
 
         </div>
 

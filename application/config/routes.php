@@ -37,6 +37,7 @@ $route['view_course_details/(:any)'] = 'Trainer_View_Courses/View_courses/view_m
 $route['view_meeting_course/(:any)/(:any)/(:any)/(:any)'] = 'Online_class_attendees/View_meeting_course/view_my_course/$1/$2/$3/$4';
 
 // Start Meeting
+$route['start_trainer_meeting/(:any)/(:any)/(:any)/(:any)'] = 'Start_meeting/Start_meeting/create_trainer_meeting_session/$1/$2/$3/$4';
 $route['start_meeting/(:any)/(:any)/(:any)/(:any)'] = 'Start_meeting/Start_meeting/create_meeting_session/$1/$2/$3/$4';
 
 $route['search/(:any)'] = 'common/search/index/$1';

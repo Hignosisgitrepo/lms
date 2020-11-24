@@ -309,9 +309,9 @@ class Trainer_model extends CI_Model {
     
     function add_meeting_details($data) {
         
-        $query = "INSERT INTO trainer_meetings (training_master_id, training_section_id, training_section_detail_id, MeetingId, ExternalMeetingId, AudioHostUrl, AudioFallbackUrl, ScreenDataUrl, ScreenSharingUrl, ScreenViewingUrl, SignalingUrl, TurnControlUrl, MediaRegion, effectiveUri) VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO trainer_meetings (training_master_id, training_schedule_id, isMeetingHost, MeetingId, ExternalMeetingId, AudioHostUrl, AudioFallbackUrl, ScreenDataUrl, ScreenSharingUrl, ScreenViewingUrl, SignalingUrl, TurnControlUrl, MediaRegion, effectiveUri) VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?)";
         
-        $result = $this->db->query($query, array($data['training_master_id'], $data['training_section_id'], $data['training_section_detail_id'], $data['MeetingId'], $data['ExternalMeetingId'], $data['AudioHostUrl'], $data['AudioFallbackUrl'], $data['ScreenDataUrl'], $data['ScreenSharingUrl'], $data['ScreenViewingUrl'], $data['SignalingUrl'],$data['TurnControlUrl'], $data['MediaRegion'], $data['effectiveUri']));
+        $result = $this->db->query($query, array($data['training_master_id'], $data['training_schedule_id'], $data['isMeetingHost'], $data['MeetingId'], $data['ExternalMeetingId'], $data['AudioHostUrl'], $data['AudioFallbackUrl'], $data['ScreenDataUrl'], $data['ScreenSharingUrl'], $data['ScreenViewingUrl'], $data['SignalingUrl'],$data['TurnControlUrl'], $data['MediaRegion'], $data['effectiveUri']));
         
         return $result;
         
@@ -367,9 +367,9 @@ class Trainer_model extends CI_Model {
     
     function add_meeting_attendees_details($data) {
         
-        $query = "INSERT INTO meeting_attendees (MeetingId, customer_id, training_master_id, training_section_id, training_section_detail_id, AttendeeId, JoinToken, ExternalUserId, effectiveUri) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO meeting_attendees (MeetingId, customer_id, training_master_id, training_schedule_id, isMeetingHost, AttendeeId, JoinToken, ExternalUserId, effectiveUri) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $result = $this->db->query($query, array($data['MeetingId'], $data['customer_id'], $data['training_master_id'], $data['training_section_id'], $data['training_section_detail_id'], $data['AttendeeId'], $data['JoinToken'], $data['ExternalUserId'], $data['effectiveUri']));
+        $result = $this->db->query($query, array($data['MeetingId'], $data['customer_id'], $data['training_master_id'], $data['training_schedule_id'], $data['isMeetingHost'], $data['AttendeeId'], $data['JoinToken'], $data['ExternalUserId'], $data['effectiveUri']));
 
         return $result;
 
@@ -383,12 +383,12 @@ class Trainer_model extends CI_Model {
 
         return $result->result();
     }
+    
+    function get_meeting_id($training_master_id, $training_schedule_id) {
 
-    function get_meeting_id($training_master_id, $training_section_id, $training_section_detail_id) {
+        $query = "SELECT  TM.* FROM trainer_meetings TM WHERE TM.training_master_id = ? AND TM.training_schedule_id = ?";
 
-        $query = "SELECT  TM.* FROM trainer_meetings TM WHERE TM.training_master_id = ? AND TM.training_section_id = ? AND TM.training_section_detail_id = ?";
-
-        $result = $this->db->query($query, array($training_master_id, $training_section_id, $training_section_detail_id));
+        $result = $this->db->query($query, array($training_master_id, $training_schedule_id));
 
         return $result->result();
     }
@@ -420,6 +420,19 @@ class Trainer_model extends CI_Model {
         return $result->result();
     }
 
+    public function update_table($tablename, $array, $columnname, $value) {
+        $this->db->where($columnname,$value);
+        $this->db->update($tablename,$array);
+    }
+
+    public function get_from_table($tablename,$columnname,$value){
+        
+        return $this->db->select('*')
+                        ->from($tablename)
+                        ->where($columnname,$value)
+                        ->get()
+                        ->result();
+    }
     
     
 }

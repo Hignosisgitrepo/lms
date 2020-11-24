@@ -10,7 +10,7 @@
    <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
       <div class="flex d-flex flex-column flex-sm-row align-items-center mb-24pt mb-md-0">
          <div class="mb-24pt mb-sm-0 mr-sm-24pt">
-            <h2 class="mb-0"><?php echo $text_form; ?></h2>
+            <h2 class="mb-0"><?php echo $text_list; ?></h2>
             <ol class="breadcrumb p-0 m-0">
                <li class="breadcrumb-item"><a href="<?php echo base_url().'dashboard'; ?>"><?php echo $text_dashboard; ?></a></li>
 			   <li class="breadcrumb-item"><a href="<?php echo base_url().'roles'; ?>"><?php echo $pageTitle; ?></a></li>
@@ -23,7 +23,7 @@
       <div class="row"
          role="tablist">
          <div class="col-auto">
-             <button type="submit" form="form-role" data-toggle="tooltip" title="Save" class="btn btn-outline-success"><i class="fa fa-save"></i></button>
+             <button type="submit" data-toggle="tooltip" title="Save" form="form-role" class="btn btn-outline-success"><i class="fa fa-save"></i></button>
 			<a href="<?php echo base_url(); ?>roles" data-toggle="tooltip" title="Back" class="btn btn-white"><i class="fa fa-reply"></i></a>
          </div>
       </div>
@@ -63,15 +63,15 @@
 							<h6 class="card-title m-b-20"><?php echo $entry_module; ?></h6>
 							<hr>
 							<div class="m-b-30">
-								<ul class="list-group notification-list">
-								  <?php foreach($permissions as $permission): ?>
-									<li class="list-group-item">
+								<?php foreach($permissions as $permission): ?>
+								  <div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 										<?php $replace = str_replace('_', ' ', $permission);
 											  $new_string = str_replace('/(:any)', '', $replace); ?>
 											  
 											<?php $word = str_replace('/(:any)', '', $permission);
 													$mystring = $access; ?>
-										<label class="form-label mb-0"  for="<?php echo $word; ?>"><?php echo $word; ?></label>
+										<label class="col-lg-5 col-form-label"  for="<?php echo $word; ?>"><?php echo $word; ?></label>
 										<div class="custom-control custom-checkbox-toggle custom-control-inline mr-1">
 													<?php if(!empty($access)) { 
 													  if(strpos($mystring, $word) !== false){ ?>
@@ -84,9 +84,9 @@
 										  <?php } ?>
 											<label class="custom-control-label" for="<?php echo $word; ?>"></label>
 										</div>
-									</li>
-								  <?php endforeach; ?>
-								</ul>
+									</div>
+								  </div>
+								<?php endforeach; ?>
 							</div>    
 						  </div>
 						</div>

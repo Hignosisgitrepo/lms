@@ -52,6 +52,8 @@ class Trainer extends AdminController {
 	        foreach($results as $res) {
 	            if($res->approve_status == 1) {
 	                $status_name = 'Approved';
+	            } else if($res->approve_status == 2) {
+	                $status_name = 'Deactivate';
 	            } else {
 	                $status_name = 'New';
 	            }
@@ -81,7 +83,6 @@ class Trainer extends AdminController {
 	    $data = array(
 	        'trainer_id' => $this->input->post('trainer_id')
 	    );
-	    
 	    $this->trainer_model->activateTrainer($data, $this->global['userId']);
         $json['success'] = $this->lang->line('text_addsuccesss');
 	    

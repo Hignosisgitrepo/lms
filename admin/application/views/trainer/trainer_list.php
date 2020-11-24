@@ -92,12 +92,12 @@
 													
 													<?php $b64_cid = urlencode(base64_encode($res['customer_id'])); ?>
 														<?php $b64_tid = urlencode(base64_encode($res['trainer_id'])); ?>
-														<?php if($res['active_status'] == 0) { ?>
+														<?php if($res['active_status'] == 0){ ?>
 															<button type="button" class="btn btn-primary" onclick="activateTrainer('<?php echo $res['trainer_id']; ?>');" data-toggle="tooltip" title="Activate">
 																<i class="fa fa-thumbs-up"></i>
 															</button>
-														<?php } else { ?>
-															<a class="btn btn-warning" data-toggle="tooltip" title="Deactivate">
+														<?php } else if($res['active_status'] == 1) { ?>
+															<a class="btn btn-warning" data-toggle="tooltip" title="Deactivate" onclick="activateTrainer('<?php echo $res['trainer_id']; ?>');">
 																<i class="fa fa-thumbs-down"></i>
 															</a>
 															<a class="btn btn-info" data-toggle="tooltip" title="View Courses">
@@ -106,7 +106,18 @@
 														
 															<a  href="<?php echo base_url().'commission/'.$b64_cid; ?>" class="btn btn-success">
 															<i class="fa fa-percent"></i>
-                                        </a>
+															</a>
+														<?php } else if ($res['active_status'] == 2) { ?>
+															<button type="button" class="btn btn-primary" onclick="activateTrainer('<?php echo $res['trainer_id']; ?>');" data-toggle="tooltip" title="Activate">
+																<i class="fa fa-thumbs-up"></i>
+															</button>
+															<a class="btn btn-info" data-toggle="tooltip" title="View Courses">
+																<i class="fa fa-code"></i>
+															</a>
+														
+															<a  href="<?php echo base_url().'commission/'.$b64_cid; ?>" class="btn btn-success">
+															<i class="fa fa-percent"></i>
+															</a>
 														<?php } ?>
 													</td>
 												</tr>
@@ -126,22 +137,3 @@
 				</div>
 
 			</div>
-<script>
-	function activateTrainer(trainer_id) {
-		var url_path = '<?php echo base_url(); ?>trainers';
-		$.ajax({
-			url: '<?php echo base_url(); ?>trainer/trainer/activateTrainer',
-			method: 'POST',
-			data: {trainer_id: trainer_id},
-			dataType: 'json',	
-			success: function(json){
-				if(json['success']) {
-					window.location = url_path;
-				}			
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-			}
-		});
-	}
-</script>

@@ -63,15 +63,15 @@
 							<h6 class="card-title m-b-20"><?php echo $entry_module; ?></h6>
 							<hr>
 							<div class="m-b-30">
-								<ul class="list-group notification-list">
-								  <?php foreach($permissions as $permission): ?>
-									<li class="list-group-item">
+								<?php foreach($permissions as $permission): ?>
+								  <div class="row">
+									<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
 										<?php $replace = str_replace('_', ' ', $permission);
 											  $new_string = str_replace('/(:any)', '', $replace); ?>
 											  
 											<?php $word = str_replace('/(:any)', '', $permission);
 													$mystring = $access; ?>
-										<label class="form-label mb-0"  for="<?php echo $word; ?>"><?php echo $word; ?></label>
+										<label class="col-lg-5 col-form-label"  for="<?php echo $word; ?>"><?php echo $word; ?></label>
 										<div class="custom-control custom-checkbox-toggle custom-control-inline mr-1">
 													<?php if(!empty($access)) { 
 													  if(strpos($mystring, $word) !== false){ ?>
@@ -84,9 +84,9 @@
 										  <?php } ?>
 											<label class="custom-control-label" for="<?php echo $word; ?>"></label>
 										</div>
-									</li>
-								  <?php endforeach; ?>
-								</ul>
+									</div>
+								  </div>
+								<?php endforeach; ?>
 							</div>    
 						  </div>
 						</div>

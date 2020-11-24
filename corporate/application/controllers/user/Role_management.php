@@ -72,7 +72,7 @@ class Role_management extends ClientController {
             if (empty($data['user_group_name'])){
                 $msg = $this->lang->line('err_msg');
             } else {
-                $rolename= $this->user_model->getTotalRole($data['user_group_name']);
+                $rolename= $this->user_model->getTotalRole($data['user_group_name'], $this->global['client_id']);
                 //print_r($postname->total);
                 if (($rolename->total) >= 1){
                     $msg = $this->lang->line('err_duplicate');

@@ -124,7 +124,8 @@ class Training_section extends UserController {
        $tid=$this->input->post('training_master_id');
         $results= $this->trainer_model->get_training_section($tid);
         //print_r($results);exit;
-        
+        $get_training_master_details = $this->trainer_model->get_training_master_details($tid);
+        $json['training_type'] = $get_training_master_details[0]->training_type;
         
         foreach($results as $res) {
             

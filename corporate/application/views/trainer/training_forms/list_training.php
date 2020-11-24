@@ -46,7 +46,7 @@
 	            <div class="col-sm-6 col-md-4 col-xl-3">
 
 	                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary js-overlay mdk-reveal js-mdk-reveal" data-force-reveal="" data-partial-height="44" data-toggle="popover" data-trigger="click" data-original-title="" title="" data-domfactory-upgraded="mdk-reveal,overlay" style="height: 212px;">
-	                    <a href="instructor-edit-course.html" class="js-image" data-position="center" data-height="auto" data-domfactory-upgraded="image" style="display: block; position: relative; overflow: hidden; background-image: url(&quot;http://luma.humatheme.com/public/images/paths/angular_430x168.png&quot;); background-size: cover; background-position: center center; height: 168px;">
+	                    <a class="js-image" data-position="center" data-height="auto" data-domfactory-upgraded="image" style="display: block; position: relative; overflow: hidden; background-image: url(&quot;http://luma.humatheme.com/public/images/paths/angular_430x168.png&quot;); background-size: cover; background-position: center center; height: 168px;">
 	                        <img src="../../public/images/paths/angular_430x168.png" alt="course" style="visibility: hidden;">
 	                        <!-- <span class="overlay__content align-items-start justify-content-start">
 	                            <span class="overlay__action card-body d-flex align-items-center">
@@ -59,9 +59,9 @@
 	                        <div class="card-body">
 	                            <div class="d-flex">
 	                                <div class="flex">
-	                                    <a class="card-title mb-4pt" href="instructor-edit-course.html"><?php echo $result['category_name']; ?> (<?php echo $result['training_type']; ?>)</a> 
+	                                    <a class="card-title mb-4pt"><?php echo $result['category_name']; ?> (<?php echo $result['training_type']; ?>)</a> 
 	                                </div>
-	                                <a href="instructor-edit-course.html" class="ml-4pt material-icons text-20 card-course__icon-favorite">edit</a>
+	                                <!--<a href="instructor-edit-course.html" class="ml-4pt material-icons text-20 card-course__icon-favorite">edit</a>-->
 	                            </div>
 	                            <div class="d-flex">
 	                                <div class="rating flex">

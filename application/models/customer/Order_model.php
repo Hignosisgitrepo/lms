@@ -26,23 +26,17 @@ class Order_model extends CI_Model {
 				}
 			}
 		}
-
 		// Gift Voucher
 		$this->load->model('extension/total/voucher');
-
 		// Vouchers
 		if (isset($data['vouchers'])) {
 			foreach ($data['vouchers'] as $voucher) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "order_voucher SET order_id = '" . (int)$order_id . "', description = '" . $this->db->escape($voucher['description']) . "', code = '" . $this->db->escape($voucher['code']) . "', from_name = '" . $this->db->escape($voucher['from_name']) . "', from_email = '" . $this->db->escape($voucher['from_email']) . "', to_name = '" . $this->db->escape($voucher['to_name']) . "', to_email = '" . $this->db->escape($voucher['to_email']) . "', voucher_theme_id = '" . (int)$voucher['voucher_theme_id'] . "', message = '" . $this->db->escape($voucher['message']) . "', amount = '" . (float)$voucher['amount'] . "'");
-
 				$order_voucher_id = $this->db->getLastId();
-
 				$voucher_id = $this->model_extension_total_voucher->addVoucher($order_id, $voucher);
-
 				$this->db->query("UPDATE " . DB_PREFIX . "order_voucher SET voucher_id = '" . (int)$voucher_id . "' WHERE order_voucher_id = '" . (int)$order_voucher_id . "'");
 			}
 		}
-
 		// Totals
 		if (isset($data['totals'])) {
 			foreach ($data['totals'] as $total) {

@@ -46,8 +46,8 @@
 	            <div class="col-sm-6 col-md-4 col-xl-3">
 
 	                <div class="card card-sm card--elevated p-relative o-hidden overlay overlay--primary js-overlay mdk-reveal js-mdk-reveal" data-force-reveal="" data-partial-height="44" data-toggle="popover" data-trigger="click" data-original-title="" title="" data-domfactory-upgraded="mdk-reveal,overlay" style="height: 212px;">
-	                    <a href="instructor-edit-course.html" class="js-image" data-position="center" data-height="auto" data-domfactory-upgraded="image" style="display: block; position: relative; overflow: hidden; background-image: url(&quot;<?php echo $result['image']; ?>&quot;); background-size: cover; background-position: center center; height: 168px;">
-	                        <img src="../../public/images/paths/angular_430x168.png" alt="course" style="visibility: hidden;">
+	                    <a href="instructor-edit-course.html" class="js-image" data-position="center" data-height="auto" data-domfactory-upgraded="image" style="display: block; position: relative; overflow: hidden; background-image: url(&quot;<?php echo $this->config->item('default_url'); ?>/assets/common/images/paths/angular_430x168.png&quot;); background-size: cover; background-position: center center; height: 168px;">
+	                        <img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/paths/angular_430x168.png" alt="course" style="visibility: hidden;">
 	                        <!-- <span class="overlay__content align-items-start justify-content-start">
 	                            <span class="overlay__action card-body d-flex align-items-center">
 	                                <i class="material-icons mr-4pt">edit</i>
@@ -79,7 +79,7 @@
 	                <div class="popoverContainer d-none">
 	                    <div class="media">
 	                        <div class="media-left mr-12pt">
-	                            <img src="<?php echo $result['image']; ?>" width="40" height="40" alt="Angular" class="rounded">
+	                            <img src="<?php echo $this->config->item('default_url'); ?>/assets/common/images/people/50/guy-6.jpg" width="40" height="40" alt="Angular" class="rounded">
 	                        </div>
 	                        <div class="media-body">
 	                            <div class="card-title mb-0"><?php echo $result['category_name']; ?></div>

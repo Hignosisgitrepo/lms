@@ -67,7 +67,7 @@
                                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">face</span>
                                     <span class="sidebar-menu-text">Online Classes</span>
                                 </a>
-                            </li> -->
+                            </li>
 
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
@@ -82,7 +82,7 @@
                                     <span class="material-icons sidebar-menu-icon sidebar-menu-icon--left">trending_up</span>
                                     <span class="sidebar-menu-text">Performance</span>
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
 
                         <!-- // END Sidebar Content -->

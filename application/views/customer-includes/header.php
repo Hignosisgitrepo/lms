@@ -29,8 +29,8 @@
 <html lang="en"
       dir="ltr">
 
-    <head>
-        <meta charset="utf-8">
+    <head><meta charset="windows-1252">
+        
         <meta http-equiv="X-UA-Compatible"
               content="IE=edge">
         <meta name="viewport"
@@ -151,7 +151,7 @@
 
 					<!-- Sidebar Content -->
 
-					<div class="d-flex align-items-center navbar-height">
+					<!--<div class="d-flex align-items-center navbar-height">
 						<form action="index.html"
 							  class="search-form search-form--white mx-16pt pr-0 pl-16pt">
 							<input type="text"
@@ -160,7 +160,7 @@
 							<button class="btn"
 									type="submit"><i class="material-icons">search</i></button>
 						</form>
-					</div>
+					</div>-->
 
                     <!--<span class="d-none d-md-flex align-items-center mr-16pt">
 

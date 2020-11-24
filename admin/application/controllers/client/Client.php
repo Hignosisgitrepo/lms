@@ -95,6 +95,7 @@ class Client extends AdminController {
 	                'created_date' => $res->created_date
 	            );
 	        }
+	        //print_R($data['clients']);exit;
 	        
 	        $this->loadViews("client/client_list", $this->global, $data, NULL , NULL);
 	    } else {

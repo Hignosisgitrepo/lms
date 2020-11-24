@@ -88,5 +88,25 @@
         <!-- App Settings (safe to remove) -->
         <!-- <script src="<?php echo $this->config->item('default_url'); ?>/assets/common/js/app-settings.js"></script> -->
     </body>
+	
+<script>
+	function activateTrainer(trainer_id) {
+		var url_path = '<?php echo base_url(); ?>trainers';
+		$.ajax({
+			url: '<?php echo base_url(); ?>trainer/trainer/activateTrainer',
+			method: 'POST',
+			data: {trainer_id: trainer_id},
+			dataType: 'json',	
+			success: function(json){
+				if(json['success']) {
+					window.location = url_path;
+				}			
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
+		});
+	}
+</script>
 
 </html>

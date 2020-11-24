@@ -96,7 +96,7 @@ class Training_add_basic extends UserController {
             
             if($add_basic_details['result'] == 1){
 
-                if($training_type == 'Online'){
+                if($get_training_type->maintainance_value == 'Online'){
                     foreach ($days_selected as $day) {
                         $training_days = array(
                             'training_master_id' => $add_basic_details['insert_id'],
